@@ -377,11 +377,13 @@
   // Satellite imagery static display
   async function updateSatelliteImage(lat, lon) {
     const container = document.getElementById('satelliteImageContainer');
-    const staticUrl = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bboxSR=4326&imageSR=4326&bbox=${lon-0.02},${lat-0.02},${lon+0.02},${lat+0.02}&size=600,400&f=image`;
+    const bbox = `${lon-0.02},${lat-0.02},${lon+0.02},${lat+0.02}`;
+    const staticUrl = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bboxSR=4326&imageSR=4326&bbox=${bbox}&size=600,400&dpi=96&format=png&transparent=false&f=image`;
+    
     container.innerHTML = `
       <div style="text-align:center; padding:1em;">
         <strong>📡 High-Res Satellite (Esri World Imagery)</strong><br>
-        <img src="${staticUrl}" alt="Satellite view of location" loading="lazy" onerror="this.style.display='none'">
+        <img src="${staticUrl}" alt="Satellite view of location" loading="lazy" style="max-width:100%; border-radius:8px;" onerror="this.parentElement.innerHTML='<p style=color:#666>Satellite image unavailable for this region</p>'">
       </div>
     `;
     
