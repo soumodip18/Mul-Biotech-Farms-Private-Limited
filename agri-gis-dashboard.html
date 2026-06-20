@@ -1,101 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Agri-GIS Soil Dashboard | Mul Biotech Farms v3.0.2 (beta, Jan 2026) - Soumodip Atanu Roy Ventures</title>
-  <meta name="description" content="Advanced Agri-GIS Soil Dashboard by Mul Biotech Farms—real-time thermal, satellite imagery, and India soil data analytics for sustainable agriculture." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
-  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
-  <style>
-    body {
-      background: linear-gradient(135deg, #e5f0d6, #ececf9);
-      font-family: 'Georgia', 'Times New Roman', serif;
-      color: #23311f;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1040px;
-      margin: 2.5em auto;
-      padding: 2.5em 1.2em 2.8em 1.2em;
-      background: #ffffffdd;
-      border-radius: 25px;
-      box-shadow: 0 12px 24px rgba(83, 146, 52, 0.35);
-      position: relative;
-      z-index: 10;
-    }
-    h1, h2 {
-      font-family: Georgia, serif;
-      text-align: center;
-      color: #104214;
-      margin: 0 0 .14em 0;
-      text-shadow: 0 1px 2px #b6dcb7cc;
-    }
-    h1 span { color:#4b7d16; font-size: 1.1rem; letter-spacing: 0.04em;}
-    .inputs {text-align:center; margin-bottom:1.2em;}
-    input, select, button {
-      padding: 11px 14px; margin: 0.4em 0.13em 0.42em 0.13em;
-      border-radius: 12px;
-      border: 1.2px solid #aec19f;
-      font-size: 1.1rem; background: #e8f1d9; 
-      box-shadow: inset 1px 1px 3px #c5d5afbd;
-      transition: border-color 0.24s; outline:none;
-      font-family: Georgia, serif;
-    }
-    button {background:#3a6b10; color:#f0fef0; font-weight:600; cursor:pointer;}
-    .mainBtn {background: #40971b !important; font-size: 1.18em;}
-    #map {height: 290px; margin-top:0.8em; border-radius:14px; 
-           box-shadow:0 7px 20px #638f4719; border:2px solid #8da56e; position:relative;}
-    .map-watermark {
-      position: absolute; pointer-events: none; user-select: none;
-      font-size: 3em; font-weight: 700; color: rgba(80, 80, 80, 0.15);
-      transform: rotate(-30deg); top: 40%; left: 15%; white-space: nowrap;
-      z-index: 999999; font-family: Georgia, serif;
-    }
-    .toggle-group {text-align: center; margin-top: 1.1em;}
-    .toggle-btn {background:#25542c;color:#edfff5;font-weight: 600; 
-                 font-size:1em; border-radius:11px; margin: 0 0.5em;}
-    .dashboard-panels {display: flex; flex-wrap: wrap; gap: 1.3rem; margin-top: 1.7em;}
-    .left-col, .right-col {flex:1; min-width: 330px;}
-    .panel-highlight {background: #e7f0c9; padding: 1.1rem 1.2rem; 
-                      border-left: 8px solid #4b7d16; border-radius: 14px; 
-                      margin:1.1em 0 0.9em 0; font-weight: 600;}
-    .thermal-box { background:#f6e4be; border:1.5px solid #e3b463; 
-                   border-radius:13px; padding:1em;box-shadow:0 2px 8px #e0bd6718; margin-bottom:1em; }
-    .predictive-box { background:#d6e2f7; border:1.5px solid #96b3de; 
-                      border-radius:13px; padding:1em;box-shadow:0 2px 8px #a1b5dd27; margin-bottom:1em; }
-    .mini-weather-card, .predictive-trends, .thermalStats, .soil-data-card {
-      margin:0.6em 0 1.1em 0; background:#e6f0c7;border-radius:12px; 
-      border:1.2px solid #cbdc9a; padding:1.1em;
-    }
-    .disclaimer {font-size:0.71em; color:#61615e; background:#fdfde4; 
-                 padding:0.5em 0.5em; margin-top:1.3em; border-radius:12px; 
-                 border: 1.3px solid #d7dbad; text-align: center;}
-    .carbonstatus-box { background: #faeddd; border-left: 5px solid #b28121; margin: 1.3em 0 0.75em 0; }
-    .panel-label {font-weight:700;}
-    #satelliteImageContainer img, #heatMapContainer {
-      max-width: 100%; height: auto; border-radius: 14px; margin-top: 1em;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .state-selector {background: #f0f8e8; padding: 1em; border-radius: 12px; margin-bottom: 1em;}
-    @media (max-width: 780px){ 
-      .container {max-width: 98vw;} 
-      .dashboard-panels{flex-direction:column;} 
-      #map{height:220px;} 
-    }
-  </style>
+<meta charset="UTF-8"/>
+<title>Agri-GIS Soil &amp; Climate Intelligence Dashboard v4.0 | Mul Biotech Farms</title>
+<meta name="description" content="Agri-GIS Soil & Climate Intelligence Dashboard by Mul Biotech Farms — live weather, soil, irrigation, and climate-risk analytics for India, built on Open-Meteo and satellite data." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<style>
+  :root{
+    --forest-900:#0f2613;
+    --forest-800:#15331a;
+    --forest-700:#1c4221;
+    --forest-600:#2a5c2e;
+    --amber-500:#c9952c;
+    --amber-400:#dab15a;
+    --cream-50:#f6f3ea;
+    --cream-100:#eee8d8;
+    --ink:#1c2418;
+    --risk-verylow:#3f8f4f;
+    --risk-low:#7ba33e;
+    --risk-moderate:#c9952c;
+    --risk-high:#c9682c;
+    --risk-critical:#a3322c;
+    --line:#2a5c2e33;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--forest-900);
+    background-image:
+      radial-gradient(circle at 15% 0%, #1c4221 0%, transparent 45%),
+      radial-gradient(circle at 90% 90%, #1c4221 0%, transparent 40%);
+    font-family:'DM Sans', Georgia, serif;
+    color:var(--cream-50);
+    margin:0; padding:0;
+    min-height:100vh;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap');
+  .topbar{
+    padding:1.6em 1.4em 1.2em;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar h1{
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:1.7rem;
+    margin:0 0 0.25em;
+    color:var(--cream-50);
+    letter-spacing:0.01em;
+  }
+  .topbar h1 .leaf{color:var(--amber-400);}
+  .version-tag{
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:var(--forest-900);
+    background:var(--amber-400);
+    padding:0.22em 0.65em;
+    border-radius:99px;
+    margin-top:0.3em;
+    font-weight:600;
+  }
+  .subhead{font-size:0.92rem; color:#cfd9c4; margin-top:0.4em;}
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:1.6em 1.2em 3em;
+  }
+
+  .controls-row{
+    display:flex; flex-wrap:wrap; gap:0.8em;
+    align-items:center; justify-content:center;
+    margin-bottom:1.2em;
+  }
+  select, input, button{
+    font-family:'DM Sans', sans-serif;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--forest-800);
+    color:var(--cream-50);
+    padding:0.65em 0.9em;
+    font-size:0.95rem;
+    outline:none;
+  }
+  select:focus, input:focus, button:focus-visible{
+    border-color:var(--amber-400);
+    box-shadow:0 0 0 2px #c9952c33;
+  }
+  input{width:9.5em;}
+  button{
+    background:var(--amber-500);
+    color:var(--forest-900);
+    font-weight:700;
+    cursor:pointer;
+    border:none;
+    transition:transform 0.12s ease, background 0.15s ease;
+  }
+  button:hover{background:var(--amber-400);}
+  button:active{transform:scale(0.97);}
+  .ghost-btn{
+    background:transparent;
+    color:var(--cream-100);
+    border:1px solid var(--line);
+    font-weight:500;
+  }
+  .ghost-btn[aria-pressed="true"]{
+    background:var(--forest-600);
+    border-color:var(--amber-400);
+    color:var(--amber-400);
+  }
+
+  #map{
+    height:320px; border-radius:14px;
+    border:1px solid var(--line);
+    margin-bottom:0.6em;
+    position:relative;
+    z-index:1;
+  }
+  .map-watermark{
+    position:absolute; pointer-events:none; user-select:none;
+    font-size:2.6em; font-weight:700; color:rgba(255,255,255,0.05);
+    transform:rotate(-28deg); top:38%; left:12%; white-space:nowrap;
+    z-index:999; font-family:'Playfair Display', serif;
+  }
+  .toggle-group{display:flex; gap:0.5em; flex-wrap:wrap; justify-content:center; margin:0.8em 0 1.6em;}
+
+  .source-banner{
+    display:flex; gap:0.6em; align-items:center; justify-content:center;
+    font-family:'DM Mono', monospace; font-size:0.72rem;
+    color:#a8b89c; margin-bottom:1.6em; flex-wrap:wrap;
+  }
+  .badge{
+    font-family:'DM Mono', monospace;
+    font-size:0.62rem; letter-spacing:0.04em;
+    padding:0.18em 0.55em; border-radius:5px;
+    font-weight:600; text-transform:uppercase;
+  }
+  .badge-real{background:#1e4d2b; color:#9fe0ad;}
+  .badge-modelled{background:#4d3f1e; color:#e0c89f;}
+  .badge-estimated{background:#4d2030; color:#e0a3b8;}
+
+  .panel-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+    gap:1.1em;
+    margin-bottom:1.4em;
+  }
+  .panel{
+    background:var(--forest-800);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.1em 1.2em;
+  }
+  .panel-title{
+    font-family:'DM Mono', monospace;
+    font-size:0.68rem; letter-spacing:0.07em; text-transform:uppercase;
+    color:var(--amber-400);
+    margin:0 0 0.7em;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .kv-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:0.32em 0; border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .kv-row:last-child{border-bottom:none;}
+  .kv-row .label{color:#cfd9c4;}
+  .kv-row .value{font-family:'DM Mono', monospace; font-weight:600; color:var(--cream-50);}
+
+  .score-display{
+    display:flex; align-items:baseline; gap:0.5em; margin:0.3em 0 0.8em;
+  }
+  .score-display .num{font-family:'Playfair Display', serif; font-size:2.3rem; font-weight:700; color:var(--amber-400);}
+  .score-display .den{font-size:1rem; color:#a8b89c;}
+  .risk-pill{
+    display:inline-block; padding:0.3em 0.85em; border-radius:99px;
+    font-weight:700; font-size:0.85rem; color:#0f1a0f;
+  }
+  .full-width{grid-column:1/-1;}
+
+  .wide-panels{display:grid; grid-template-columns:1.3fr 1fr; gap:1.1em; margin-bottom:1.4em;}
+  @media(max-width:820px){.wide-panels{grid-template-columns:1fr;}}
+
+  .timeframe-tabs{display:flex; gap:0.4em; margin-bottom:0.7em;}
+  .tf-btn{
+    font-size:0.78rem; padding:0.35em 0.8em; background:var(--forest-900);
+    border:1px solid var(--line); color:#cfd9c4; border-radius:8px; cursor:pointer;
+  }
+  .tf-btn[aria-pressed="true"]{background:var(--amber-500); color:var(--forest-900); border-color:var(--amber-500);}
+
+  .footer-disclaimer{
+    font-size:0.78rem; color:#a8b89c; background:var(--forest-800);
+    border:1px solid var(--line); border-radius:12px; padding:0.9em 1.1em;
+    margin-top:1em; text-align:center;
+  }
+  .footer-disclaimer a{color:var(--amber-400);}
+  .data-source-line{font-family:'DM Mono', monospace; font-size:0.68rem; color:#8a9a7e; margin-top:0.4em;}
+  .timestamp-line{font-size:0.68rem; color:#7d8d72; margin-top:0.2em;}
+
+  .loading-text{color:#8a9a7e; font-style:italic; font-size:0.88rem;}
+
+  table.soil-table{width:100%; border-collapse:collapse;}
+  table.soil-table th{
+    text-align:left; font-weight:500; color:#a8b89c;
+    font-size:0.85rem; padding:0.3em 0; border-bottom:1px solid var(--line);
+  }
+  table.soil-table td{
+    text-align:right; font-family:'DM Mono', monospace; font-weight:600;
+    font-size:0.88rem; padding:0.3em 0; border-bottom:1px solid var(--line);
+  }
+
+  @media(max-width:780px){
+    #map{height:240px;}
+    .topbar h1{font-size:1.35rem;}
+  }
+</style>
 </head>
 <body>
-<div class="container" role="main" aria-label="Mul Biotech Farms Agri GIS Soil Dashboard">
-  <h1>🌿 Mul Biotech Farms <span>Agri-GIS Soil Dashboard v3.0.2 (beta, Jan 2026)</span></h1>
-  <h2>India-Wide Thermal, Satellite & Soil Analytics</h2>
-  
-  <div class="state-selector">
-    <select id="stateSelect" aria-label="Select Indian State for soil data">
-      <option value="">Select State for Soil Profile</option>
+
+<header class="topbar">
+  <h1><span class="leaf">🌿</span> Mul Biotech Farms — Agri-GIS Intelligence Dashboard</h1>
+  <span class="version-tag">v4.0 · Live Data</span>
+  <div class="subhead">Climate, soil &amp; irrigation analytics for India, built on live meteorological and satellite data</div>
+</header>
+
+<div class="container">
+
+  <div class="controls-row" role="search" aria-label="Location selector">
+    <select id="stateSelect" aria-label="Select Indian state for soil profile">
+      <option value="">Soil profile: select state</option>
       <option value="west_bengal">West Bengal</option>
       <option value="rajasthan">Rajasthan</option>
       <option value="tamil_nadu">Tamil Nadu</option>
@@ -106,164 +243,228 @@
       <option value="andhra_pradesh">Andhra Pradesh</option>
       <option value="karnataka">Karnataka</option>
     </select>
+    <input id="latInput" type="number" step="0.0001" placeholder="Latitude" value="22.57" aria-label="Latitude"/>
+    <input id="lonInput" type="number" step="0.0001" placeholder="Longitude" value="88.36" aria-label="Longitude"/>
+    <button id="fetchBtn">📍 Fetch live data</button>
   </div>
 
-  <div class="inputs" role="search" aria-label="Enter coordinates to fetch data">
-    <input id="latInput" type="number" step="0.0001" placeholder="Latitude (e.g. 22.57)" value="22.57" aria-label="Latitude"/>
-    <input id="lonInput" type="number" step="0.0001" placeholder="Longitude (e.g. 88.36)" value="88.36" aria-label="Longitude"/>
-    <button id="fetchBtn" class="mainBtn" aria-label="Fetch data for coordinates">📍 Fetch Data</button>
-  </div>
-
-  <section id="map" aria-label="Interactive farm map with satellite & overlays"></section>
+  <section id="map" aria-label="Interactive farm map"></section>
   <div class="map-watermark">Mul Biotech Farms © 2026</div>
-  
-  <div class="toggle-group" role="group" aria-label="Toggle map layers">
-    <button id="btnSatellite" class="toggle-btn" aria-pressed="false">🛰️ Satellite</button>
-    <button id="btnNDVI" class="toggle-btn" aria-pressed="false">🌿 NDVI</button>
-    <button id="btnThermal" class="toggle-btn" aria-pressed="false">🔥 Thermal</button>
-    <button id="btnFlood" class="toggle-btn" aria-pressed="false">🌊 Flood</button>
-    <button id="btnDrought" class="toggle-btn" aria-pressed="false">🌵 Drought</button>
+
+  <div class="toggle-group" role="group" aria-label="Map layer toggles">
+    <button id="btnSatellite" class="ghost-btn" aria-pressed="false">🛰️ Satellite</button>
+    <button id="btnNDVI" class="ghost-btn" aria-pressed="false">🌿 NDVI</button>
+    <button id="btnLST" class="ghost-btn" aria-pressed="false">🔥 Land surface temp</button>
+    <button id="btnFlood" class="ghost-btn" aria-pressed="false">🌊 Flood risk</button>
+    <button id="btnDrought" class="ghost-btn" aria-pressed="false">🌵 Drought risk</button>
   </div>
 
-  <div id="satelliteImageContainer" aria-label="Satellite image of selected location"></div>
-  <div id="heatMapContainer" aria-label="Soil & thermal heat map legend"></div>
-
-  <div class="dashboard-panels">
-    <section class="left-col" aria-label="Environmental data panel">
-      <article id="address" class="panel-highlight" tabindex="0" aria-live="polite">
-        🏠 Location: <em>Click map or enter coordinates</em>
-      </article>
-      
-      <div class="thermal-box" aria-live="polite" tabindex="0">
-        <div class="panel-label">🔥 Thermal Analysis</div>
-        <div class="thermalStats" id="thermalStats">Hover over map for real-time temperature data</div>
-      </div>
-
-      <div class="soil-data-card" id="soilDataCard" style="display:none;">
-        <div class="panel-label">🌱 Soil Profile (2025 Data)</div>
-        <table role="table" aria-label="Soil nutrient analysis">
-          <tbody id="soilTableBody"></tbody>
-        </table>
-      </div>
-
-      <div class="mini-weather-card" id="liveWeather" style="display:none;">
-        <b>🌤️ Live Weather Data</b>
-        <table role="table" aria-label="Current weather conditions">
-          <tbody>
-            <tr><th>🌡️ Temperature</th><td id="w_temp">-</td></tr>
-            <tr><th>💧 Humidity</th><td id="w_humidity">-</td></tr>
-            <tr><th>🌧️ Rain (1h)</th><td id="w_rain">-</td></tr>
-            <tr><th>☁️ Clouds</th><td id="w_cloud">-</td></tr>
-            <tr><th>💨 Wind</th><td id="w_wind">-</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="right-col" aria-label="Analytics & predictions panel">
-      <div class="predictive-box">
-        <div class="panel-label">🔮 Predictive Analytics</div>
-        <div id="predictiveSoil">Soil health trends loading...</div>
-        <div id="predictiveClimate">Climate outlook loading...</div>
-        <canvas id="predictiveTrendsChart" height="80" role="img" aria-label="Soil & climate trends"></canvas>
-      </div>
-
-      <div class="panel-highlight" id="recommendation">📋 <b>Crop Recommendations:</b> Loading...</div>
-      <div class="carbonstatus-box">
-        <b>Soil Carbon Stock:</b> <span id="carbonStatusValue">Loading...</span>
-      </div>
-      <div class="panel-highlight" id="climateRiskScore">
-        ⚠️ <b>Climate Risk Score:</b> <span id="riskScore">Calculating...</span>
-      </div>
-      
-      <div id="gasStatus" class="panel-highlight" style="background:#fbf3e0; border-left: 5px solid #b27d21;">
-        💨 <b>Real-Time GHG Data:</b>
-        <div id="gasOutput">Loading gas concentrations...</div>
-      </div>
-    </section>
+  <div class="source-banner">
+    <span>Data sourced live from</span>
+    <span class="badge badge-real">Open-Meteo</span>
+    <span class="badge badge-real">NASA GIBS</span>
+    <span class="badge badge-real">Esri World Imagery</span>
+    <span class="badge badge-real">OpenStreetMap Nominatim</span>
   </div>
 
-  <div class="disclaimer" tabindex="0">
-    ⚠️ <b>Beta dashboard with AI/ML soil predictions (2025 datasets). 
-    Validate critical decisions with lab tests. 
-    For API/services contact: <a href="mailto:mulbiotechfarms@gmail.com">mulbiotechfarms@gmail.com</a></b>
+  <!-- LOCATION + LIVE WEATHER -->
+  <div class="panel-grid">
+    <article class="panel full-width" id="addressPanel">
+      <div class="panel-title">📍 Location</div>
+      <div id="address" class="loading-text">Click the map or enter coordinates, then fetch data.</div>
+    </article>
   </div>
+
+  <div class="panel-grid">
+    <div class="panel">
+      <div class="panel-title">🌤️ Live weather <span class="badge badge-real">REAL</span></div>
+      <div class="kv-row"><span class="label">Temperature</span><span class="value" id="w_temp">–</span></div>
+      <div class="kv-row"><span class="label">Humidity</span><span class="value" id="w_humidity">–</span></div>
+      <div class="kv-row"><span class="label">Rainfall (1h)</span><span class="value" id="w_rain">–</span></div>
+      <div class="kv-row"><span class="label">Cloud cover</span><span class="value" id="w_cloud">–</span></div>
+      <div class="kv-row"><span class="label">Wind speed</span><span class="value" id="w_wind">–</span></div>
+      <div class="kv-row"><span class="label">Wind direction</span><span class="value" id="w_winddir">–</span></div>
+      <div class="kv-row"><span class="label">Pressure (MSL)</span><span class="value" id="w_pressure">–</span></div>
+      <div class="kv-row"><span class="label">UV index</span><span class="value" id="w_uv">–</span></div>
+      <div class="data-source-line" id="weather_ts">Source: Open-Meteo Forecast API</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">🌱 Soil conditions <span class="badge badge-real">REAL</span></div>
+      <div class="kv-row"><span class="label">Moisture 0–1 cm</span><span class="value" id="sm_0_1">–</span></div>
+      <div class="kv-row"><span class="label">Moisture 1–3 cm</span><span class="value" id="sm_1_3">–</span></div>
+      <div class="kv-row"><span class="label">Moisture 3–9 cm</span><span class="value" id="sm_3_9">–</span></div>
+      <div class="kv-row"><span class="label">Moisture 9–27 cm</span><span class="value" id="sm_9_27">–</span></div>
+      <div class="kv-row"><span class="label">Temp at surface</span><span class="value" id="st_0">–</span></div>
+      <div class="kv-row"><span class="label">Temp at 6 cm</span><span class="value" id="st_6">–</span></div>
+      <div class="kv-row"><span class="label">Temp at 18 cm</span><span class="value" id="st_18">–</span></div>
+      <div class="kv-row"><span class="label">Temp at 54 cm</span><span class="value" id="st_54">–</span></div>
+      <div class="data-source-line">Source: Open-Meteo Soil Model</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">💧 Irrigation demand <span class="badge badge-modelled">MODELLED</span></div>
+      <div class="score-display">
+        <span class="num" id="et0Value">–</span><span class="den">mm/day ET₀</span>
+      </div>
+      <div id="et0Class" class="risk-pill">Calculating…</div>
+      <div class="kv-row" style="margin-top:0.8em;"><span class="label">Irrigation advisory</span><span class="value" id="irrigationAdvisory">–</span></div>
+      <div class="data-source-line">ET₀: FAO Penman-Monteith approximation from Open-Meteo inputs</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">🥀 Plant stress (VPD) <span class="badge badge-modelled">MODELLED</span></div>
+      <div class="score-display">
+        <span class="num" id="vpdValue">–</span><span class="den">kPa</span>
+      </div>
+      <div id="vpdZone" class="risk-pill">Calculating…</div>
+      <div class="kv-row" style="margin-top:0.8em;"><span class="label">Crop stress score</span><span class="value" id="cropStressScore">–</span></div>
+      <div class="data-source-line">VPD computed from live temperature &amp; humidity</div>
+    </div>
+  </div>
+
+  <!-- SOIL PROFILE (STATE LOOKUP) -->
+  <div class="panel-grid" id="soilProfileGrid" style="display:none;">
+    <article class="panel full-width">
+      <div class="panel-title">🧪 Regional soil profile <span class="badge badge-estimated">ESTIMATED · 2025 SURVEY AVERAGE</span></div>
+      <table class="soil-table" id="soilTable"><tbody id="soilTableBody"></tbody></table>
+      <div class="data-source-line">State-level averages, not a substitute for a site soil test.</div>
+    </article>
+  </div>
+
+  <!-- FORECAST -->
+  <div class="wide-panels">
+    <div class="panel">
+      <div class="panel-title">📈 Forecast &amp; historical trends <span class="badge badge-real">REAL</span></div>
+      <div class="timeframe-tabs" role="group" aria-label="Forecast timeframe">
+        <button class="tf-btn" data-range="7" aria-pressed="true">7 day</button>
+        <button class="tf-btn" data-range="14" aria-pressed="false">14 day</button>
+        <button class="tf-btn" data-range="30" aria-pressed="false">30 day</button>
+        <button class="tf-btn" data-range="hist1y" aria-pressed="false">1yr history</button>
+      </div>
+      <canvas id="trendsChart" height="110" role="img" aria-label="Rainfall and temperature trend chart"></canvas>
+      <div class="data-source-line" id="trendsSourceLine">Source: Open-Meteo Forecast API</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">🌾 Crop suitability</div>
+      <div id="recommendation" class="loading-text">Select a state to see crop recommendations.</div>
+      <div class="kv-row" style="margin-top:0.6em;"><span class="label">Risk level</span><span class="value" id="cropRiskLevel">–</span></div>
+      <div class="kv-row"><span class="label">Expected performance</span><span class="value" id="cropPerformance">–</span></div>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE KPI BOARD -->
+  <div class="panel-grid">
+    <article class="panel full-width">
+      <div class="panel-title">📊 Executive KPI board</div>
+      <div class="panel-grid" style="margin-bottom:0;">
+        <div>
+          <div class="kv-row"><span class="label">Farm health score</span></div>
+          <div class="score-display"><span class="num" id="farmHealthScore">–</span><span class="den">/ 100</span></div>
+          <div class="data-source-line">Soil moisture, rainfall, temp, VPD, ET₀ composite</div>
+        </div>
+        <div>
+          <div class="kv-row"><span class="label">Climate risk score</span></div>
+          <div id="climateRiskPill" class="risk-pill" style="margin-top:0.4em;">Calculating…</div>
+          <div class="data-source-line" id="climateRiskFactors">Rainfall deficit, temp anomaly, VPD, ET₀, flood &amp; drought probability</div>
+        </div>
+        <div>
+          <div class="kv-row"><span class="label">Water stress score</span></div>
+          <div id="waterStressPill" class="risk-pill" style="margin-top:0.4em;">Calculating…</div>
+        </div>
+        <div>
+          <div class="kv-row"><span class="label">Flood risk</span></div>
+          <div id="floodRiskPill" class="risk-pill" style="margin-top:0.4em;">Calculating…</div>
+        </div>
+        <div>
+          <div class="kv-row"><span class="label">Drought risk</span></div>
+          <div id="droughtRiskPill" class="risk-pill" style="margin-top:0.4em;">Calculating…</div>
+        </div>
+        <div>
+          <div class="kv-row"><span class="label">Project coordinates</span></div>
+          <div class="value" id="projCoords" style="font-family:'DM Mono',monospace; margin-top:0.4em;">–</div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="footer-disclaimer">
+    ⚠️ <b>Beta v4.0.</b> Weather, soil-moisture, and soil-temperature readings are live model output from Open-Meteo's forecast and historical reanalysis models — not direct in-field sensor readings.
+    Static state-level soil profile figures are 2025 survey averages. Risk scores and irrigation/crop advisories are modelled estimates for planning support, not a substitute for laboratory testing or agronomic advice.
+    For dMRV, carbon-readiness, or API access: <a href="mailto:mulbiotechfarms@gmail.com">mulbiotechfarms@gmail.com</a>
+    <div class="timestamp-line" id="globalTimestamp"></div>
+  </div>
+
 </div>
 
 <script>
 (() => {
   'use strict';
 
-  // Configuration
-  const WEATHER_KEY = "6533298b91abc00d6b80047801a89c85";
   const INDIA_SOIL_DATA_2025 = {
-    'west_bengal': {soilType: 'Alluvial', N: 285, P: 18, K: 148, OC: 0.68, pH: 6.8, texture: 'Loamy'},
-    'rajasthan': {soilType: 'Aridisol', N: 210, P: 12, K: 280, OC: 0.32, pH: 8.2, texture: 'Sandy'},
-    'tamil_nadu': {soilType: 'Vertisol', N: 245, P: 15, K: 320, OC: 0.55, pH: 7.9, texture: 'Clay'},
-    'punjab': {soilType: 'Alluvial', N: 320, P: 22, K: 165, OC: 0.72, pH: 7.4, texture: 'Loamy'},
-    'maharashtra': {soilType: 'Black', N: 265, P: 16, K: 195, OC: 0.48, pH: 7.2, texture: 'Clay Loam'},
-    'uttar_pradesh': {soilType: 'Alluvial', N: 290, P: 19, K: 152, OC: 0.65, pH: 7.1, texture: 'Loamy'},
-    'kerala': {soilType: 'Laterite', N: 220, P: 14, K: 310, OC: 1.12, pH: 5.8, texture: 'Sandy Clay'},
-    'andhra_pradesh': {soilType: 'Red', N: 235, P: 13, K: 275, OC: 0.41, pH: 6.9, texture: 'Sandy Loam'},
-    'karnataka': {soilType: 'Red', N: 255, P: 17, K: 240, OC: 0.52, pH: 6.7, texture: 'Loamy'}
+    'west_bengal': {soilType:'Alluvial', N:285, P:18, K:148, OC:0.68, pH:6.8, texture:'Loamy'},
+    'rajasthan': {soilType:'Aridisol', N:210, P:12, K:280, OC:0.32, pH:8.2, texture:'Sandy'},
+    'tamil_nadu': {soilType:'Vertisol', N:245, P:15, K:320, OC:0.55, pH:7.9, texture:'Clay'},
+    'punjab': {soilType:'Alluvial', N:320, P:22, K:165, OC:0.72, pH:7.4, texture:'Loamy'},
+    'maharashtra': {soilType:'Black', N:265, P:16, K:195, OC:0.48, pH:7.2, texture:'Clay Loam'},
+    'uttar_pradesh': {soilType:'Alluvial', N:290, P:19, K:152, OC:0.65, pH:7.1, texture:'Loamy'},
+    'kerala': {soilType:'Laterite', N:220, P:14, K:310, OC:1.12, pH:5.8, texture:'Sandy Clay'},
+    'andhra_pradesh': {soilType:'Red', N:235, P:13, K:275, OC:0.41, pH:6.9, texture:'Sandy Loam'},
+    'karnataka': {soilType:'Red', N:255, P:17, K:240, OC:0.52, pH:6.7, texture:'Loamy'}
   };
 
-  let map, marker, thermalLayer, ndviLayer, floodLayer, droughtLayer, satelliteLayer;
-  let lastClickedLocation = {lat: 22.57, lon: 88.36};
+  let map, marker, satelliteLayer, ndviLayer, lstLayer, floodLayer, droughtLayer;
   let currentSoilData = {};
+  let lastFetch = {lat:22.57, lon:88.36};
+  let activeRange = '7';
+  let trendsChart = null;
 
-  // Initialize map with satellite basemap option
   map = L.map('map').setView([22.57, 88.36], 10);
-  
-  // Default OSM layer
-  const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19, attribution: '© OpenStreetMap contributors'
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:19, attribution:'© OpenStreetMap contributors'
   }).addTo(map);
 
-  // ESRI World Imagery (Satellite)
   satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19, attribution: '© Esri World Imagery'
+    maxZoom:19, attribution:'© Esri World Imagery'
   });
-
-  // NASA NDVI
-  ndviLayer = L.tileLayer('https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CMG_NDVI/default/2025-01-01/250m/{z}/{y}/{x}.png', {
-    opacity: 0.7, attribution: 'NASA MODIS NDVI 2025'
+  ndviLayer = L.tileLayer('https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_NDVI_8Day/default/2025-12-27/250m/{z}/{y}/{x}.png', {
+    opacity:0.7, attribution:'NASA GIBS MODIS NDVI'
   });
+  lstLayer = L.tileLayer('https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Land_Surface_Temp_Day/default/2025-12-27/1km/{z}/{y}/{x}.png', {
+    opacity:0.65, attribution:'NASA GIBS MODIS LST'
+  });
+  floodLayer = L.tileLayer('https://tiles.open-meteo.com/flood/{z}/{x}/{y}.png', {opacity:0.5});
+  droughtLayer = L.tileLayer('https://tiles.open-meteo.com/drought/{z}/{x}/{y}.png', {opacity:0.5});
 
-  floodLayer = L.tileLayer('https://tiles.open-meteo.com/flood/{z}/{x}/{y}.png', {opacity: 0.5});
-  droughtLayer = L.tileLayer('https://tiles.open-meteo.com/drought/{z}/{x}/{y}.png', {opacity: 0.5});
-
-  // Event listeners
   document.getElementById('fetchBtn').addEventListener('click', fetchAllData);
   document.getElementById('stateSelect').addEventListener('change', handleStateSelect);
-  
-  ['btnSatellite', 'btnNDVI', 'btnThermal', 'btnFlood', 'btnDrought'].forEach(id => {
-    document.getElementById(id).addEventListener('click', () => toggleLayer(id));
+
+  [['btnSatellite', satelliteLayer], ['btnNDVI', ndviLayer], ['btnLST', lstLayer],
+   ['btnFlood', floodLayer], ['btnDrought', droughtLayer]].forEach(([id, layer]) => {
+    document.getElementById(id).addEventListener('click', () => toggleLayer(id, layer));
+  });
+
+  document.querySelectorAll('.tf-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tf-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      activeRange = btn.dataset.range;
+      loadTrends(lastFetch.lat, lastFetch.lon);
+    });
   });
 
   map.on('click', (e) => {
-    document.getElementById("latInput").value = e.latlng.lat.toFixed(4);
-    document.getElementById("lonInput").value = e.latlng.lng.toFixed(4);
-    lastClickedLocation = {lat: e.latlng.lat, lon: e.latlng.lng};
+    document.getElementById('latInput').value = e.latlng.lat.toFixed(4);
+    document.getElementById('lonInput').value = e.latlng.lng.toFixed(4);
     if (marker) map.removeLayer(marker);
     marker = L.marker(e.latlng).addTo(map);
     fetchAllData();
   });
 
-  // Layer toggle functions
-  function toggleLayer(btnId) {
+  function toggleLayer(btnId, layer) {
     const btn = document.getElementById(btnId);
-    const layerMap = {
-      'btnSatellite': satelliteLayer,
-      'btnNDVI': ndviLayer,
-      'btnThermal': thermalLayer,
-      'btnFlood': floodLayer,
-      'btnDrought': droughtLayer
-    };
-    const layer = layerMap[btnId];
-    
     if (!layer) return;
-    
     if (map.hasLayer(layer)) {
       map.removeLayer(layer);
       btn.setAttribute('aria-pressed', 'false');
@@ -273,222 +474,272 @@
     }
   }
 
-  // Main data fetch function
   async function fetchAllData() {
-    const lat = parseFloat(document.getElementById("latInput").value);
-    const lon = parseFloat(document.getElementById("lonInput").value);
-    lastClickedLocation = {lat, lon};
-
+    const lat = parseFloat(document.getElementById('latInput').value);
+    const lon = parseFloat(document.getElementById('lonInput').value);
     if (isNaN(lat) || isNaN(lon)) return;
+    lastFetch = {lat, lon};
 
-    // Update marker
     if (marker) map.removeLayer(marker);
-    marker = L.marker([lat, lon], {title: 'Selected Location'}).addTo(map);
+    marker = L.marker([lat, lon]).addTo(map);
     map.setView([lat, lon], 12);
 
-    // Reverse geocode for address
+    document.getElementById('projCoords').textContent = `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+
     await reverseGeocode(lat, lon);
-    
-    // Fetch all data in parallel
-    await Promise.all([
-      getWeather(lat, lon),
-      fetchThermalMap(lat, lon),
-      fetchGasDataAuto(lat, lon),
-      updateSatelliteImage(lat, lon)
-    ]);
-    
-    showPredictiveAnalytics();
-    updateSoilData();
+    const weatherData = await getLiveWeatherAndSoil(lat, lon);
+    await loadTrends(lat, lon);
+    computeDerivedMetrics(weatherData);
+    updateSoilProfileDisplay();
+    document.getElementById('globalTimestamp').textContent =
+      `Last updated: ${new Date().toLocaleString('en-IN', {dateStyle:'medium', timeStyle:'short'})}`;
   }
 
-  // Reverse geocoding
   async function reverseGeocode(lat, lon) {
     try {
       const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
       const data = await res.json();
       const address = data.display_name || `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-      document.getElementById('address').innerHTML = `🏠 Location: <strong>${address}</strong>`;
+      document.getElementById('address').innerHTML = `<strong>${address}</strong>`;
+      document.getElementById('address').classList.remove('loading-text');
     } catch {
-      document.getElementById('address').innerHTML = `🏠 Coordinates: ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+      document.getElementById('address').innerHTML = `Coordinates: ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
     }
   }
 
-  // Weather API
-  async function getWeather(lat, lon) {
-    document.getElementById('liveWeather').style.display = 'block';
+  // Live weather + soil moisture/temp from Open-Meteo (no API key required)
+  async function getLiveWeatherAndSoil(lat, lon) {
     try {
-      const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_KEY}&units=metric`);
-      const data = await resp.json();
-      const main = data.main || {}, wind = data.wind || {}, clouds = data.clouds || {};
-      const rain1h = data.rain?.['1h'] ?? 0;
-      
-      document.getElementById("w_temp").textContent = `${main.temp?.toFixed(1) || '-'}°C`;
-      document.getElementById("w_humidity").textContent = `${main.humidity || '-'}%`;
-      document.getElementById("w_rain").textContent = `${rain1h.toFixed(1)} mm`;
-      document.getElementById("w_cloud").textContent = `${clouds.all || '-'}%`;
-      document.getElementById("w_wind").textContent = `${wind.speed?.toFixed(1) || '-'} m/s`;
-      
-      return {temp: main.temp||0, rain: rain1h, windSpeed: wind.speed||0};
-    } catch {
-      document.querySelectorAll('[id^="w_"]').forEach(el => el.textContent = '-');
-      return {temp:0, rain:0, windSpeed:0};
-    }
-  }
-
-  // Thermal heatmap
-  async function fetchThermalMap(lat, lon) {
-    const btn = document.getElementById('btnThermal');
-    if (thermalLayer) {
-      map.removeLayer(thermalLayer);
-      thermalLayer = null;
-      btn.setAttribute('aria-pressed', 'false');
-      map.off('mousemove', updateThermalStats);
-    }
-    
-    const heatPoints = await generateThermalPoints(lat, lon);
-    thermalLayer = L.heatLayer(heatPoints, {
-      radius: 36, blur: 25, minOpacity: 0.55,
-      gradient: {0.4:'blue', 0.65:'lime', 0.85:'orangered', 1:'red'}
-    });
-    
-    thermalLayer.addTo(map);
-    btn.setAttribute('aria-pressed', 'true');
-    map.on('mousemove', updateThermalStats);
-  }
-
-  async function generateThermalPoints(centerLat, centerLon) {
-    const points = [];
-    const range = 0.15;
-    for (let i = 0; i < 150; i++) {
-      const lat = centerLat + (Math.random() - 0.5) * range;
-      const lon = centerLon + (Math.random() - 0.5) * range;
-      const temp = 22 + Math.random() * 15;
-      points.push([lat, lon, temp]);
-    }
-    return points;
-  }
-
-  function updateThermalStats(e) {
-    const temp = (22 + Math.random() * 15).toFixed(1);
-    document.getElementById('thermalStats').innerHTML = 
-      `Surface temp: <strong>${temp}°C</strong> (real-time estimate)`;
-  }
-
-  // Satellite imagery static display
-  async function updateSatelliteImage(lat, lon) {
-    const container = document.getElementById('satelliteImageContainer');
-    const bbox = `${lon-0.02},${lat-0.02},${lon+0.02},${lat+0.02}`;
-    const staticUrl = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bboxSR=4326&imageSR=4326&bbox=${bbox}&size=600,400&dpi=96&format=png&transparent=false&f=image`;
-    
-    container.innerHTML = `
-      <div style="text-align:center; padding:1em;">
-        <strong>📡 High-Res Satellite (Esri World Imagery)</strong><br>
-        <img src="${staticUrl}" alt="Satellite view of location" loading="lazy" style="max-width:100%; border-radius:8px;" onerror="this.parentElement.innerHTML='<p style=color:#666>Satellite image unavailable for this region</p>'">
-      </div>
-    `;
-    
-    document.getElementById('heatMapContainer').innerHTML = `
-      <div style="text-align:center; padding:1em; background:linear-gradient(90deg, blue 0%, lime 25%, yellow 50%, orange 75%, red 100%); height:40px; border-radius:12px; margin:1em 0;">
-        <small style="position:relative;top:10px;color:white;font-weight:600;">
-          Thermal Scale: Cool → Hot (18°C - 37°C)
-        </small>
-      </div>
-    `;
-  }
-
-  // State-wise soil data (2025 estimates)
-  function handleStateSelect() {
-    const state = document.getElementById('stateSelect').value;
-    if (!state || !INDIA_SOIL_DATA_2025[state]) return;
-    
-    currentSoilData = INDIA_SOIL_DATA_2025[state];
-    updateSoilData();
-  }
-
-  function updateSoilData() {
-    if (Object.keys(currentSoilData).length === 0) {
-      document.getElementById('soilDataCard').style.display = 'none';
-      return;
-    }
-    
-    const data = currentSoilData;
-    document.getElementById('soilDataCard').style.display = 'block';
-    
-    const tbody = document.getElementById('soilTableBody');
-    tbody.innerHTML = `
-      <tr><th>Soil Type</th><td>${data.soilType} (${data.texture})</td></tr>
-      <tr><th>Nitrogen (N)</th><td>${data.N} kg/ha</td></tr>
-      <tr><th>Phosphorus (P)</th><td>${data.P} kg/ha</td></tr>
-      <tr><th>Potassium (K)</th><td>${data.K} kg/ha</td></tr>
-      <tr><th>Organic Carbon</th><td>${data.OC}%</td></tr>
-      <tr><th>pH</th><td>${data.pH}</td></tr>
-    `;
-  }
-
-  // GHG emissions
-  async function fetchGasDataAuto(lat, lon) {
-    try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=co2,ch4&timezone=auto&forecast_days=1`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+        `&current=temperature_2m,relative_humidity_2m,precipitation,cloud_cover,wind_speed_10m,wind_direction_10m,pressure_msl,uv_index,soil_temperature_0cm,soil_temperature_6cm,soil_temperature_18cm,soil_temperature_54cm,soil_moisture_0_to_1cm,soil_moisture_1_to_3cm,soil_moisture_3_to_9cm,soil_moisture_9_to_27cm` +
+        `&timezone=auto`;
       const res = await fetch(url);
       const data = await res.json();
-      const co2 = data.hourly?.co2?.slice(-1)[0] ?? 'N/A';
-      const ch4 = data.hourly?.ch4?.slice(-1)[0] ?? 'N/A';
-      
-      const ghgEstimate = currentSoilData.OC ? 
-        ((currentSoilData.OC * 0.1) + (currentSoilData.N * 0.02)).toFixed(2) : 'N/A';
-      
-      document.getElementById("gasOutput").innerHTML = `
-        <div>🌱 Soil GHG: <strong>${ghgEstimate} CO₂-eq units</strong></div>
-        <div>📈 CO₂: <strong>${co2} ppm</strong></div>
-        <div>📈 CH₄: <strong>${ch4} ppb</strong></div>
-      `;
-    } catch {
-      document.getElementById("gasOutput").textContent = "Real-time GHG data unavailable";
+      const c = data.current || {};
+
+      document.getElementById('w_temp').textContent = c.temperature_2m != null ? `${c.temperature_2m.toFixed(1)} °C` : '–';
+      document.getElementById('w_humidity').textContent = c.relative_humidity_2m != null ? `${c.relative_humidity_2m}%` : '–';
+      document.getElementById('w_rain').textContent = c.precipitation != null ? `${c.precipitation.toFixed(1)} mm` : '–';
+      document.getElementById('w_cloud').textContent = c.cloud_cover != null ? `${c.cloud_cover}%` : '–';
+      document.getElementById('w_wind').textContent = c.wind_speed_10m != null ? `${c.wind_speed_10m.toFixed(1)} km/h` : '–';
+      document.getElementById('w_winddir').textContent = c.wind_direction_10m != null ? `${c.wind_direction_10m}°` : '–';
+      document.getElementById('w_pressure').textContent = c.pressure_msl != null ? `${c.pressure_msl.toFixed(0)} hPa` : '–';
+      document.getElementById('w_uv').textContent = c.uv_index != null ? c.uv_index.toFixed(1) : '–';
+      document.getElementById('weather_ts').textContent = `Source: Open-Meteo · observed ${c.time || ''}`;
+
+      document.getElementById('sm_0_1').textContent = c.soil_moisture_0_to_1cm != null ? `${(c.soil_moisture_0_to_1cm*100).toFixed(1)}%` : '–';
+      document.getElementById('sm_1_3').textContent = c.soil_moisture_1_to_3cm != null ? `${(c.soil_moisture_1_to_3cm*100).toFixed(1)}%` : '–';
+      document.getElementById('sm_3_9').textContent = c.soil_moisture_3_to_9cm != null ? `${(c.soil_moisture_3_to_9cm*100).toFixed(1)}%` : '–';
+      document.getElementById('sm_9_27').textContent = c.soil_moisture_9_to_27cm != null ? `${(c.soil_moisture_9_to_27cm*100).toFixed(1)}%` : '–';
+      document.getElementById('st_0').textContent = c.soil_temperature_0cm != null ? `${c.soil_temperature_0cm.toFixed(1)} °C` : '–';
+      document.getElementById('st_6').textContent = c.soil_temperature_6cm != null ? `${c.soil_temperature_6cm.toFixed(1)} °C` : '–';
+      document.getElementById('st_18').textContent = c.soil_temperature_18cm != null ? `${c.soil_temperature_18cm.toFixed(1)} °C` : '–';
+      document.getElementById('st_54').textContent = c.soil_temperature_54cm != null ? `${c.soil_temperature_54cm.toFixed(1)} °C` : '–';
+
+      return {
+        temp: c.temperature_2m ?? null,
+        humidity: c.relative_humidity_2m ?? null,
+        windSpeed: c.wind_speed_10m ?? null,
+        soilMoistureSurface: c.soil_moisture_0_to_1cm ?? null,
+        precipitation: c.precipitation ?? null
+      };
+    } catch (err) {
+      document.querySelectorAll('[id^="w_"]').forEach(el => el.textContent = '–');
+      return {temp:null, humidity:null, windSpeed:null, soilMoistureSurface:null, precipitation:null};
     }
   }
 
-  // Predictive analytics & charts
-  function showPredictiveAnalytics() {
-    const months = ["Now", "+2w", "+4w", "+6w"];
-    const soilMoisture = [24, 26, 28, 30];
-    const tempTrend = [28, 30, 32, 29];
-    
-    // Draw trends chart
-    const ctx = document.getElementById('predictiveTrendsChart').getContext('2d');
-    if (window.predChart) window.predChart.destroy();
-    window.predChart = new Chart(ctx, {
+  // Phase 3: forecast (7/14/30 day) + 1yr historical, replacing static hardcoded charts
+  async function loadTrends(lat, lon) {
+    const ctx = document.getElementById('trendsChart').getContext('2d');
+    let labels = [], rainfall = [], temps = [];
+    let sourceLabel = '';
+
+    try {
+      if (activeRange === 'hist1y') {
+        const end = new Date();
+        const start = new Date(); start.setFullYear(end.getFullYear() - 1);
+        const fmt = d => d.toISOString().slice(0,10);
+        const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}` +
+          `&start_date=${fmt(start)}&end_date=${fmt(end)}&daily=temperature_2m_mean,precipitation_sum&timezone=auto`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const d = data.daily || {};
+        // Monthly aggregation for readability
+        const monthly = {};
+        (d.time || []).forEach((t, i) => {
+          const month = t.slice(0,7);
+          if (!monthly[month]) monthly[month] = {temps:[], rain:0};
+          if (d.temperature_2m_mean[i] != null) monthly[month].temps.push(d.temperature_2m_mean[i]);
+          monthly[month].rain += d.precipitation_sum[i] || 0;
+        });
+        labels = Object.keys(monthly);
+        temps = labels.map(m => monthly[m].temps.length ? (monthly[m].temps.reduce((a,b)=>a+b,0)/monthly[m].temps.length) : null);
+        rainfall = labels.map(m => monthly[m].rain);
+        sourceLabel = 'Source: Open-Meteo Historical Archive API (monthly aggregates, last 12 months)';
+      } else {
+        const days = parseInt(activeRange, 10);
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+          `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&forecast_days=${days}&timezone=auto`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const d = data.daily || {};
+        labels = d.time || [];
+        rainfall = d.precipitation_sum || [];
+        temps = (d.temperature_2m_max || []).map((max, i) => {
+          const min = (d.temperature_2m_min || [])[i];
+          return (max != null && min != null) ? (max + min) / 2 : null;
+        });
+        sourceLabel = `Source: Open-Meteo Forecast API (${days}-day outlook)`;
+      }
+    } catch (err) {
+      sourceLabel = 'Trend data unavailable — Open-Meteo request failed';
+    }
+
+    document.getElementById('trendsSourceLine').textContent = sourceLabel;
+
+    if (trendsChart) trendsChart.destroy();
+    trendsChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: months,
+        labels,
         datasets: [
-          {label: 'Soil Moisture %', data: soilMoisture, borderColor: '#1976d2', fill: true, tension: 0.3},
-          {label: 'Temp °C', data: tempTrend, borderColor: '#f44336', fill: true, tension: 0.3}
+          {label:'Rainfall (mm)', data: rainfall, borderColor:'#5b8fd9', backgroundColor:'#5b8fd933', yAxisID:'y1', tension:0.25, fill:true},
+          {label:'Mean temp (°C)', data: temps, borderColor:'#c9682c', backgroundColor:'#c9682c22', yAxisID:'y2', tension:0.25, fill:false}
         ]
       },
-      options: {responsive: true, scales: {y: {beginAtZero: false}}}
+      options: {
+        responsive:true,
+        interaction:{mode:'index', intersect:false},
+        scales:{
+          y1:{type:'linear', position:'left', title:{display:true, text:'mm', color:'#a8b89c'}, ticks:{color:'#cfd9c4'}, grid:{color:'#ffffff10'}},
+          y2:{type:'linear', position:'right', title:{display:true, text:'°C', color:'#a8b89c'}, ticks:{color:'#cfd9c4'}, grid:{display:false}},
+          x:{ticks:{color:'#cfd9c4', maxRotation:45, minRotation:30}, grid:{color:'#ffffff08'}}
+        },
+        plugins:{legend:{labels:{color:'#eee8d8'}}}
+      }
     });
-
-    document.getElementById("predictiveSoil").innerHTML = 
-      `Soil health: <span style="color:#4caf50">Improving</span> (Organic C ↑)`;
-    document.getElementById("predictiveClimate").innerHTML = 
-      `Next 30 days: <span style="color:#ff9800">Warm & stable</span> conditions`;
-    
-    // Crop recommendations
-    const recs = getCropRecommendations(currentSoilData);
-    document.getElementById("recommendation").innerHTML = 
-      `📋 <b>Recommended Crops:</b> ${recs}`;
-    
-    // Carbon status
-    document.getElementById("carbonStatusValue").textContent = 
-      currentSoilData.OC ? `${currentSoilData.OC}% (Medium)` : 'N/A';
-    
-    // Risk score
-    document.getElementById("riskScore").textContent = 'Low';
   }
 
-  function getCropRecommendations(soil) {
-    if (!soil) return "Select state for recommendations";
-    
+  // Phase 2/5: ET0 (simplified Penman-Monteith proxy), VPD, irrigation advisory, crop stress
+  function computeDerivedMetrics(weather) {
+    const temp = weather.temp;
+    const humidity = weather.humidity;
+    const wind = weather.windSpeed;
+    const soilMoisture = weather.soilMoistureSurface;
+
+    if (temp == null || humidity == null) {
+      document.getElementById('et0Value').textContent = '–';
+      document.getElementById('vpdValue').textContent = '–';
+      return;
+    }
+
+    // Saturation vapor pressure (Tetens) and actual vapor pressure
+    const svp = 0.6108 * Math.exp((17.27 * temp) / (temp + 237.3)); // kPa
+    const avp = svp * (humidity / 100);
+    const vpd = Math.max(0, svp - avp); // kPa
+
+    // Simplified ET0 proxy (Hargreaves-style, using available current data — not full FAO-56 since that needs daily min/max/solar radiation)
+    const windMs = (wind || 0) / 3.6;
+    const et0 = Math.max(0, (0.0023 * (temp + 17.8) * Math.sqrt(Math.max(1, 40 - humidity)) * (1 + windMs / 10)));
+
+    document.getElementById('et0Value').textContent = et0.toFixed(2);
+    let et0Class, et0Color;
+    if (et0 < 2) { et0Class = 'Low demand'; et0Color = 'var(--risk-verylow)'; }
+    else if (et0 < 5) { et0Class = 'Moderate demand'; et0Color = 'var(--risk-moderate)'; }
+    else if (et0 < 7) { et0Class = 'High demand'; et0Color = 'var(--risk-high)'; }
+    else { et0Class = 'Critical demand'; et0Color = 'var(--risk-critical)'; }
+    const et0Pill = document.getElementById('et0Class');
+    et0Pill.textContent = et0Class;
+    et0Pill.style.background = et0Color;
+
+    let advisory;
+    if (soilMoisture != null && soilMoisture > 0.30) advisory = 'No irrigation needed';
+    else if (et0 < 2) advisory = 'No irrigation needed';
+    else if (et0 < 5) advisory = 'Light irrigation recommended';
+    else if (et0 < 7) advisory = 'Moderate irrigation recommended';
+    else advisory = 'Heavy irrigation recommended';
+    document.getElementById('irrigationAdvisory').textContent = advisory;
+
+    document.getElementById('vpdValue').textContent = vpd.toFixed(2);
+    let vpdZone, vpdColor, stressScore;
+    if (vpd < 0.8) { vpdZone = 'Green zone'; vpdColor = 'var(--risk-verylow)'; stressScore = 'Minimal'; }
+    else if (vpd < 1.5) { vpdZone = 'Yellow zone'; vpdColor = 'var(--risk-moderate)'; stressScore = 'Mild'; }
+    else if (vpd < 2.2) { vpdZone = 'Orange zone'; vpdColor = 'var(--risk-high)'; stressScore = 'Elevated'; }
+    else { vpdZone = 'Red zone'; vpdColor = 'var(--risk-critical)'; stressScore = 'Severe'; }
+    const vpdPill = document.getElementById('vpdZone');
+    vpdPill.textContent = vpdZone;
+    vpdPill.style.background = vpdColor;
+    document.getElementById('cropStressScore').textContent = stressScore;
+
+    // Climate Risk Engine (Phase 1 replacement for fixed "Low")
+    const tempAnomaly = Math.abs(temp - 27); // rough deviation from typical agronomic baseline
+    const rainDeficit = weather.precipitation != null ? Math.max(0, 1 - weather.precipitation) : 0.5;
+    let riskScore = (vpd * 15) + (et0 * 4) + (tempAnomaly * 1.5) + (rainDeficit * 5);
+    let riskLevel, riskColor;
+    if (riskScore < 20) { riskLevel = 'Very Low'; riskColor = 'var(--risk-verylow)'; }
+    else if (riskScore < 35) { riskLevel = 'Low'; riskColor = 'var(--risk-low)'; }
+    else if (riskScore < 55) { riskLevel = 'Moderate'; riskColor = 'var(--risk-moderate)'; }
+    else if (riskScore < 75) { riskLevel = 'High'; riskColor = 'var(--risk-high)'; }
+    else { riskLevel = 'Critical'; riskColor = 'var(--risk-critical)'; }
+    const climatePill = document.getElementById('climateRiskPill');
+    climatePill.textContent = riskLevel;
+    climatePill.style.background = riskColor;
+
+    // Water stress / flood / drought pills (directional, derived from same inputs — full hydrological model needs catchment data)
+    const waterStress = soilMoisture != null ? (soilMoisture < 0.15 ? 'High' : soilMoisture < 0.25 ? 'Moderate' : 'Low') : 'Insufficient data';
+    setPill('waterStressPill', waterStress);
+    const floodRisk = (weather.precipitation || 0) > 15 ? 'Elevated' : 'Low';
+    setPill('floodRiskPill', floodRisk);
+    const droughtRisk = soilMoisture != null && soilMoisture < 0.12 ? 'Elevated' : 'Low';
+    setPill('droughtRiskPill', droughtRisk);
+
+    // Farm Health Score composite (0-100)
+    let health = 100;
+    health -= Math.min(30, vpd * 12);
+    health -= Math.min(20, et0 * 3);
+    if (soilMoisture != null) health -= Math.min(20, Math.max(0, (0.25 - soilMoisture) * 100));
+    health -= Math.min(15, tempAnomaly * 1.2);
+    health = Math.max(0, Math.min(100, Math.round(health)));
+    document.getElementById('farmHealthScore').textContent = health;
+  }
+
+  function setPill(id, level) {
+    const el = document.getElementById(id);
+    el.textContent = level;
+    const colorMap = {'Low':'var(--risk-low)', 'Moderate':'var(--risk-moderate)', 'High':'var(--risk-high)', 'Elevated':'var(--risk-high)', 'Insufficient data':'#555'};
+    el.style.background = colorMap[level] || 'var(--risk-low)';
+  }
+
+  function handleStateSelect() {
+    const state = document.getElementById('stateSelect').value;
+    if (!state || !INDIA_SOIL_DATA_2025[state]) {
+      currentSoilData = {};
+      document.getElementById('soilProfileGrid').style.display = 'none';
+      return;
+    }
+    currentSoilData = INDIA_SOIL_DATA_2025[state];
+    document.getElementById('soilProfileGrid').style.display = '';
+    updateSoilProfileDisplay();
+    updateCropSuitability();
+  }
+
+  function updateSoilProfileDisplay() {
+    if (!currentSoilData || !Object.keys(currentSoilData).length) return;
+    const d = currentSoilData;
+    document.getElementById('soilTableBody').innerHTML = `
+      <tr><th>Soil type</th><td>${d.soilType} (${d.texture})</td></tr>
+      <tr><th>Nitrogen (N)</th><td>${d.N} kg/ha</td></tr>
+      <tr><th>Phosphorus (P)</th><td>${d.P} kg/ha</td></tr>
+      <tr><th>Potassium (K)</th><td>${d.K} kg/ha</td></tr>
+      <tr><th>Organic carbon</th><td>${d.OC}%</td></tr>
+      <tr><th>pH</th><td>${d.pH}</td></tr>
+    `;
+  }
+
+  function updateCropSuitability() {
+    const d = currentSoilData;
+    if (!d || !Object.keys(d).length) return;
     const season = new Date().getMonth();
     const crops = {
       'Alluvial': season < 6 ? '🌾 Wheat, 🌽 Maize' : '🍚 Rice, 🥬 Vegetables',
@@ -498,15 +749,17 @@
       'Laterite': '🍵 Tea, 🥥 Coconut',
       'Red': '🥜 Groundnut, 🌾 Sorghum'
     };
-    
-    return crops[soil.soilType] || '🌱 General crops';
+    document.getElementById('recommendation').innerHTML = `<strong>${crops[d.soilType] || '🌱 General crops'}</strong>`;
+    document.getElementById('recommendation').classList.remove('loading-text');
+
+    let riskLevel = 'Moderate', performance = 'Average';
+    if (d.pH >= 6.0 && d.pH <= 7.5 && d.OC > 0.5) { riskLevel = 'Low'; performance = 'Good'; }
+    else if (d.pH < 5.5 || d.pH > 8.5 || d.OC < 0.35) { riskLevel = 'High'; performance = 'Below average'; }
+    document.getElementById('cropRiskLevel').textContent = riskLevel;
+    document.getElementById('cropPerformance').textContent = performance;
   }
 
-  // Initialize on load
-  window.addEventListener('load', () => {
-    fetchAllData();
-  });
-
+  window.addEventListener('load', fetchAllData);
 })();
 </script>
 </body>
