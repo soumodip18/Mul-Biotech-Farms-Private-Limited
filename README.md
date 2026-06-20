@@ -46,7 +46,7 @@ Our platform bridges the gap between traditional administrative data and Geograp
 * **Executive KPI Board:** Farm Health Score, Climate/Water/Flood/Drought Risk, and crop suitability — all data-source tagged (Real/Modelled/Estimated) per governance standards.
 ---
 
-## 📂 The SAR Venture Ecosystem
+## 📂 The Mul Biotech Farms Ecosystem
 This project is part of a multi-unit strategy for climate resilience:
 1.  **Mul Biotech Farms:** Primary field production and R&D.
 2.  **Mul Biotech Digital Farms Solutions:** Dashboard development and GIS analytics.
@@ -67,4 +67,4 @@ This project is part of a multi-unit strategy for climate resilience:
 **GSTIN:** 19AAUCM6474B1ZZ  
 **Official Contact:** [mulbiotechnology@gmail.com](mailto:mulbiotechnology@gmail.com)  
 
-*The dashboards provided in this repository are currently in Beta v3.0.2. Digital estimates must be reconciled with on-site lab testing for certification purposes.*
+*The dashboards provided in this repository are currently in Beta v4. Digital estimates must be reconciled with on-site lab testing for certification purposes.*
