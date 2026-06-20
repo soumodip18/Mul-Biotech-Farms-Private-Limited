@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aquadashboard v2.3 — Mul Biotech Farms</title>
+  <title>Aquadashboard v2.4 — Mul Biotech Farms</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    body { margin:0; font-family:'Roboto',Arial,sans-serif; background:linear-gradient(135deg,#a2d9ff 0%,#e0f7fa 100%); position:relative; min-height:100vh; color:#00334d; user-select:none; }
+    body { margin:0; font-family:'Roboto',Arial,sans-serif; background:linear-gradient(135deg,#a2d9ff 0%,#e0f7fa 100%); position:relative; min-height:100vh; color:#00334d; }
     header { background:#005073; color:#fff; padding:1rem; text-align:center; font-size:1.75rem; position:relative; z-index:20; box-shadow:0 2px 14px rgba(0,80,115,0.6); text-shadow:1px 1px 3px rgba(0,0,0,0.3); }
     header small { display:block; font-weight:400; font-size:1.1rem; margin-top:0.3rem; color:#a0d8ef; font-style:italic; text-shadow:none; }
     #map { height:60vh; width:100%; box-shadow:0 4px 20px rgba(0,0,0,0.25); border-bottom:5px solid #0077aa; position:relative; z-index:10; }
@@ -16,6 +17,7 @@
     .cards-container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; padding:1.25rem 1rem 3rem 1rem; max-width:1300px; margin:0 auto 2rem auto; position:relative; z-index:15; }
     .card { background:rgba(255,255,255,0.87); backdrop-filter:saturate(180%) blur(12px); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.15); padding:1.3rem 1.2rem 1.25rem 1.2rem; margin-bottom:1rem; width:100%; max-width:395px; flex:1 1 320px; min-width:295px; color:#002d40; border:1px solid #4ca3dd; transition:box-shadow 0.3s ease; }
     .card:hover { box-shadow:0 12px 36px rgba(0,115,179,0.35); }
+    .card.full-width { max-width:100%; flex:1 1 100%; }
     .card h2 { margin-top:0; color:#004466; border-bottom:2px solid #0077bb; padding-bottom:0.4rem; font-weight:700; font-size:1.4rem; letter-spacing:0.04em; }
     .card b { color:#005486; }
     .small-note { font-size:0.78rem; color:#555; margin:0.5em 0 0 0; font-style:italic; }
@@ -29,18 +31,33 @@
     .badge-sim  { background:#fff3cd; color:#856404; border:1px solid #ffc107; }
     .badge-calc { background:#cce5ff; color:#004085; border:1px solid #004085; }
     .badge-warn { background:#f8d7da; color:#721c24; border:1px solid #dc3545; }
+    .badge-new  { background:#e2d6f7; color:#4a1d96; border:1px solid #8e44ec; }
     .risk-low  { color:#28a745; font-weight:700; }
     .risk-med  { color:#fd7e14; font-weight:700; }
     .risk-high { color:#dc3545; font-weight:700; }
     .forecast-table { width:100%; border-collapse:collapse; font-size:0.95em; }
     .forecast-table th { background:#e0f0ff; color:#004a6e; padding:4px 6px; text-align:left; }
     .forecast-table td { padding:3px 6px; border-bottom:1px solid #d0e8f5; }
-    @media (max-width:980px) { .cards-container { flex-direction:column; align-items:center; } .card { width:95vw; max-width:95vw; } }
+    .pond-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.5em 1em; margin-top:0.6em; }
+    .pond-stat { background:#eef8ff; border-radius:8px; padding:0.6em 0.8em; }
+    .pond-stat .label { font-size:0.74em; color:#005486; display:block; }
+    .pond-stat .value { font-size:1.15em; font-weight:700; color:#00334d; }
+    .pond-input-row { display:flex; align-items:center; gap:0.5em; margin-top:0.6em; }
+    .pond-input-row input { width:5.5em; padding:0.35em 0.5em; border:1px solid #4ca3dd; border-radius:6px; }
+    .pond-btn { background:#0077bb; color:#fff; border:none; padding:0.45em 0.9em; border-radius:6px; cursor:pointer; font-weight:700; font-size:0.85em; }
+    .pond-btn:hover { background:#005a91; }
+    .pond-btn.secondary { background:#888; }
+    .species-card { background:#f4faff; border:1px solid #bfe3f8; border-radius:8px; padding:0.6em 0.8em; margin-bottom:0.5em; }
+    .species-card .pct { font-weight:700; }
+    .species-card .pct.high { color:#28a745; }
+    .species-card .pct.med { color:#fd7e14; }
+    .species-card .pct.low { color:#dc3545; }
+    @media (max-width:980px) { .cards-container { flex-direction:column; align-items:center; } .card { width:95vw; max-width:95vw; } .pond-stats-grid{grid-template-columns:1fr;} }
     .disclaimer { font-size:0.85rem; color:#555; font-style:italic; padding:1rem 1rem 2rem 1rem; text-align:center; max-width:1300px; margin:0 auto 2rem auto; line-height:1.4; }
   </style>
 </head>
-<body oncontextmenu="return false;" oncopy="alertWarning(event)">
-  <header>Aquadashboard v2.3 — Mul Biotech Farms<br /><small>a Soumodip Atanu Roy venture</small></header>
+<body>
+  <header>Aquadashboard v2.4 — Mul Biotech Farms<br /><small>a Soumodip Atanu Roy venture</small></header>
   <div id="map"></div>
   <div id="watermark">Mul Biotech Farms<br />an initiative by<br />Soumodip Atanu Roy</div>
 
@@ -81,7 +98,7 @@
         <tr><td>Cloud:</td><td id="w_cloud">—</td></tr>
         <tr><td>Wind:</td><td id="w_wind">—</td></tr>
       </table>
-      <div class="small-note">Source: OpenWeatherMap</div>
+      <div class="small-note">Source: Open-Meteo</div>
     </div>
 
     <!-- Forecast -->
@@ -91,7 +108,7 @@
       <div id="hourlyForecast" style="margin-top:0.5em;">Click map to load...</div>
       <b style="display:block;margin-top:1em;">14-Day Summary</b>
       <div id="monthlySummary" style="margin-top:0.5em;">Click map to load...</div>
-      <div class="small-note">Sources: OpenWeatherMap (hourly) · Open-Meteo (14-day)</div>
+      <div class="small-note">Source: Open-Meteo (hourly &amp; 14-day)</div>
     </div>
 
     <!-- Water Analysis -->
@@ -123,21 +140,52 @@
       <div class="small-note">Source: Open-Meteo Archive API (free, no key required)</div>
     </div>
 
+    <!-- NEW: Pond Measurement (Module 1) -->
+    <div class="card full-width">
+      <h2>📐 Pond Measurement <span class="badge badge-new">New · v2.4</span></h2>
+      <p style="font-size:0.9em;">Use the polygon draw tool (top-left of map) to trace a pond boundary. Area and perimeter calculate automatically; enter average depth for volume estimates.</p>
+      <div class="pond-input-row">
+        <label for="pondDepth"><b>Avg. depth (m):</b></label>
+        <input type="number" id="pondDepth" min="0.1" step="0.1" value="1.5" />
+        <button class="pond-btn" id="recalcVolumeBtn">Recalculate volume</button>
+        <button class="pond-btn secondary" id="clearPondBtn">Clear pond</button>
+      </div>
+      <div class="pond-stats-grid" id="pondStatsGrid" style="display:none;">
+        <div class="pond-stat"><span class="label">Area</span><span class="value" id="pondAreaSqm">—</span></div>
+        <div class="pond-stat"><span class="label">Area (acre)</span><span class="value" id="pondAreaAcre">—</span></div>
+        <div class="pond-stat"><span class="label">Perimeter</span><span class="value" id="pondPerimeter">—</span></div>
+        <div class="pond-stat"><span class="label">Water volume</span><span class="value" id="pondVolume">—</span></div>
+        <div class="pond-stat"><span class="label">Holding capacity</span><span class="value" id="pondCapacity">—</span></div>
+        <div class="pond-stat"><span class="label">Excavation est.</span><span class="value" id="pondExcavation">—</span></div>
+      </div>
+      <div id="pondEmptyState" class="small-note">No pond boundary drawn yet.</div>
+      <div class="small-note">Excavation estimate assumes bank slope allowance of 15% over flat volume — verify against site survey. Tech: Leaflet.draw + Turf.js.</div>
+    </div>
+
+    <!-- NEW: Species Recommendation Engine (Module 3) -->
+    <div class="card full-width">
+      <h2>🎯 Species Recommendation Engine <span class="badge badge-new">New · v2.4</span></h2>
+      <p style="font-size:0.9em;">Ranks candidate species against this location's live temperature, estimated NDWI, and 12-month rainfall — not a substitute for the Aquaculture Suitability panel's water-quality warnings above.</p>
+      <div id="speciesRecoList">Click on map to generate recommendations.</div>
+      <div class="small-note">Suitability % is a heuristic composite of thermal range fit, water-presence confidence, and rainfall adequacy — not a yield guarantee.</div>
+    </div>
+
   </div>
 
   <div class="disclaimer">
-    <b>Disclaimer:</b> Aquadashboard v2.3 is a beta tool. All data is indicative and for planning/educational use only.
-    NDWI values are model-estimated pending real Sentinel-2 integration. Field verification is mandatory before any farming or investment decision.
-    Weather data © OpenWeatherMap · Forecast & Historical © Open-Meteo · Satellite imagery © Esri.
+    <b>Disclaimer:</b> Aquadashboard v2.4 is a beta tool. All data is indicative and for planning/educational use only.
+    NDWI values are model-estimated pending real Sentinel-2 integration. Pond measurement and species recommendation outputs are planning aids, not engineering or feasibility certifications.
+    Field verification is mandatory before any farming or investment decision.
+    Weather, forecast &amp; historical data © Open-Meteo · Satellite imagery © Esri.
   </div>
 
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
   <script>
   (() => {
     'use strict';
-
-    const WEATHER_KEY = "6533298b91abc00d6b80047801a89c85"; // TODO: move to backend proxy
 
     // ── Map setup ──────────────────────────────────────────────────────────────
     const OSM = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution:"© OpenStreetMap contributors" });
@@ -148,6 +196,65 @@
     const map = L.map("map", { center:[22.57,88.36], zoom:6, layers:[OSM] });
     L.control.layers({ "OpenStreetMap":OSM, "Satellite":EsriSat, "NDWI Layer":NDWITiles, "Hillshade (LiDAR Proxy)":reliefLayer }).addTo(map);
     if (typeof L.Control.Geocoder === "function") L.Control.geocoder().addTo(map);
+
+    // ── Pond drawing layer (Module 1) ─────────────────────────────────────────
+    const pondLayerGroup = new L.FeatureGroup();
+    map.addLayer(pondLayerGroup);
+
+    const drawControl = new L.Control.Draw({
+      draw: {
+        polygon: { allowIntersection:false, showArea:false, shapeOptions:{ color:"#0077bb", weight:2, fillOpacity:0.25 } },
+        polyline:false, rectangle:false, circle:false, circlemarker:false, marker:false
+      },
+      edit: { featureGroup:pondLayerGroup, remove:true }
+    });
+    map.addControl(drawControl);
+
+    let currentPondLayer = null;
+
+    function calcAndRenderPond(depthOverride) {
+      if (!currentPondLayer) return;
+      const geojson = currentPondLayer.toGeoJSON();
+      const areaSqm = turf.area(geojson);
+      const areaAcre = areaSqm / 4046.86;
+      const perimeterKm = turf.length(turf.polygonToLine(geojson), { units:"kilometers" });
+      const perimeterM = perimeterKm * 1000;
+
+      const depth = depthOverride ?? (parseFloat(document.getElementById("pondDepth").value) || 1.5);
+      const volumeM3 = areaSqm * depth;
+      const capacityLitres = volumeM3 * 1000;
+      const excavationM3 = volumeM3 * 1.15; // bank slope allowance
+
+      document.getElementById("pondStatsGrid").style.display = "grid";
+      document.getElementById("pondEmptyState").style.display = "none";
+      document.getElementById("pondAreaSqm").textContent = `${areaSqm.toFixed(1)} m²`;
+      document.getElementById("pondAreaAcre").textContent = `${areaAcre.toFixed(3)} acre`;
+      document.getElementById("pondPerimeter").textContent = `${perimeterM.toFixed(1)} m`;
+      document.getElementById("pondVolume").textContent = `${volumeM3.toFixed(1)} m³`;
+      document.getElementById("pondCapacity").textContent = `${capacityLitres.toLocaleString("en-IN", {maximumFractionDigits:0})} L`;
+      document.getElementById("pondExcavation").textContent = `${excavationM3.toFixed(1)} m³`;
+    }
+
+    map.on(L.Draw.Event.CREATED, (e) => {
+      pondLayerGroup.clearLayers();
+      currentPondLayer = e.layer;
+      pondLayerGroup.addLayer(currentPondLayer);
+      calcAndRenderPond();
+    });
+    map.on(L.Draw.Event.EDITED, () => calcAndRenderPond());
+    map.on(L.Draw.Event.DELETED, () => {
+      currentPondLayer = null;
+      document.getElementById("pondStatsGrid").style.display = "none";
+      document.getElementById("pondEmptyState").style.display = "block";
+    });
+
+    document.getElementById("recalcVolumeBtn").addEventListener("click", () => calcAndRenderPond());
+    document.getElementById("clearPondBtn").addEventListener("click", () => {
+      pondLayerGroup.clearLayers();
+      currentPondLayer = null;
+      document.getElementById("pondStatsGrid").style.display = "none";
+      document.getElementById("pondEmptyState").style.display = "block";
+    });
 
     // ── Mini satellite map ─────────────────────────────────────────────────────
     let miniMap, miniMarker;
@@ -175,40 +282,42 @@
       } catch { return "Error fetching address"; }
     }
 
-    // ── Live weather (OpenWeatherMap) ──────────────────────────────────────────
+    // ── Live weather (Open-Meteo — replaces exposed OpenWeatherMap key) ───────
     async function fetchWeather(lat, lng) {
       try {
-        const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${WEATHER_KEY}&units=metric`);
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+          `&current=temperature_2m,relative_humidity_2m,precipitation,cloud_cover,wind_speed_10m&timezone=auto`;
+        const resp = await fetch(url);
         if (!resp.ok) throw new Error();
         const d = await resp.json();
-        const rain = d.rain?.['1h'] ? d.rain['1h']+" mm" : d.rain?.['3h'] ? d.rain['3h']+" mm (3h)" : "0 mm";
-        document.getElementById("w_temp").textContent     = d.main  ? d.main.temp+" °C"      : "—";
-        document.getElementById("w_humidity").textContent = d.main  ? d.main.humidity+"%"    : "—";
-        document.getElementById("w_rain").textContent     = rain;
-        document.getElementById("w_wind").textContent     = d.wind  ? d.wind.speed+" m/s"    : "—";
-        document.getElementById("w_cloud").textContent    = d.clouds? d.clouds.all+"%"       : "—";
-        return { temp: d.main?.temp ?? null, humidity: d.main?.humidity ?? 0, rain: d.rain?.['1h'] ?? 0, windSpeed: d.wind?.speed ?? 0 };
+        const c = d.current || {};
+        document.getElementById("w_temp").textContent     = c.temperature_2m != null ? c.temperature_2m.toFixed(1)+" °C" : "—";
+        document.getElementById("w_humidity").textContent = c.relative_humidity_2m != null ? c.relative_humidity_2m+"%" : "—";
+        document.getElementById("w_rain").textContent     = c.precipitation != null ? c.precipitation.toFixed(1)+" mm" : "0 mm";
+        document.getElementById("w_wind").textContent     = c.wind_speed_10m != null ? c.wind_speed_10m.toFixed(1)+" km/h" : "—";
+        document.getElementById("w_cloud").textContent    = c.cloud_cover != null ? c.cloud_cover+"%" : "—";
+        return { temp: c.temperature_2m ?? null, humidity: c.relative_humidity_2m ?? 0, rain: c.precipitation ?? 0, windSpeed: c.wind_speed_10m ?? 0 };
       } catch {
         document.getElementById("weatherTable").innerHTML = "<tr><td colspan='2'>Weather data unavailable</td></tr>";
         return null;
       }
     }
 
-    // ── Hourly forecast (OpenWeatherMap) ──────────────────────────────────────
+    // ── Hourly forecast (Open-Meteo — replaces OpenWeatherMap) ────────────────
     async function fetchHourlyForecast(lat, lon) {
       try {
-        const resp = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_KEY}&units=metric`);
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+          `&hourly=temperature_2m,precipitation&timezone=auto&forecast_hours=24`;
+        const resp = await fetch(url);
         if (!resp.ok) throw new Error();
         const data = await resp.json();
-        const next8 = data.list.slice(0, 8);
+        const h = data.hourly;
         let html = '<table class="forecast-table"><tr><th>Time</th><th>Temp (°C)</th><th>Rain (mm)</th></tr>';
-        next8.forEach(item => {
-          const dt = new Date(item.dt * 1000);
+        for (let i = 0; i < Math.min(8, h.time.length); i++) {
+          const dt = new Date(h.time[i]);
           const time = dt.getHours().toString().padStart(2,"0") + ":00";
-          const temp = item.main.temp.toFixed(1);
-          const rain = item.rain ? (item.rain["3h"] || 0).toFixed(1) : "0";
-          html += `<tr><td>${time}</td><td>${temp}</td><td>${rain}</td></tr>`;
-        });
+          html += `<tr><td>${time}</td><td>${h.temperature_2m[i].toFixed(1)}</td><td>${(h.precipitation[i] ?? 0).toFixed(1)}</td></tr>`;
+        }
         html += "</table>";
         document.getElementById("hourlyForecast").innerHTML = html;
       } catch {
@@ -216,7 +325,7 @@
       }
     }
 
-    // ── 14-day summary (Open-Meteo — free, replaces deprecated OWM onecall) ───
+    // ── 14-day summary (Open-Meteo) ────────────────────────────────────────────
     async function fetchMonthlySummary(lat, lon) {
       try {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
@@ -280,16 +389,11 @@
     }
 
     // ── NDWI: model-estimated from weather context (real Sentinel-2 pending) ──
-    // Real NDWI requires server-side Sentinel-2 band math — not available client-side.
-    // We estimate a plausible range from rainfall and seasonal context as a placeholder.
     function estimateNDWI(rain, lat, month) {
-      // Higher rain + monsoon season → more likely water present
       let base = 0.25;
       if (rain > 5) base += 0.15;
       if (rain > 10) base += 0.1;
-      // Monsoon belt (Jun-Sep, lat 8-25)
       if (lat >= 8 && lat <= 25 && month >= 5 && month <= 8) base += 0.1;
-      // Add small random variation (±0.05) to avoid appearing fake-precise
       base += (Math.random() - 0.5) * 0.1;
       return Math.min(Math.max(parseFloat(base.toFixed(2)), 0.05), 0.85);
     }
@@ -309,137 +413,155 @@
     // ── Aquaculture suitability (driven by real temp + honest NDWI) ───────────
     function aquacultureSuitability(ndwi, turbidity, weather, historical) {
       const tempC = weather?.temp ?? 25;
-      const lat = parseFloat(document.getElementById("lat").textContent) || 22;
 
-      // Score components
       let score = 0;
       const factors = [], warnings = [];
 
-      // Temperature scoring
       if (tempC >= 24 && tempC <= 30) { score += 4; factors.push("Optimal water temp"); }
       else if (tempC >= 20 && tempC <= 34) { score += 2; factors.push("Acceptable water temp"); }
       else { warnings.push("Temperature outside optimal range"); }
 
-      // NDWI / water presence
       if (ndwi > 0.45) { score += 3; factors.push("Good water body probability"); }
       else if (ndwi > 0.25) { score += 1; warnings.push("Water body uncertain — verify on site"); }
       else { warnings.push("Insufficient water body detected"); }
 
-      // Turbidity
       if (turbidity.includes("Clear")) { score += 3; factors.push("Clear water"); }
       else if (turbidity.includes("Moderate")) { score += 1; warnings.push("Moderate turbidity — monitor algae"); }
       else { warnings.push("High turbidity — not suitable without treatment"); }
 
-      // Historical rainfall
       if (historical?.totalRain > 800)  { score += 1; factors.push("Adequate annual rainfall"); }
       else if (historical?.totalRain < 400) { warnings.push("Low annual rainfall — consider water sourcing"); }
 
-      // Risk label
       const riskLabel = score >= 8 ? `<span class="risk-low">High Suitability (${score}/11)</span>`
                       : score >= 5 ? `<span class="risk-med">Moderate Suitability (${score}/11)</span>`
                       :              `<span class="risk-high">Low Suitability (${score}/11)</span>`;
-      document.getElementById("aquaRiskScore").innerHTML = `<b>Suitability Score:</b> ${riskLabel}`;
+      document.getElementById("aquaRiskScore").innerHTML = riskLabel;
 
-      // Water quality management tips
-      let tips = [];
-      if (tempC > 32) tips.push("⚠️ High temp: increase aeration, reduce stocking density");
-      if (turbidity.includes("High")) tips.push("⚠️ High turbidity: consider biofloc or aeration systems");
-      if (weather?.humidity > 85) tips.push("💧 High humidity: monitor dissolved oxygen levels");
-      if (tips.length) document.getElementById("waterQualityTips").innerHTML = "<b>Management Tips:</b><br>" + tips.join("<br>");
-      else document.getElementById("waterQualityTips").innerHTML = "✅ No immediate water quality concerns detected.";
+      let msg = factors.length ? `Favourable factors: ${factors.join(", ")}.` : "No strongly favourable factors detected.";
+      document.getElementById("fishSuitabilityMessage").innerHTML = msg;
 
-      if (score < 4) {
-        return { suitable:false, message:"Conditions are not favourable for aquaculture at this location." };
-      }
+      const speciesList = document.getElementById("fishSpeciesList");
+      const fcrList = document.getElementById("fcrGrowthList");
+      speciesList.innerHTML = "";
+      fcrList.innerHTML = "";
 
-      // Species recommendations based on real temperature
-      const species = [];
-      if (tempC >= 20 && tempC <= 32) {
-        species.push({ name:"IMC — Indian Major Carps 🐟", desc:"Rohu, Catla, Mrigal. Hardy, high yield, suited to ponds.", fcr:"1.5–1.8", growth:"0.8–1.2 kg/year" });
-        species.push({ name:"Tilapia 🐠", desc:"Fast growing, disease resistant, tolerates poor water quality.", fcr:"1.2–1.6", growth:"0.6–1.0 kg/year" });
-      }
-      if (tempC >= 22 && tempC <= 30) {
-        species.push({ name:"Pangasius (Basa) 🐡", desc:"High stocking density possible, popular market fish.", fcr:"1.3–1.7", growth:"1.0–1.5 kg/year" });
-      }
-      if (tempC >= 15 && tempC <= 25) {
-        species.push({ name:"Mahseer 🐠", desc:"Suited to cleaner, flowing water bodies.", fcr:"1.6–1.9", growth:"0.6–0.9 kg/year" });
-        species.push({ name:"IEC — Indian Exotic Carps 🐟", desc:"Common Carp, Silver Carp. Adaptable to varied conditions.", fcr:"1.4–1.7", growth:"0.9–1.3 kg/year" });
-      }
-      if (tempC >= 10 && tempC <= 18) {
-        species.push({ name:"Rainbow Trout 🐡", desc:"Cold, clear, high-oxygen water required.", fcr:"1.0–1.2", growth:"0.4–0.7 kg/year" });
-      }
+      const speciesDb = getSpeciesDb();
+      const candidates = speciesDb.filter(s => tempC >= s.tempMin - 2 && tempC <= s.tempMax + 2);
+      const shown = (candidates.length ? candidates : speciesDb).slice(0, 4);
 
-      return { suitable: true, message: `Fish farming viable. ${factors.join(" · ")}`, species, warnings };
-    }
+      shown.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s.name;
+        speciesList.appendChild(li);
+      });
 
-    // ── Copyright warning ──────────────────────────────────────────────────────
-    function alertWarning(e) {
-      alert("🚫 Copying content is prohibited. Unauthorized use is punishable by law.");
-      e.preventDefault();
-      return false;
-    }
-
-    // ── Map click handler ──────────────────────────────────────────────────────
-    map.on("click", async function(e) {
-      const { lat, lng } = e.latlng;
-
-      document.getElementById("lat").textContent = lat.toFixed(5);
-      document.getElementById("lng").textContent = lng.toFixed(5);
-      document.getElementById("address").textContent = "Loading address...";
-
-      // Run everything in parallel where possible
-      const [address, weather, , , historical] = await Promise.all([
-        reverseGeocode(lat, lng),
-        fetchWeather(lat, lng),
-        fetchHourlyForecast(lat, lng),
-        fetchMonthlySummary(lat, lng),
-        fetchHistoricalData(lat, lng)
-      ]);
-
-      document.getElementById("address").textContent = address;
-      updateMiniMap(lat, lng);
-
-      // NDWI: model-estimated, clearly labelled
-      const month = new Date().getMonth();
-      const rain1h = weather?.rain ?? 0;
-      const ndwi = estimateNDWI(rain1h, lat, month);
-
-      document.getElementById("ndwiValue").innerHTML =
-        `${ndwi} <span class="badge badge-sim">Model estimate — Sentinel-2 integration planned v2.5</span>`;
-      const turbidity = estimateTurbidity(ndwi);
-      document.getElementById("waterStatus").textContent = getWaterStatus(ndwi);
-      document.getElementById("turbidityStatus").textContent = turbidity;
-      document.getElementById("ndwiNote").innerHTML =
-        `<span style="font-size:0.78em;color:#666;">NDWI is estimated from rainfall and season. On-site spectral measurement gives precise results.</span>`;
-
-      // Aquaculture suitability
-      const suitability = aquacultureSuitability(ndwi, turbidity, weather, historical);
-
-      // Clear previous results
-      document.getElementById("fishSpeciesList").innerHTML = "";
-      document.getElementById("fcrGrowthList").innerHTML = "";
-      document.getElementById("fcrHeader").style.display = "none";
-      document.getElementById("fishSuitabilityMessage").textContent = suitability.message || "";
-
-      if (suitability.suitable && suitability.species?.length) {
+      if (shown.length) {
         document.getElementById("fcrHeader").style.display = "block";
-        suitability.species.forEach(f => {
-          const li1 = document.createElement("li");
-          li1.innerHTML = `<b>${f.name}</b> — ${f.desc}`;
-          document.getElementById("fishSpeciesList").appendChild(li1);
-
-          const li2 = document.createElement("li");
-          li2.innerHTML = `<b>${f.name.split("—")[0].trim()}:</b> FCR ${f.fcr} · Growth: ${f.growth}`;
-          document.getElementById("fcrGrowthList").appendChild(li2);
+        shown.forEach(s => {
+          const li = document.createElement("li");
+          li.textContent = `${s.name}: FCR ${s.fcr}, growth ${s.growthPerYear}`;
+          fcrList.appendChild(li);
         });
       }
 
-      if (suitability.warnings?.length) {
-        const warnDiv = document.createElement("div");
-        warnDiv.style.cssText = "margin-top:0.6em;font-size:0.85em;color:#856404;";
-        warnDiv.innerHTML = suitability.warnings.map(w => `⚠️ ${w}`).join("<br>");
-        document.getElementById("fishSpeciesList").parentNode.insertBefore(warnDiv, document.getElementById("fishSpeciesList"));
-      }
+      const tipsEl = document.getElementById("waterQualityTips");
+      tipsEl.innerHTML = warnings.length
+        ? `<b>Watch for:</b> ${warnings.join("; ")}.`
+        : "No major watch items flagged from current indicators.";
+    }
+
+    // ── Species database (shared by suitability panel + recommendation engine) ─
+    function getSpeciesDb() {
+      return [
+        { name:"Rohu",      tempMin:20, tempMax:32, salinityTolerant:false, fcr:"1.8–2.2", growthPerYear:"0.8–1.2 kg" },
+        { name:"Catla",     tempMin:20, tempMax:32, salinityTolerant:false, fcr:"1.8–2.3", growthPerYear:"0.9–1.3 kg" },
+        { name:"Mrigal",    tempMin:20, tempMax:32, salinityTolerant:false, fcr:"1.9–2.4", growthPerYear:"0.6–0.9 kg" },
+        { name:"Tilapia",   tempMin:22, tempMax:34, salinityTolerant:true,  fcr:"1.5–1.8", growthPerYear:"0.5–0.8 kg" },
+        { name:"Pangasius", tempMin:24, tempMax:32, salinityTolerant:false, fcr:"1.6–2.0", growthPerYear:"1.0–1.5 kg" },
+        { name:"Shrimp (Vannamei)", tempMin:25, tempMax:32, salinityTolerant:true, fcr:"1.3–1.6", growthPerYear:"20–25 g (per cycle)" },
+        { name:"Magur",     tempMin:22, tempMax:30, salinityTolerant:false, fcr:"1.4–1.8", growthPerYear:"0.3–0.5 kg" },
+        { name:"Singhi",    tempMin:22, tempMax:30, salinityTolerant:false, fcr:"1.5–1.9", growthPerYear:"0.2–0.4 kg" }
+      ];
+    }
+
+    // ── Module 3: Species Recommendation Engine ────────────────────────────────
+    function renderSpeciesRecommendations(weather, ndwi, historical) {
+      const tempC = weather?.temp ?? 25;
+      const totalRain = historical?.totalRain ?? 1000;
+      const db = getSpeciesDb();
+
+      const ranked = db.map(s => {
+        let pct = 0;
+        const tempMid = (s.tempMin + s.tempMax) / 2;
+        const tempRange = (s.tempMax - s.tempMin) / 2;
+        const tempFit = Math.max(0, 1 - Math.abs(tempC - tempMid) / (tempRange + 4));
+        pct += tempFit * 50;
+
+        const waterFit = Math.min(1, ndwi / 0.45);
+        pct += waterFit * 30;
+
+        const rainFit = totalRain > 800 ? 1 : totalRain > 400 ? 0.6 : 0.3;
+        pct += rainFit * 20;
+
+        let risk = "Low";
+        if (pct < 45) risk = "High";
+        else if (pct < 65) risk = "Moderate";
+
+        let culture = "Pond polyculture";
+        if (s.salinityTolerant && ndwi < 0.3) culture = "Brackish/RAS recommended — verify salinity";
+        else if (s.name.includes("Shrimp")) culture = "Lined pond / RAS";
+
+        return { ...s, pct: Math.round(Math.min(99, pct)), risk, culture };
+      }).sort((a, b) => b.pct - a.pct);
+
+      const top = ranked.slice(0, 5);
+      const container = document.getElementById("speciesRecoList");
+      container.innerHTML = top.map(s => {
+        const pctClass = s.pct >= 65 ? "high" : s.pct >= 45 ? "med" : "low";
+        return `
+          <div class="species-card">
+            <b>${s.name}</b> — <span class="pct ${pctClass}">${s.pct}% suitability</span><br>
+            <span style="font-size:0.85em;">Risk: <b>${s.risk}</b> · Culture method: ${s.culture} · FCR ${s.fcr}</span>
+          </div>`;
+      }).join("");
+    }
+
+    // ── Master click handler ────────────────────────────────────────────────────
+    let marker;
+    map.on("click", async (e) => {
+      const { lat, lng } = e.latlng;
+      document.getElementById("lat").textContent = lat.toFixed(5);
+      document.getElementById("lng").textContent = lng.toFixed(5);
+
+      if (marker) map.removeLayer(marker);
+      marker = L.marker([lat, lng]).addTo(map);
+
+      document.getElementById("address").textContent = "Loading address...";
+      reverseGeocode(lat, lng).then(addr => {
+        document.getElementById("address").textContent = addr;
+      });
+
+      updateMiniMap(lat, lng);
+
+      const [weather, monthly, historical] = await Promise.all([
+        fetchWeather(lat, lng),
+        fetchMonthlySummary(lat, lng),
+        fetchHistoricalData(lat, lng)
+      ]);
+      fetchHourlyForecast(lat, lng);
+
+      const month = new Date().getMonth();
+      const ndwi = estimateNDWI(weather?.rain ?? 0, lat, month);
+      const turbidity = estimateTurbidity(ndwi);
+      const waterStatus = getWaterStatus(ndwi);
+
+      document.getElementById("ndwiValue").textContent = ndwi.toFixed(2);
+      document.getElementById("waterStatus").textContent = waterStatus;
+      document.getElementById("turbidityStatus").textContent = turbidity;
+      document.getElementById("ndwiNote").innerHTML = `<span class="badge badge-sim">Estimated</span>`;
+
+      aquacultureSuitability(ndwi, turbidity, weather, historical);
+      renderSpeciesRecommendations(weather, ndwi, historical);
     });
 
   })();
