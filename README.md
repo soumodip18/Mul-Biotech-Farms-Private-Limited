@@ -31,10 +31,9 @@ This repository serves as the **Digital Measurement, Reporting, and Verification
 Our platform bridges the gap between traditional administrative data and Geographic Information Systems (GIS) to quantify climate impact.
 
 ### 📡 [Aquaculture dMRV Platform](./aquaculture-dashboard.html)
-* **Objective:** Real-time performance monitoring for aquatic protein production.
-* **Tech Stack:** Leaflet-based geospatial mapping, OpenWeatherMap API integration.
-* **Key Feature:** Dynamic suitability modeling for IMC, Tilapia, and Pangasius based on real-time thermal data.
-
+* **Objective:** Site assessment and decision support for aquatic protein production — suitability, pond engineering, and species selection in one tool.
+* **Tech Stack:** Leaflet-based geospatial mapping with Leaflet.draw and Turf.js, live weather and historical climate via Open-Meteo, Esri satellite imagery.
+* **Key Feature:** Pond boundary digitization with automatic area, volume, and excavation estimates, plus a species recommendation engine ranking 8 candidate species (including IMC, Tilapia, and Pangasius) by live temperature, estimated NDWI, and rainfall.
 
 ### 🛰️ [Agri-GIS & Soil Analytics](./agri-gis-dashboard.html)
 * **Objective:** Precision monitoring of soil health, climate risk, and irrigation demand using live meteorological and satellite data.
