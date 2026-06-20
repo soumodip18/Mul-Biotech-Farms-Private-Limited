@@ -1,3 +1,8 @@
+# Mul Biotech Farms Private Limited
+
+Regenerative Agriculture • GIS Intelligence • Carbon Farming • Aquaculture Analytics
+
+Building data-driven agricultural and environmental infrastructure for climate resilience.
 # Mul-Biotech-Farms-Private-Limited
 webpage 
 # 🌿 Mul Biotech Farms Private Limited | Digital dMRV Ecosystem
