@@ -53,11 +53,25 @@ This project is part of a multi-unit strategy for climate resilience:
 
 ---
 
-## 🌍 Global Recognition & Accreditation
-* **ITU WSIS Forum 2026:** Registered participant and knowledge contributor (Geneva, Switzerland).
-* **UN Global Marketplace (UNGM):** Accredited vendor for international procurement opportunities.
-* **Greenpreneur Award 2025:** Recognized for excellence in sustainable agri-business.
+## 🌍 Global Recognition, Networks & Institutional Engagement
 
+* **ITU WSIS+20 High-Level Event 2026:** Registered participant contributing to global dialogue on digital innovation, sustainability, and climate-resilient development.
+
+* **United Nations Global Marketplace (UNGM):** Registered supplier platform participant, enabling engagement with international procurement and partnership opportunities.
+
+* **World Economic Forum (WEF) Network:** Professional engagement within global innovation, sustainability, and impact-driven ecosystems.
+
+* **GLG (Gerson Lehrman Group):** Member of the world's leading expert network, contributing domain expertise in agriculture, sustainability, biotechnology, and environmental systems.
+
+* **ICTforAg:** Mentor and contributor supporting climate-smart agriculture, digital farming, and agricultural innovation initiatives.
+
+* **F6S Global Startup Network:** Listed within an international ecosystem of startups, investors, accelerators, and innovation programs.
+
+* **Greenpreneur Award 2025:** Recognized for contributions to sustainable agriculture, environmental innovation, and climate-conscious business practices.
+
+* **Verra Registry Participation:** Active engagement with carbon market and environmental asset development frameworks through Verra ecosystem registration.
+
+* **Climate & Environmental Intelligence Initiatives:** Development of GIS-driven agriculture, digital MRV (dMRV), regenerative farming, agroforestry, ecosystem restoration, and sustainability-focused digital solutions.
 ---
 
 ## ⚖️ Corporate Information
