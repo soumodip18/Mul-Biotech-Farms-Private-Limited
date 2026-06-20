@@ -35,11 +35,15 @@ Our platform bridges the gap between traditional administrative data and Geograp
 * **Tech Stack:** Leaflet-based geospatial mapping, OpenWeatherMap API integration.
 * **Key Feature:** Dynamic suitability modeling for IMC, Tilapia, and Pangasius based on real-time thermal data.
 
-### 🛰️ [Agri-GIS & Soil Analytics](./agri-gis-dashboard.html)
-* **Objective:** Precision monitoring of soil health and carbon sequestration.
-* **Satellite Intelligence:** NDVI and Thermal relief mapping via Esri World Imagery.
-* **Carbon Intelligence:** Real-time GHG concentration estimates (CO₂/CH₄) and Soil Organic Carbon (OC) tracking for carbon credit transparency.
 
+### 🛰️ [Agri-GIS & Soil Analytics](./agri-gis-dashboard.html)
+* **Objective:** Precision monitoring of soil health, climate risk, and irrigation demand using live meteorological and satellite data.
+* **Satellite Intelligence:** NDVI and Land Surface Temperature mapping via NASA GIBS (MODIS), with Esri World Imagery basemaps and flood/drought risk layers.
+* **Live Soil & Weather Data:** Real-time soil moisture (0–27 cm) and soil temperature (0–54 cm) profiles, plus full weather KPIs (temperature, humidity, rainfall, wind, pressure, UV) via Open-Meteo.
+* **Climate Risk Engine:** Composite risk scoring (Very Low–Critical) from rainfall deficit, temperature anomaly, VPD, and ET₀ — replacing static placeholder values.
+* **Irrigation & Plant Stress:** ET₀-based irrigation advisory (No/Light/Moderate/Heavy) and VPD-based crop stress zoning (Green–Red).
+* **Forecast & Historical Trends:** 7/14/30-day forecasts and 1-year historical rainfall/temperature trends.
+* **Executive KPI Board:** Farm Health Score, Climate/Water/Flood/Drought Risk, and crop suitability — all data-source tagged (Real/Modelled/Estimated) per governance standards.
 ---
 
 ## 📂 The SAR Venture Ecosystem
