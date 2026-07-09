@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mul Biotech Farms Private Limited — Environmental Biotechnology & Climate Infrastructure</title>
+<meta name="description" content="Mul Biotech Farms Private Limited is an applied agri-biotech and environmental consultancy company based in West Bengal. We design, implement and monitor climate-resilient biological systems for governments, institutions and communities.">
+<meta property="og:title" content="Mul Biotech Farms Private Limited">
+<meta property="og:description" content="Applied Agri-Biotech. Environmental Consultancy. Climate Infrastructure.">
+<meta property="og:url" content="https://mulbiotech.com">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  /* ── Backgrounds (light → section alternates) ── */
+  --moss:       #f7f5f0;   /* warm cream – page base          */
+  --canopy:     #ffffff;   /* pure white – alternate sections */
+  --grove:      #f0ede6;   /* soft off-white – card surface   */
+
+  /* ── Brand greens ── */
+  --field:      #2d5a3d;   /* forest green – primary CTA / nav */
+  --leaf:       #3d7a52;   /* mid forest green – accents       */
+  --glow:       #5a9e6f;   /* lighter forest – hover states    */
+
+  /* ── Accent ── */
+  --chartreuse: #5c4a2a;   /* earth brown – numbers / emphasis */
+  --gold:       #7a5c2a;   /* warm brown – gov / advisory tags */
+
+  /* ── Typography ── */
+  --parchment:  #1c2b22;   /* dark charcoal-green – headings  */
+  --fog:        #4a5e52;   /* medium charcoal – body text      */
+
+  /* ── UI ── */
+  --sky:        #2563eb;
+  --ink:        rgba(0,0,0,0.04);
+  --border:     rgba(45,90,61,0.16);
+  --r-sm:       8px;
+  --r-md:       16px;
+  --r-lg:       28px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--moss);
+  color: var(--parchment);
+  line-height: 1.65;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+/* Light-theme global text overrides */
+p { color: var(--fog); }
+h1, h2, h3, h4, h5, h6 { color: var(--parchment); }
+img { max-width:100%; display:block; }
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────── */
+.display {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.display-italic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.mono { font-family: 'DM Mono', monospace; }
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 16px;
+  display: block;
+}
+h2.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+p { color: var(--fog); }
+p.lead { color: var(--parchment); font-size: 17px; font-weight: 400; line-height: 1.7; }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 6%; }
+section { padding: 96px 0; }
+section:first-of-type { padding-top: 0; }
+.section-intro { max-width: 640px; margin-bottom: 56px; }
+.section-intro.centered { margin: 0 auto 56px; text-align: center; }
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+  background: rgba(247,245,240,0.96);
+  backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid rgba(45,90,61,0.12);
+  transition: var(--transition);
+  box-shadow: 0 1px 0 rgba(45,90,61,0.06);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--field), var(--leaf));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; color: #fff; font-family: 'DM Mono', monospace;
+}
+.nav-name {
+  font-size: 14px; font-weight: 600; color: var(--parchment);
+  max-width: 180px; line-height: 1.2;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--fog);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--field); }
+.nav-cta {
+  background: var(--field);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 40px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--leaf) !important; color: var(--moss) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--fog); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  padding-top: 68px;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45,90,61,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 70%, rgba(37,99,235,0.08) 0%, transparent 60%),
+    var(--moss);
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,90,61,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,90,61,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 80px 6%;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}
+.hero-cert-strip { margin-top: 0; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(45,90,61,0.12);
+  border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 40px;
+  font-size: 12px; font-weight: 500; color: var(--leaf);
+  margin-bottom: 28px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--leaf);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.4;transform:scale(0.8)}
+}
+.hero-headline {
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--parchment);
+  margin-bottom: 24px;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--field);
+  background: linear-gradient(135deg, var(--field), var(--glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--fog);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--field);
+  color: #fff;
+  padding: 13px 26px; border-radius: 40px;
+  font-size: 14px; font-weight: 600;
+  transition: var(--transition);
+}
+.btn-primary:hover { background: var(--leaf); color: var(--moss); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border);
+  color: var(--parchment);
+  padding: 13px 26px; border-radius: 40px;
+  font-size: 14px; font-weight: 500;
+  transition: var(--transition);
+}
+.btn-outline:hover { background: var(--ink); border-color: var(--leaf); }
+.hero-trust {
+  display: flex; align-items: center; gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.hero-trust-item {
+  text-align: center;
+}
+.hero-trust-item .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--chartreuse);
+  line-height: 1;
+}
+.hero-trust-item .lbl {
+  font-size: 11px; color: var(--fog); letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+.trust-div { width: 1px; height: 40px; background: var(--border); }
+.hero-visual {
+  position: relative;
+}
+.hero-video-wrap {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--canopy);
+  aspect-ratio: 16/10;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+}
+.hero-video-wrap iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+.hero-cert-strip {
+  display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;
+}
+.cert-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 40px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--fog);
+}
+.cert-pill span { color: var(--leaf); font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   METRICS TICKER (Signature Element)
+───────────────────────────────────────── */
+#ticker {
+  background: var(--canopy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  animation: scroll-left 55s linear infinite;
+  width: max-content;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 18px 36px;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ticker-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--chartreuse);
+}
+.ticker-label {
+  font-size: 12px; color: var(--fog);
+  max-width: 120px; line-height: 1.3;
+}
+.ticker-sep {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--field); flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────
+   TRUST & CREDIBILITY
+───────────────────────────────────────── */
+#trust { background: var(--moss); }
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.credential-item {
+  background: var(--canopy);
+  padding: 28px 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+.credential-item:hover { background: var(--grove); }
+.cred-icon { font-size: 28px; margin-bottom: 10px; }
+.cred-label { font-size: 13px; font-weight: 600; color: var(--parchment); margin-bottom: 4px; }
+.cred-sub { font-size: 11px; color: var(--fog); }
+
+.video-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.video-card {
+  background: var(--canopy);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+.video-meta { padding: 16px 18px; }
+.video-meta h4 { font-size: 14px; font-weight: 600; color: var(--parchment); margin-bottom: 4px; }
+.video-meta p { font-size: 12px; }
+
+/* ─────────────────────────────────────────
+   WHO WE ARE
+───────────────────────────────────────── */
+#about { background: var(--canopy); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-text p { margin-bottom: 18px; }
+.philosophy-block {
+  background: rgba(45,90,61,0.06);
+  border-left: 3px solid var(--leaf);
+  padding: 20px 24px;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  margin: 28px 0;
+}
+.philosophy-block p { color: var(--parchment); font-style: italic; font-size: 16px; }
+.mvv-list { list-style: none; }
+.mvv-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px; color: var(--fog);
+  display: flex; gap: 12px;
+}
+.mvv-list li strong { color: var(--parchment); min-width: 70px; }
+.timeline-list { position: relative; padding-left: 20px; }
+.timeline-list::before {
+  content:''; position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 2px; background: linear-gradient(to bottom, var(--field), transparent);
+}
+.tl-item {
+  position: relative; padding: 0 0 28px 20px;
+}
+.tl-item::before {
+  content:''; position: absolute; left: -4px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--field); border: 2px solid var(--moss);
+}
+.tl-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--leaf);
+  letter-spacing: 0.1em; margin-bottom: 4px;
+}
+.tl-text { font-size: 14px; color: var(--fog); }
+.founder-card {
+  background: var(--grove);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  border: 1px solid var(--border);
+}
+.founder-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--parchment); margin-bottom: 4px;
+}
+.founder-title { font-size: 13px; color: var(--leaf); margin-bottom: 16px; font-family: 'DM Mono', monospace; }
+.founder-bio { font-size: 14px; color: var(--fog); line-height: 1.7; margin-bottom: 20px; }
+.founder-credentials { display: flex; flex-wrap: wrap; gap: 8px; }
+.fc-tag {
+  background: rgba(45,90,61,0.10);
+  border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 40px;
+  font-size: 11px; color: var(--fog);
+}
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+#services { background: var(--moss); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 28px;
+  transition: var(--transition);
+  cursor: default;
+}
+.service-card:hover {
+  background: var(--grove);
+  border-color: rgba(45,90,61,0.4);
+  transform: translateY(-4px);
+}
+.svc-icon {
+  width: 44px; height: 44px; border-radius: var(--r-sm);
+  background: rgba(45,90,61,0.10);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px;
+}
+.svc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.svc-tag {
+  font-size: 10px; padding: 3px 9px; border-radius: 20px;
+  background: rgba(45,90,61,0.08); color: var(--leaf);
+  border: 1px solid rgba(45,90,61,0.15);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─────────────────────────────────────────
+   FRAMEWORKS
+───────────────────────────────────────── */
+#frameworks { background: var(--canopy); }
+.fw-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.fw-tab {
+  padding: 9px 20px; border-radius: 40px;
+  font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--fog);
+  cursor: pointer; transition: var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+.fw-tab.active, .fw-tab:hover {
+  background: var(--field); color: #fff; border-color: var(--field);
+}
+.fw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.fw-card {
+  background: var(--grove);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.fw-card:hover { border-color: rgba(45,90,61,0.4); transform: translateY(-3px); }
+.fw-video { aspect-ratio: 16/9; }
+.fw-video iframe { width: 100%; height: 100%; border: none; }
+.fw-body { padding: 20px; }
+.fw-body h4 { font-size: 15px; font-weight: 600; color: var(--parchment); margin-bottom: 6px; }
+.fw-body p { font-size: 13px; }
+
+/* ─────────────────────────────────────────
+   GOVERNMENT
+───────────────────────────────────────── */
+#government { background: var(--moss); }
+.gov-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.gov-engagement {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 28px;
+}
+.gov-engagement h4 { font-size: 16px; color: var(--parchment); margin-bottom: 8px; }
+.gov-engagement .district {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--gold);
+  letter-spacing: 0.1em; margin-bottom: 14px;
+}
+.gov-engagement p { font-size: 14px; }
+
+/* ─────────────────────────────────────────
+   RESEARCH & IRBAS
+───────────────────────────────────────── */
+#research { background: var(--canopy); }
+.irbas-header {
+  display: flex; align-items: flex-start; gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.irbas-logo-block {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--grove), var(--field));
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.irbas-logo-block .irbas-wordmark {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px; font-weight: 500;
+  color: var(--chartreuse);
+  letter-spacing: 0.1em;
+}
+.irbas-logo-block .irbas-tm { font-size: 11px; color: var(--fog); margin-top: 4px; }
+.irbas-desc h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; margin-bottom: 12px; color: var(--parchment);
+}
+.irbas-stacks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.stack-card {
+  background: var(--grove);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px;
+  transition: var(--transition);
+}
+.stack-card:hover { border-color: rgba(45,90,61,0.3); }
+.stack-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--chartreuse);
+  letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.stack-card p { font-size: 13px; }
+.research-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.tool-card {
+  background: var(--grove);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 18px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.tool-icon { font-size: 20px; flex-shrink: 0; }
+.tool-name { font-size: 13px; font-weight: 600; color: var(--parchment); margin-bottom: 4px; }
+.tool-desc { font-size: 12px; }
+
+/* ─────────────────────────────────────────
+   IMPACT
+───────────────────────────────────────── */
+#impact { background: var(--moss); }
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+.impact-card {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 24px 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+.impact-card:hover { background: var(--grove); border-color: rgba(45,90,61,0.35); }
+.impact-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700;
+  color: var(--chartreuse);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.impact-label { font-size: 12px; color: var(--fog); line-height: 1.4; }
+
+/* ─────────────────────────────────────────
+   EVIDENCE / GALLERY
+───────────────────────────────────────── */
+#evidence { background: var(--canopy); }
+.evidence-tabs {
+  display: flex; gap: 4px;
+  background: var(--grove);
+  border-radius: var(--r-sm);
+  padding: 4px;
+  margin-bottom: 36px;
+  border: 1px solid var(--border);
+  width: fit-content;
+}
+.ev-tab {
+  padding: 8px 20px; border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  border: none; background: transparent;
+  color: var(--fog); cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+.ev-tab.active {
+  background: var(--field); color: #fff;
+}
+.ev-tab:hover:not(.active) { color: var(--parchment); }
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.ev-card {
+  background: var(--grove);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.ev-card .ev-video { aspect-ratio: 9/16; max-height: 360px; }
+.ev-card .ev-video iframe { width: 100%; height: 100%; border: none; }
+.ev-meta { padding: 14px 16px; }
+.ev-meta h4 { font-size: 13px; font-weight: 600; color: var(--parchment); margin-bottom: 4px; }
+.ev-meta p { font-size: 12px; }
+
+/* ─────────────────────────────────────────
+   PUBLICATIONS
+───────────────────────────────────────── */
+#publications { background: var(--moss); }
+.pub-list { display: flex; flex-direction: column; gap: 16px; }
+.pub-item {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 24px;
+  transition: var(--transition);
+}
+.pub-item:hover { border-color: rgba(45,90,61,0.35); background: var(--grove); }
+.pub-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+  color: var(--leaf); margin-bottom: 6px;
+}
+.pub-title { font-size: 15px; font-weight: 600; color: var(--parchment); margin-bottom: 6px; }
+.pub-meta { font-size: 12px; }
+.pub-arrow {
+  flex-shrink: 0; color: var(--fog);
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: var(--transition);
+}
+.pub-item:hover .pub-arrow { background: var(--field); color: #fff; border-color: var(--field); }
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+#contact { background: var(--canopy); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+}
+.contact-info h3 { font-size: 18px; color: var(--parchment); margin-bottom: 24px; }
+.contact-detail {
+  display: flex; gap: 14px; align-items: flex-start;
+  margin-bottom: 20px;
+}
+.cd-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: rgba(45,90,61,0.10);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.cd-label { font-size: 11px; color: var(--leaf); font-family: 'DM Mono', monospace; margin-bottom: 4px; }
+.cd-value { font-size: 14px; color: var(--parchment); }
+.social-row { display: flex; gap: 10px; margin-top: 28px; }
+.social-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 40px;
+  border: 1px solid var(--border);
+  font-size: 12px; font-weight: 500; color: var(--fog);
+  transition: var(--transition);
+  background: var(--grove);
+}
+.social-btn:hover { border-color: var(--leaf); color: var(--parchment); }
+.contact-form-area {
+  background: var(--grove);
+  border-radius: var(--r-lg);
+  padding: 36px;
+  border: 1px solid var(--border);
+}
+.contact-form-area h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; color: var(--parchment);
+  margin-bottom: 8px;
+}
+.contact-form-area > p { font-size: 14px; margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-field label { font-size: 12px; color: var(--fog); font-family: 'DM Mono', monospace; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 11px 14px;
+  color: var(--parchment);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: var(--transition);
+  outline: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--leaf);
+}
+.form-field textarea { resize: vertical; min-height: 100px; }
+.form-field select option { background: var(--canopy); }
+.btn-submit {
+  width: 100%;
+  background: var(--field);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 40px;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: 'Inter', sans-serif;
+  transition: var(--transition);
+  margin-top: 6px;
+}
+.btn-submit:hover { background: var(--leaf); color: var(--moss); }
+.map-wrap {
+  margin-top: 32px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  height: 220px;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: #ede9e1;
+  border-top: 1px solid rgba(45,90,61,0.14);
+  padding: 64px 6% 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.footer-brand p { font-size: 14px; max-width: 280px; margin: 12px 0 20px; }
+.footer-logo {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 4px;
+}
+.footer-col h5 {
+  font-size: 11px; font-family: 'DM Mono', monospace;
+  letter-spacing: 0.14em; color: var(--leaf);
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul a { font-size: 13px; color: var(--fog); transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--parchment); }
+.footer-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: var(--fog); transition: color 0.2s; }
+.footer-legal a:hover { color: var(--parchment); }
+.entity-row {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+}
+.entity-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--fog);
+  border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 20px;
+}
+
+/* ─────────────────────────────────────────
+   DIVIDERS / UTILITIES
+───────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); margin: 0; }
+.text-leaf { color: var(--leaf); }
+.text-chartreuse { color: var(--chartreuse); }
+.text-gold { color: var(--gold); }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-24 { margin-bottom: 24px; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner { gap: 32px; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .footer-collab { flex-direction: column; text-align: center; }
+  .footer-collab .btn-primary { margin: 0 auto; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .gov-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .irbas-header { flex-direction: column; gap: 20px; }
+  .video-pair { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  section { padding: 64px 0; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: repeat(2,1fr); }
+  .platform-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .platform-card {
+    min-width: 280px;
+    scroll-snap-align: start;
+  }
+  .partner-grid { grid-template-columns: 1fr; }
+  .why-partner { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────
+   EXPERTS & ADVISORS
+───────────────────────────────────────── */
+#experts { background: var(--moss); }
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.expert-card {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.expert-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--field), var(--leaf));
+  opacity: 0;
+  transition: var(--transition);
+}
+.expert-card:hover { background: var(--grove); border-color: rgba(45,90,61,0.35); transform: translateY(-4px); }
+.expert-card:hover::before { opacity: 1; }
+.expert-card.advisor-card::before {
+  background: linear-gradient(90deg, var(--gold), #e8c96a);
+}
+.expert-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--grove), var(--field));
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; color: #fff;
+  font-size: 18px;
+}
+.expert-name {
+  font-size: 16px; font-weight: 600; color: var(--parchment);
+  margin-bottom: 4px;
+}
+.expert-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--leaf); margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.expert-card.advisor-card .expert-role { color: var(--gold); }
+.expert-bio { font-size: 13px; line-height: 1.6; }
+.expert-domains { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.expert-domain {
+  font-size: 10px; padding: 3px 9px; border-radius: 20px;
+  background: rgba(45,90,61,0.08); color: var(--fog);
+  border: 1px solid rgba(45,90,61,0.15);
+  font-family: 'DM Mono', monospace;
+}
+.expert-card.advisor-card .expert-domain {
+  background: rgba(212,168,67,0.08);
+  border-color: rgba(212,168,67,0.2);
+  color: rgba(212,168,67,0.8);
+}
+.experts-label {
+  display: flex; align-items: center; gap: 14px;
+  margin: 48px 0 24px;
+}
+.experts-label-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em;
+  color: var(--gold); text-transform: uppercase;
+}
+.experts-label-line {
+  flex: 1; height: 1px; background: var(--border);
+}
+
+/* ─────────────────────────────────────────
+   TECHNOLOGY PLATFORMS
+───────────────────────────────────────── */
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.platform-card {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  transition: var(--transition);
+  display: flex; flex-direction: column; gap: 20px;
+}
+.platform-card:hover {
+  border-color: var(--leaf);
+  transform: translateY(-4px);
+  background: var(--grove);
+}
+.platform-header {
+  display: flex; align-items: center; gap: 16px;
+}
+.platform-icon {
+  width: 52px; height: 52px; border-radius: var(--r-md);
+  background: rgba(45,90,61,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.platform-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--parchment);
+  margin-bottom: 4px;
+}
+.platform-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--chartreuse);
+}
+.platform-caps {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.platform-cap {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(45,90,61,0.08); color: var(--fog);
+  border: 1px solid rgba(45,90,61,0.15);
+  font-family: 'DM Mono', monospace;
+}
+.platform-btn {
+  display: inline-flex; align-items: center;
+  background: var(--field);
+  color: #fff;
+  padding: 11px 22px; border-radius: 40px;
+  font-size: 13px; font-weight: 600;
+  transition: var(--transition);
+  width: fit-content;
+  margin-top: auto;
+}
+.platform-btn:hover { background: var(--leaf); color: var(--moss); }
+
+/* ─────────────────────────────────────────
+   PARTNER WITH US
+───────────────────────────────────────── */
+#partner { background: var(--canopy); }
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.partner-card {
+  background: var(--grove);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 28px;
+  transition: var(--transition);
+}
+.partner-card:hover {
+  border-color: rgba(45,90,61,0.4);
+  transform: translateY(-3px);
+}
+.partner-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--leaf); background: rgba(45,90,61,0.08);
+  border: 1px solid rgba(45,90,61,0.18);
+  padding: 3px 10px; border-radius: 20px;
+  margin-bottom: 10px;
+}
+.partner-card h3 {
+  font-size: 17px; color: var(--parchment);
+  margin-bottom: 10px;
+}
+.partner-card .partner-desc { font-size: 14px; margin-bottom: 14px; }
+.partner-list {
+  list-style: none; margin-top: 12px;
+}
+.partner-list li {
+  font-size: 13px; color: var(--fog);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(45,90,61,0.08);
+  display: flex; align-items: center; gap: 8px;
+}
+.partner-list li::before { content: '›'; color: var(--leaf); }
+.incentive-block {
+  background: var(--canopy);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px;
+  text-align: center;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 16px rgba(45,90,61,0.06);
+}
+.incentive-block h3 { font-size: 20px; color: var(--parchment); margin-bottom: 12px; }
+.incentive-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; font-weight: 700;
+  color: var(--chartreuse);
+  margin: 16px 0 8px;
+}
+.why-partner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+.why-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--fog);
+}
+.why-item::before { content: '✓'; color: var(--leaf); flex-shrink: 0; font-weight: 700; }
+
+/* ─────────────────────────────────────────
+   FOOTER COLLABORATE BANNER
+───────────────────────────────────────── */
+.footer-collab {
+  background: var(--moss);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 32px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.footer-collab h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--parchment); margin-bottom: 8px;
+}
+.footer-collab p { font-size: 14px; max-width: 560px; }
+.footer-collab .btn-primary { flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   SCROLL REVEAL (lightweight)
+───────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+  .badge-dot { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">MBF</div>
+    <div class="nav-name">Mul Biotech Farms<br>Private Limited</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#frameworks">Capabilities</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#experts">Team</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Environmental Biotechnology · West Bengal, India
+      </div>
+      <h1 class="hero-headline display">
+        Applied Science<br>for <em>Regenerative</em><br>Landscapes
+      </h1>
+      <p class="hero-sub">
+        Mul Biotech Farms Private Limited designs, implements and monitors integrated biological systems for governments, institutions and farming communities — combining field biotechnology, environmental intelligence and climate infrastructure across India.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Consultation ↗</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <div class="num">7+</div>
+          <div class="lbl">Years of<br>Experience</div>
+        </div>
+        <div class="trust-div"></div>
+        <div class="hero-trust-item">
+          <div class="num">1,000+</div>
+          <div class="lbl">Farmers<br>Trained</div>
+        </div>
+        <div class="trust-div"></div>
+        <div class="hero-trust-item">
+          <div class="num">30+</div>
+          <div class="lbl">Institutional<br>Leads</div>
+        </div>
+        <div class="trust-div"></div>
+        <div class="hero-trust-item">
+          <div class="num">29+</div>
+          <div class="lbl">Research<br>Publications</div>
+        </div>
+      <div class="hero-cert-strip">
+        <div class="cert-pill"><span>MCA</span> CIN: U01111WB2026PTC292686</div>
+        <div class="cert-pill"><span>MSME</span> UDYAM-WB-07-0000328</div>
+        <div class="cert-pill"><span>GST</span> 19AAUCM6474B1ZZ</div>
+        <div class="cert-pill"><span>EST.</span> 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     METRICS TICKER
+═══════════════════════════════════════ -->
+<div id="ticker" aria-label="Key metrics">
+  <div class="ticker-track">
+    <!-- Set 1 -->
+    <div class="ticker-item"><span class="ticker-num">450K+</span><span class="ticker-sep"></span><span class="ticker-label">YouTube Views</span></div>
+    <div class="ticker-item"><span class="ticker-num">500K+</span><span class="ticker-sep"></span><span class="ticker-label">Social Media Reach</span></div>
+    <div class="ticker-item"><span class="ticker-num">300K+</span><span class="ticker-sep"></span><span class="ticker-label">Institutional & Media Visibility</span></div>
+    <div class="ticker-item"><span class="ticker-num">1,000+</span><span class="ticker-sep"></span><span class="ticker-label">Farmers Trained</span></div>
+    <div class="ticker-item"><span class="ticker-num">29+</span><span class="ticker-sep"></span><span class="ticker-label">Research Articles</span></div>
+    <div class="ticker-item"><span class="ticker-num">14</span><span class="ticker-sep"></span><span class="ticker-label">News & Media Features</span></div>
+    <div class="ticker-item"><span class="ticker-num">3,900+</span><span class="ticker-sep"></span><span class="ticker-label">Publication Downloads</span></div>
+    <div class="ticker-item"><span class="ticker-num">100+</span><span class="ticker-sep"></span><span class="ticker-label">Institutions Connected</span></div>
+    <div class="ticker-item"><span class="ticker-num">4.8★</span><span class="ticker-sep"></span><span class="ticker-label">Google Business Rating</span></div>
+    <div class="ticker-item"><span class="ticker-num">4+</span><span class="ticker-sep"></span><span class="ticker-label">International Platforms</span></div>
+    <div class="ticker-item"><span class="ticker-num">15+</span><span class="ticker-sep"></span><span class="ticker-label">Completed Client Projects</span></div>
+    <div class="ticker-item"><span class="ticker-num">1,245+</span><span class="ticker-sep"></span><span class="ticker-label">Contribution Hours</span></div>
+    <div class="ticker-item"><span class="ticker-num">8,400+</span><span class="ticker-sep"></span><span class="ticker-label">Publication Views</span></div>
+    <div class="ticker-item"><span class="ticker-num">38+</span><span class="ticker-sep"></span><span class="ticker-label">Governance Assets</span></div>
+    <div class="ticker-item"><span class="ticker-num">11+</span><span class="ticker-sep"></span><span class="ticker-label">Academic Institutions</span></div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="ticker-item"><span class="ticker-num">450K+</span><span class="ticker-sep"></span><span class="ticker-label">YouTube Views</span></div>
+    <div class="ticker-item"><span class="ticker-num">500K+</span><span class="ticker-sep"></span><span class="ticker-label">Social Media Reach</span></div>
+    <div class="ticker-item"><span class="ticker-num">300K+</span><span class="ticker-sep"></span><span class="ticker-label">Institutional & Media Visibility</span></div>
+    <div class="ticker-item"><span class="ticker-num">1,000+</span><span class="ticker-sep"></span><span class="ticker-label">Farmers Trained</span></div>
+    <div class="ticker-item"><span class="ticker-num">29+</span><span class="ticker-sep"></span><span class="ticker-label">Research Articles</span></div>
+    <div class="ticker-item"><span class="ticker-num">14</span><span class="ticker-sep"></span><span class="ticker-label">News & Media Features</span></div>
+    <div class="ticker-item"><span class="ticker-num">3,900+</span><span class="ticker-sep"></span><span class="ticker-label">Publication Downloads</span></div>
+    <div class="ticker-item"><span class="ticker-num">100+</span><span class="ticker-sep"></span><span class="ticker-label">Institutions Connected</span></div>
+    <div class="ticker-item"><span class="ticker-num">4.8★</span><span class="ticker-sep"></span><span class="ticker-label">Google Business Rating</span></div>
+    <div class="ticker-item"><span class="ticker-num">4+</span><span class="ticker-sep"></span><span class="ticker-label">International Platforms</span></div>
+    <div class="ticker-item"><span class="ticker-num">15+</span><span class="ticker-sep"></span><span class="ticker-label">Completed Client Projects</span></div>
+    <div class="ticker-item"><span class="ticker-num">1,245+</span><span class="ticker-sep"></span><span class="ticker-label">Contribution Hours</span></div>
+    <div class="ticker-item"><span class="ticker-num">8,400+</span><span class="ticker-sep"></span><span class="ticker-label">Publication Views</span></div>
+    <div class="ticker-item"><span class="ticker-num">38+</span><span class="ticker-sep"></span><span class="ticker-label">Governance Assets</span></div>
+    <div class="ticker-item"><span class="ticker-num">11+</span><span class="ticker-sep"></span><span class="ticker-label">Academic Institutions</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TRUST & CREDIBILITY
+═══════════════════════════════════════ -->
+<section id="trust">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Credentials & Recognition</span>
+      <h2 class="section-title">Trusted Across Government,<br>Academia & International Platforms</h2>
+      <p>Verified affiliations, certifications and engagements that substantiate our institutional standing.</p>
+    </div>
+    <div class="credential-grid reveal">
+      <div class="credential-item">
+        <div class="cred-icon">🇮🇳</div>
+        <div class="cred-label">UNGM Vendor</div>
+        <div class="cred-sub">ID: 1127495</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🌐</div>
+        <div class="cred-label">WSIS+20 Forum</div>
+        <div class="cred-sub">UN Participation</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">⚡</div>
+        <div class="cred-label">WEF Affiliated</div>
+        <div class="cred-sub">World Economic Forum</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🌱</div>
+        <div class="cred-label">Greenpreneur 2025</div>
+        <div class="cred-sub">National Award</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🛰</div>
+        <div class="cred-label">NABET Certified</div>
+        <div class="cred-sub">ORG078145</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">📡</div>
+        <div class="cred-label">ICTforAg Mentor</div>
+        <div class="cred-sub">Verified Profile</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🎓</div>
+        <div class="cred-label">WBSCVTESD Validator</div>
+        <div class="cred-sub">Curriculum: Aquaponics</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🔬</div>
+        <div class="cred-label">MoEFCC PARIVESH</div>
+        <div class="cred-sub">Registered</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🌍</div>
+        <div class="cred-label">G-STIC Pretoria 2025</div>
+        <div class="cred-sub">& Brussels 2026</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🗞</div>
+        <div class="cred-label">14 Media Features</div>
+        <div class="cred-sub">Telegraph India & more</div>
+      </div>
+      <div class="credential-item">
+        <div class="cred-icon">🔐</div>
+        <div class="cred-label">Vetted Expert</div>
+        <div class="cred-sub">GLG Expert Network</div>
+      </div>
+    </div>
+
+    <div class="video-pair reveal mt-24">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/EEbyIQgn6P0?rel=0&modestbranding=1" title="Murshidabad District Lecture" allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <h4>Murshidabad District Government Lecture</h4>
+          <p>Environmental biotechnology and sustainable farming systems</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/dCX_gYpbxqw?rel=0&modestbranding=1" title="Kalimpong Lecture" allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <h4>Kalimpong Institutional Lecture</h4>
+          <p>Integrated biological systems for hill agroecology</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHO WE ARE
+═══════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title">Applied Rural Biotech.<br>Systems-First Thinking.</h2>
+        <p class="lead">Mul Biotech Farms Private Limited is an applied agri-biotech company based in Rishra, Hooghly, West Bengal — incorporated in 2026 but operating since 2019 from Unit Nasibpur, where twelve integrated biological systems ran in parallel across aquaponics, biofloc, hydroponics, agroforestry, spirulina and mushroom cultivation.</p>
+        <div class="philosophy-block">
+          <p>"The IRBAS™ framework did not emerge from a design table. It emerged from six years of watching biological systems fail and recover — including the day 7,000 climbing perch died and forced us to understand nitrogen cycles at a systems level."</p>
+        </div>
+        <ul class="mvv-list">
+          <li><strong>Mission</strong> To design and implement regenerative biological systems that restore ecosystem function while generating livelihoods.</li>
+          <li><strong>Vision</strong> A rural India where biotechnology and environmental intelligence are accessible public infrastructure.</li>
+          <li><strong>Philosophy</strong> Systems before outputs. Measurement before claims. Communities before projects.</li>
+        </ul>
+
+        <div class="timeline-list mt-24">
+          <div class="tl-item">
+            <div class="tl-year">2019–2023 · Research &amp; Development</div>
+            <div class="tl-text">Biotechnology Research. Environmental Systems Research. Microbial Ecology. Regenerative Agriculture R&amp;D. IRBAS™ Concept Development. Laboratory Validation. Field Research.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2024 · Early Field Deployments</div>
+            <div class="tl-text">Initial commercial projects. Pilot implementations. Nasibpur Demonstration Unit established. Nasibpur Demonstration Unit archived after completion of its purpose.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2025</div>
+            <div class="tl-text">Government Engagements. WBSCVTESD Collaboration. Greenpreneur Award. G-STIC Pretoria participation. Digital intelligence platforms built. WSIS+20 UN Forum.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2026</div>
+            <div class="tl-text">Incorporated as Private Limited. MulOS enterprise platform development. G-STIC Brussels. SequestraBionix Foundation established for CSR & carbon credit work.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-side reveal">
+        <div class="founder-card mb-24">
+          <span class="eyebrow">Founder & CEO</span>
+          <div class="founder-name">Soumodip Atanu Roy</div>
+          <div class="founder-title">M.Sc. Biotechnology · Founder & CEO, Mul Biotech Farms Pvt. Ltd.</div>
+          <p class="founder-bio">Soumodip Atanu Roy has spent seven years at the intersection of applied biology, environmental science and rural systems design. He has lectured for district governments, developed state-level vocational curricula, participated in UN and G-STIC platforms, and built the IRBAS™ framework — a proprietary integrated systems architecture now being deployed at institutional scale across India.</p>
+          <div class="founder-credentials">
+            <span class="fc-tag">ICTforAg Mentor</span>
+            <span class="fc-tag">WBSCVTESD Validator</span>
+            <span class="fc-tag">G-STIC 2025 & 2026</span>
+            <span class="fc-tag">WSIS+20 UN Forum</span>
+            <span class="fc-tag">FAO e-Agriculture</span>
+            <span class="fc-tag">29+ Publications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Core Capabilities</span>
+      <h2 class="section-title">Core Capabilities</h2>
+      <p class="lead">Mul Biotech Farms integrates biological science, environmental intelligence, and institutional expertise to improve the long-term performance of agricultural, environmental, and climate systems.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="svc-icon">🛰</div>
+        <h3>Environmental Intelligence</h3>
+        <p>Integrating GIS, remote sensing, environmental monitoring, field observations, and decision-support systems to improve land, water, and ecosystem performance.</p>
+        <div class="svc-tags"><span class="svc-tag">GIS</span><span class="svc-tag">Remote Sensing</span><span class="svc-tag">dMRV</span><span class="svc-tag">Monitoring</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🧬</div>
+        <h3>Biological Systems Engineering</h3>
+        <p>Designing, optimizing, and managing biological production systems using biotechnology, microbial ecology, regenerative agriculture, and integrated biological management.</p>
+        <div class="svc-tags"><span class="svc-tag">Biotechnology</span><span class="svc-tag">Soil Biology</span><span class="svc-tag">Hydroponics</span><span class="svc-tag">Aquaculture</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🌍</div>
+        <h3>Climate & Natural Capital</h3>
+        <p>Designing ecosystem restoration, biodiversity, carbon readiness, and natural capital projects where measurable environmental performance creates long-term climate value. Carbon is an outcome—not the sole objective.</p>
+        <div class="svc-tags"><span class="svc-tag">Carbon</span><span class="svc-tag">Biodiversity</span><span class="svc-tag">Restoration</span><span class="svc-tag">Nature-Based Solutions</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🌾</div>
+        <h3>Livelihood & Rural Resilience</h3>
+        <p>Designing integrated agricultural systems that improve productivity, strengthen rural livelihoods, enhance resource efficiency, and create resilient farming communities.</p>
+        <div class="svc-tags"><span class="svc-tag">Livelihood</span><span class="svc-tag">Productivity</span><span class="svc-tag">Farmer Income</span><span class="svc-tag">Resilience</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🏛</div>
+        <h3>Institutional Advisory</h3>
+        <p>Supporting governments, enterprises, and institutions through feasibility studies, DPRs, policy advisory, programme design, curriculum development, and implementation planning.</p>
+        <div class="svc-tags"><span class="svc-tag">DPR</span><span class="svc-tag">Government</span><span class="svc-tag">Policy</span><span class="svc-tag">Advisory</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">📊</div>
+        <h3>Monitoring, Evidence & Compliance</h3>
+        <p>Developing monitoring systems and evidence frameworks for environmental performance, regulatory compliance, project verification, and long-term impact assessment.</p>
+        <div class="svc-tags"><span class="svc-tag">Monitoring</span><span class="svc-tag">Compliance</span><span class="svc-tag">Evidence</span><span class="svc-tag">Analytics</span></div>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🎓</div>
+        <h3>Capacity Building & Knowledge Systems</h3>
+        <p>Developing technical training, institutional capacity, vocational curricula, and knowledge-transfer programmes to strengthen long-term implementation and adoption.</p>
+        <div class="svc-tags"><span class="svc-tag">Training</span><span class="svc-tag">Curriculum</span><span class="svc-tag">Workshops</span><span class="svc-tag">Knowledge</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     IMPLEMENTATION FRAMEWORKS
+═══════════════════════════════════════ -->
+<section id="frameworks">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Implementation Domains</span>
+      <h2 class="section-title">Implementation Domains</h2>
+      <p>These are application domains where our capabilities are deployed. They represent implementation areas—not the company's primary identity.</p>
+    </div>
+    <div class="domain-tags reveal" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;">
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Hydroponics &amp; Controlled Environment Agriculture</span>
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Aquaculture &amp; Integrated Farming</span>
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Agroforestry &amp; Tree-Based Systems</span>
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Mushroom Biotechnology</span>
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Environmental Restoration</span>
+      <span class="svc-tag" style="font-size:12px;padding:6px 14px;">Carbon &amp; Natural Capital Projects</span>
+    </div>
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/AotSYyaXbEU?rel=0&modestbranding=1" title="Hydroponics Tomato & Basil" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Hydroponics</h4>
+          <p>Soil-less cultivation systems for high-value vegetables, herbs and leafy crops. NFT, DWC and substrate-based designs.</p>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/bwBq8DJDh9o?rel=0&modestbranding=1" title="Aquaponics Floating Board" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Aquaponics</h4>
+          <p>Integrated fish–plant systems combining aquaculture and hydroponics in a closed-loop biological cycle.</p>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/vEokFT5Kk0s?rel=0&modestbranding=1" title="Mushroom Turnkey" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Mushroom Cultivation</h4>
+          <p>Oyster, button and specialty mushroom production. Turnkey substrate-to-harvest systems for rural enterprise.</p>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/u6WYAS8o0P4?rel=0&modestbranding=1" title="Agroforestry Planning" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Agroforestry</h4>
+          <p>Multi-canopy land use systems integrating timber, fruit, NTFP and food crops for long-term carbon and livelihoods.</p>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/qQG9xbxX3Qk?rel=0&modestbranding=1" title="Aquaculture Catfish Pond" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Aquaculture & Biofloc</h4>
+          <p>Intensive and semi-intensive fish culture including biofloc technology, RAS design and pond management.</p>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-video">
+          <iframe src="https://www.youtube.com/embed/fUEfYSbPSiE?rel=0&modestbranding=1" title="Microgreens" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="fw-body">
+          <h4>Microgreens & Specialty Crops</h4>
+          <p>High-density, short-cycle crop production for urban and peri-urban markets. Low capital, high-margin systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TECHNOLOGY PLATFORMS
+═══════════════════════════════════════ -->
+<section id="platforms" style="background:var(--moss);">
+  <div class="container">
+    <div class="section-intro centered reveal">
+      <span class="eyebrow">Technology Platforms</span>
+      <h2 class="section-title">Technology Platforms</h2>
+      <p class="lead">Our digital platforms transform biological and environmental data into actionable intelligence, enabling evidence-based planning, monitoring, analytics, and decision support.</p>
+    </div>
+    <div class="platform-grid reveal">
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-icon">🗺</div>
+          <div>
+            <div class="platform-name">Agri GIS Dashboard</div>
+            <div class="platform-badge">Open Platform</div>
+          </div>
+        </div>
+        <div class="platform-caps">
+          <span class="platform-cap">GIS Mapping</span>
+          <span class="platform-cap">Spatial Intelligence</span>
+          <span class="platform-cap">Remote Sensing</span>
+          <span class="platform-cap">Environmental Monitoring</span>
+          <span class="platform-cap">Land Suitability</span>
+          <span class="platform-cap">dMRV</span>
+          <span class="platform-cap">Decision Support</span>
+        </div>
+        <a href="agri-gis-dashboard.html" class="platform-btn">Open Platform →</a>
+      </div>
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-icon">🐟</div>
+          <div>
+            <div class="platform-name">Aquaculture Dashboard</div>
+            <div class="platform-badge">Open Platform</div>
+          </div>
+        </div>
+        <div class="platform-caps">
+          <span class="platform-cap">Water Quality Monitoring</span>
+          <span class="platform-cap">Production Analytics</span>
+          <span class="platform-cap">Feeding Records</span>
+          <span class="platform-cap">Farm Performance</span>
+          <span class="platform-cap">Disease Monitoring</span>
+          <span class="platform-cap">Growth Analytics</span>
+          <span class="platform-cap">Operational Reports</span>
+        </div>
+        <a href="aquaculture-dashboard.html" class="platform-btn">Open Platform →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GOVERNMENT
+═══════════════════════════════════════ -->
+<section id="government">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Government & Institutional Experience</span>
+      <h2 class="section-title">Proven Track Record with<br>District & State Government</h2>
+      <p>Verified government engagements across West Bengal — from district training programs to state curriculum validation.</p>
+    </div>
+    <div class="gov-grid reveal">
+      <div class="gov-engagement">
+        <div class="district">WEST BENGAL · MURSHIDABAD DISTRICT</div>
+        <h4>District Government Training Program</h4>
+        <p>Delivered environmental biotechnology lectures and integrated farming systems training for district government officials and farmer groups in Murshidabad. Focus on biofloc, aquaponics and climate-resilient agriculture.</p>
+        <div style="margin-top:16px">
+          <iframe width="100%" style="aspect-ratio:16/9;border:none;border-radius:8px;" src="https://www.youtube.com/embed/EEbyIQgn6P0?rel=0&modestbranding=1" title="Murshidabad Lecture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="gov-engagement">
+        <div class="district">WEST BENGAL · KALIMPONG</div>
+        <h4>Institutional Lecture — Hill Agroecology</h4>
+        <p>Invited lecture on integrated biological systems for hill terrain — covering agroforestry, aquaponics and soil health in altitude-variable farming contexts. Attended by institutional representatives and government stakeholders.</p>
+        <div style="margin-top:16px">
+          <iframe width="100%" style="aspect-ratio:16/9;border:none;border-radius:8px;" src="https://www.youtube.com/embed/dCX_gYpbxqw?rel=0&modestbranding=1" title="Kalimpong Lecture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="gov-engagement">
+        <div class="district">WEST BENGAL · SOUTH DINAJPUR</div>
+        <h4>District-Level Engagement</h4>
+        <p>Technical advisory and implementation support for South Dinajpur district, covering sustainable land use, bio-input systems and farmer training coordination.</p>
+      </div>
+      <div class="gov-engagement">
+        <div class="district">WBSCVTESD · STATE-LEVEL</div>
+        <h4>Aquaponics Curriculum Validation</h4>
+        <p>Served as Curriculum Validator for the Aquaponics Operation Assistant course under WBSCVTESD — the West Bengal State Council for Vocational Training. Curriculum approved without modifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     RESEARCH & IRBAS
+═══════════════════════════════════════ -->
+<section id="research">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Research & Innovation</span>
+      <h2 class="section-title">The IRBAS™ Framework &<br>Environmental Intelligence</h2>
+      <p>A proprietary integrated systems architecture developed from six years of field observation and 29+ research publications.</p>
+    </div>
+
+    <div class="irbas-header reveal">
+      <div class="irbas-logo-block">
+        <div class="irbas-wordmark">IRBAS™</div>
+        <div class="irbas-tm">Integrated Regenerative<br>Biosphere Architecture System</div>
+      </div>
+      <div class="irbas-desc">
+        <h3>A Systems Architecture for Regenerative Landscapes</h3>
+        <p style="margin-bottom:12px">IRBAS™ is not a product or a service — it is a framework for designing, implementing and measuring integrated biological systems at landscape scale. It emerged not from a design process but from field observation: tracking the failure and recovery of twelve simultaneous biological systems at Unit Nasibpur from 2019 to 2024.</p>
+        <p>The framework is structured into six operational stacks, each addressing a distinct layer of the regenerative systems problem — from ecological restoration to digital verification.</p>
+      </div>
+    </div>
+
+    <div class="irbas-stacks reveal">
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-RESTORE™</div>
+        <p>Ecological restoration, soil health regeneration and degraded land recovery protocols.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-BIOENERGY™</div>
+        <p>Biomass, biogas and decentralised bioenergy systems for rural communities.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-HYDROGRID™</div>
+        <p>Integrated water management: aquaponics, RAS, biofloc and water quality architecture.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-CARBON™</div>
+        <p>Carbon sequestration design, project documentation and Article 6.4-aligned MRV.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-GEOSPATIAL™</div>
+        <p>GIS, remote sensing, environmental dashboards and spatial intelligence platforms.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-name">IRBAS-RURAL™</div>
+        <p>Farmer training, FPO capacity building and rural enterprise development systems.</p>
+      </div>
+    </div>
+
+    <div class="research-tools reveal">
+      <div class="tool-card">
+        <div class="tool-icon">🗺</div>
+        <div>
+          <div class="tool-name">Agri-GIS Soil & Climate Dashboard</div>
+          <div class="tool-desc">Live geospatial intelligence platform (v4.0) for soil health and climate monitoring.</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🐟</div>
+        <div>
+          <div class="tool-name">Aquaculture dMRV Platform</div>
+          <div class="tool-desc">Digital MRV system (v2.4) for aquaculture pond monitoring and reporting.</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🤖</div>
+        <div>
+          <div class="tool-name">MulOS Enterprise Intelligence</div>
+          <div class="tool-desc">FastAPI/SQLAlchemy platform with 18 specialized AI agents for operational intelligence.</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📄</div>
+        <div>
+          <div class="tool-name">29+ Research Publications</div>
+          <div class="tool-desc">Peer-reviewed articles, white papers and knowledge assets on Medium, ResearchGate and SSRN.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     IMPACT
+═══════════════════════════════════════ -->
+<section id="impact">
+  <div class="container">
+    <div class="section-intro centered reveal">
+      <span class="eyebrow">Verified Impact</span>
+      <h2 class="section-title">Numbers That Reflect Real Work</h2>
+      <p>Every metric below is verified and approved for public use. No projections.</p>
+    </div>
+    <div class="impact-grid reveal">
+      <div class="impact-card"><div class="impact-num">7+</div><div class="impact-label">Years of Experience</div></div>
+      <div class="impact-card"><div class="impact-num">15+</div><div class="impact-label">Completed Client Projects</div></div>
+      <div class="impact-card"><div class="impact-num">1,000+</div><div class="impact-label">Farmers Trained</div></div>
+      <div class="impact-card"><div class="impact-num">30+</div><div class="impact-label">Institutional Leads</div></div>
+      <div class="impact-card"><div class="impact-num">100+</div><div class="impact-label">Institutions Connected</div></div>
+      <div class="impact-card"><div class="impact-num">29+</div><div class="impact-label">Research Publications</div></div>
+      <div class="impact-card"><div class="impact-num">8,400+</div><div class="impact-label">Publication Views</div></div>
+      <div class="impact-card"><div class="impact-num">3,900+</div><div class="impact-label">Publication Downloads</div></div>
+      <div class="impact-card"><div class="impact-num">450K+</div><div class="impact-label">YouTube Views</div></div>
+      <div class="impact-card"><div class="impact-num">500K+</div><div class="impact-label">Social Media Reach</div></div>
+      <div class="impact-card"><div class="impact-num">300K+</div><div class="impact-label">Institutional & Media Visibility</div></div>
+      <div class="impact-card"><div class="impact-num">45K+</div><div class="impact-label">Newspaper Reach</div></div>
+      <div class="impact-card"><div class="impact-num">14</div><div class="impact-label">News & Media Features</div></div>
+      <div class="impact-card"><div class="impact-num">11+</div><div class="impact-label">Academic Institutions</div></div>
+      <div class="impact-card"><div class="impact-num">4+</div><div class="impact-label">International Platforms</div></div>
+      <div class="impact-card"><div class="impact-num">2</div><div class="impact-label">District Government Engagements</div></div>
+      <div class="impact-card"><div class="impact-num">1</div><div class="impact-label">State Curriculum Contribution</div></div>
+      <div class="impact-card"><div class="impact-num">1,245+</div><div class="impact-label">Contribution Hours</div></div>
+      <div class="impact-card"><div class="impact-num">4.8★</div><div class="impact-label">Google Business Rating</div></div>
+      <div class="impact-card"><div class="impact-num">6+</div><div class="impact-label">Climate & Environmental Domains</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     EVIDENCE CENTRE
+═══════════════════════════════════════ -->
+<section id="evidence">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Evidence Centre</span>
+      <h2 class="section-title">Documented Work. Verified Outcomes.</h2>
+      <p>Field footage, research demonstrations and implementation videos from active and completed projects.</p>
+    </div>
+    <div class="evidence-grid reveal">
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/H40GN8FVmuc?rel=0&modestbranding=1" title="Spirulina Farming" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Spirulina Cultivation</h4><p>High-protein microalgae production system</p></div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/eILLzjutUlQ?rel=0&modestbranding=1" title="Biofloc" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Biofloc Technology</h4><p>Intensive fish culture with microbial floc management</p></div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/6Kx3-2ISjHA?rel=0&modestbranding=1" title="Soil Evaluation" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Soil Health Evaluation</h4><p>Field soil analysis and assessment protocols</p></div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/7KzRSHF193M?rel=0&modestbranding=1" title="Agarwood Delivery" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Agarwood Agroforestry</h4><p>High-value timber and resin species cultivation</p></div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/JyOydzJ-LWA?rel=0&modestbranding=1" title="Hydroponics Bucket System" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Bucket Hydroponics</h4><p>Low-cost substrate system for smallholder deployment</p></div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-video"><iframe src="https://www.youtube.com/embed/qQG9xbxX3Qk?rel=0&modestbranding=1" title="Catfish Pond" allowfullscreen loading="lazy"></iframe></div>
+        <div class="ev-meta"><h4>Catfish Pond Management</h4><p>Commercial-scale catfish production and pond monitoring</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PUBLICATIONS
+═══════════════════════════════════════ -->
+<section id="publications">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Research & Publications</span>
+      <h2 class="section-title">Knowledge That Drives Practice</h2>
+      <p>29+ research articles, white papers and knowledge assets. Published on Medium, ResearchGate, SSRN and LinkedIn.</p>
+    </div>
+    <div class="pub-list reveal">
+      <a href="https://www.matrubharti.com/book/19900054/the-day-7000-fish-died" target="_blank" rel="noopener" class="pub-item">
+        <div>
+          <div class="pub-type">ORIGIN STORY · MATRUBHARTI</div>
+          <div class="pub-title">The Day 7,000 Fish Died — Origin of the IRBAS™ Framework</div>
+          <div class="pub-meta">The founding diagnostic event that led to systems-level thinking at Mul Biotech Farms.</div>
+        </div>
+        <div class="pub-arrow">↗</div>
+      </a>
+      <a href="https://medium.com/@soumodip18/irbas-an-integrated-regenerative-biosphere-architecture-system-8f2a1b3c4d5e" target="_blank" rel="noopener" class="pub-item">
+        <div>
+          <div class="pub-type">FRAMEWORK · MEDIUM</div>
+          <div class="pub-title">IRBAS™: An Integrated Regenerative Biosphere Architecture System</div>
+          <div class="pub-meta">Public introduction to the six-stack proprietary framework for regenerative biological systems.</div>
+        </div>
+        <div class="pub-arrow">↗</div>
+      </a>
+      <div class="pub-item">
+        <div>
+          <div class="pub-type">RESEARCH · RESEARCHGATE</div>
+          <div class="pub-title">Carbon Sequestration in Agroforestry Systems: A West Bengal Case Study</div>
+          <div class="pub-meta">Field-based carbon measurement and sequestration estimation methodology.</div>
+        </div>
+        <div class="pub-arrow">↗</div>
+      </div>
+      <div class="pub-item">
+        <div>
+          <div class="pub-type">WHITE PAPER · SSRN</div>
+          <div class="pub-title">Digital MRV for Smallholder Agriculture: Protocols and Frameworks</div>
+          <div class="pub-meta">Technical protocols for measurement, reporting and verification in resource-constrained settings.</div>
+        </div>
+        <div class="pub-arrow">↗</div>
+      </div>
+      <div class="pub-item">
+        <div>
+          <div class="pub-type">RESEARCH · LINKEDIN</div>
+          <div class="pub-title">Biofloc Technology for Inland Aquaculture: Economic and Environmental Outcomes</div>
+          <div class="pub-meta">Comparative analysis of biofloc versus conventional pond aquaculture across 12 months.</div>
+        </div>
+        <div class="pub-arrow">↗</div>
+      </div>
+    </div>
+    <div style="margin-top:28px;text-align:center">
+      <a href="https://medium.com/@soumodip18" class="btn-outline" target="_blank" rel="noopener">View All Publications on Medium ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     EXPERTS & ADVISORS
+═══════════════════════════════════════ -->
+<section id="experts">
+  <div class="container">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Core Team & Advisory Board</span>
+      <h2 class="section-title">The People Behind<br>the Systems</h2>
+      <p>Mul Biotech Farms is built on deep domain expertise — spanning applied biology, aquaculture, climate science, organic agriculture and fisheries management.</p>
+    </div>
+
+    <!-- Core Experts -->
+    <div class="experts-grid reveal">
+      <div class="expert-card">
+        <div class="expert-avatar">SA</div>
+        <div class="expert-name">Soumodip Atanu Roy</div>
+        <div class="expert-role">Chief Biologist · Founder & CEO</div>
+        <p class="expert-bio">M.Sc. Biotechnology. Seven years of applied research across aquaponics, biofloc, hydroponics, agroforestry and soil biology. Architect of the IRBAS™ framework. Lecturer for district governments and validated curriculum developer for WBSCVTESD.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Applied Biology</span>
+          <span class="expert-domain">Systems Design</span>
+          <span class="expert-domain">Environmental Science</span>
+          <span class="expert-domain">IRBAS™</span>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">PR</div>
+        <div class="expert-name">Pradip Roy</div>
+        <div class="expert-role">Due Diligence & Organic Agriculture</div>
+        <p class="expert-bio">Specialist in organic farming systems, project due diligence and agricultural compliance. Brings rigorous assessment frameworks to Mul Biotech's implementation and institutional advisory work.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Due Diligence</span>
+          <span class="expert-domain">Organic Agriculture</span>
+          <span class="expert-domain">Compliance</span>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">KB</div>
+        <div class="expert-name">Kamal Badgurjar</div>
+        <div class="expert-role">Desert Climate & Agriculture Specialist</div>
+        <p class="expert-bio">Expert in dryland and arid-zone agricultural systems with deep experience in desert climate adaptation. Guides Mul Biotech's work in water-stressed and climate-marginal environments.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Desert Agriculture</span>
+          <span class="expert-domain">Dryland Systems</span>
+          <span class="expert-domain">Climate Adaptation</span>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">SD</div>
+        <div class="expert-name">Subhojoti Das</div>
+        <div class="expert-role">Aquaculture Management & Fisheries</div>
+        <p class="expert-bio">Fisheries management professional with hands-on expertise in inland aquaculture systems, fish health and production optimisation. Core contributor to Mul Biotech's biofloc, RAS and pond management capabilities.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Aquaculture</span>
+          <span class="expert-domain">Fisheries Science</span>
+          <span class="expert-domain">Biofloc</span>
+          <span class="expert-domain">RAS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advisors -->
+    <div class="experts-label reveal">
+      <div class="experts-label-text">Advisory Board · 7 Advisors</div>
+      <div class="experts-label-line"></div>
+    </div>
+    <div class="experts-grid reveal">
+      <div class="expert-card advisor-card">
+        <div class="expert-avatar" style="background:linear-gradient(135deg,#3d5a2d,#2d4520)">🐟</div>
+        <div class="expert-name">Fisheries Science Advisor</div>
+        <div class="expert-role">Fisheries Biology & Inland Water Systems</div>
+        <p class="expert-bio">Senior advisor on inland fisheries ecology, fish biology and sustainable capture-culture integration. Supports Mul Biotech's district-level fisheries training programs.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Inland Fisheries</span>
+          <span class="expert-domain">Fish Biology</span>
+          <span class="expert-domain">Water Ecology</span>
+        </div>
+      </div>
+      <div class="expert-card advisor-card">
+        <div class="expert-avatar" style="background:linear-gradient(135deg,#2d4a3d,#1a3a2d)">🌡</div>
+        <div class="expert-name">Climate Technology Advisor</div>
+        <div class="expert-role">Climate Tech & Carbon Intelligence</div>
+        <p class="expert-bio">Specialist in climate technology platforms, carbon project design and environmental data systems. Guides Mul Biotech's MRV and Article 6.4 implementation work.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Climate Tech</span>
+          <span class="expert-domain">Carbon MRV</span>
+          <span class="expert-domain">Environmental Data</span>
+        </div>
+      </div>
+      <div class="expert-card advisor-card">
+        <div class="expert-avatar" style="background:linear-gradient(135deg,#4a3a20,#3a2a10)">🌾</div>
+        <div class="expert-name">Agri-Policy Advisor</div>
+        <div class="expert-role">Agricultural Policy & Institutional Affairs</div>
+        <p class="expert-bio">Expert in agricultural policy design, government liaison and institutional capacity building. Connects Mul Biotech's field programs with state and national policy frameworks.</p>
+        <div class="expert-domains">
+          <span class="expert-domain">Agri Policy</span>
+          <span class="expert-domain">Institutions</span>
+          <span class="expert-domain">Government Liaison</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PARTNER WITH US
+═══════════════════════════════════════ -->
+<section id="partner">
+  <div class="container">
+    <div class="section-intro centered reveal">
+      <span class="eyebrow">Join the Network</span>
+      <h2 class="section-title">Join the Mul Biotech Network</h2>
+      <p class="lead">Collaborate with Mul Biotech Farms to expand environmental intelligence, biotechnology, climate and regenerative agriculture solutions across India.</p>
+    </div>
+
+    <div class="partner-grid reveal">
+      <div class="partner-card">
+        <div class="partner-tag">BDA</div>
+        <h3>Become a Business Development Associate (BDA)</h3>
+        <p class="partner-desc">Introduce qualified projects and connect clients with Mul Biotech Farms. Operate under a formal agreement and receive performance-based incentives after successful project onboarding and receipt of the client's first payment.</p>
+        <ul class="partner-list">
+          <li>Consultants</li>
+          <li>Agripreneurs</li>
+          <li>Engineers</li>
+          <li>Environmental Professionals</li>
+          <li>Business Development Professionals</li>
+        </ul>
+      </div>
+      <div class="partner-card">
+        <div class="partner-tag">Regional</div>
+        <h3>Regional Partner</h3>
+        <p class="partner-desc">Represent Mul Biotech Farms in your district or state and build regional opportunities under a structured partnership agreement.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-tag">Technical</div>
+        <h3>Technical Associate</h3>
+        <p class="partner-desc">Collaborate on project implementation, research, monitoring, advisory and capacity building across Mul Biotech's active domains.</p>
+      </div>
+    </div>
+
+    <div class="incentive-block reveal">
+      <span class="eyebrow" style="display:block;text-align:center;">Performance-Based Incentives</span>
+      <div class="incentive-amount">₹20,000+</div>
+      <p style="font-size:14px;">Referral incentives begin from ₹20,000 and vary depending on project scope and commercial value, as defined in the executed agreement.</p>
+    </div>
+
+    <div class="reveal">
+      <h3 style="font-size:18px;margin-bottom:20px;text-align:center;">Why Partner With Us?</h3>
+      <div class="why-partner">
+        <div class="why-item">Build your own regional business.</div>
+        <div class="why-item">Access multidisciplinary technical expertise.</div>
+        <div class="why-item">Collaborate with an Environmental Intelligence &amp; Biotechnology company.</div>
+        <div class="why-item">Deliver measurable environmental impact.</div>
+        <div class="why-item">Grow alongside the Mul Biotech Farms ecosystem.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get in Touch</span>
+        <h2 class="section-title">Work With Us</h2>
+        <p class="lead" style="margin-bottom:32px">We engage with government bodies, research institutions, corporations and NGOs on consultancy, implementation, training and research collaboration.</p>
+
+        <div class="contact-detail">
+          <div class="cd-icon">📍</div>
+          <div>
+            <div class="cd-label">Registered Office</div>
+            <div class="cd-value">10 Dewanjee Street, Rishra, Hooghly 712248, West Bengal</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon">🏢</div>
+          <div>
+            <div class="cd-label">Company Identifiers</div>
+            <div class="cd-value">CIN: U01111WB2026PTC292686 · GSTIN: 19AAUCM6474B1ZZ · MSME: UDYAM-WB-07-0000328</div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://linkedin.com" class="social-btn" target="_blank" rel="noopener">in LinkedIn</a>
+          <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener">▶ YouTube</a>
+          <a href="https://soumodip18.github.io/Mul-Biotech-Farms-Private-Limited/" class="social-btn" target="_blank" rel="noopener">⌥ GitHub</a>
+        </div>
+
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5!2d88.35!3d22.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDQzJzEyLjAiTiA4OMKwMjEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-area reveal">
+        <h4>Book a Consultation</h4>
+        <p>Government projects · Industry partnerships · Research collaboration · General enquiries</p>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-name">Full Name</label>
+            <input type="text" id="f-name" placeholder="Dr. Jane Smith">
+          </div>
+          <div class="form-field">
+            <label for="f-org">Organisation</label>
+            <input type="text" id="f-org" placeholder="Ministry / University / Company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" placeholder="you@organisation.gov.in">
+          </div>
+          <div class="form-field">
+            <label for="f-phone">Phone</label>
+            <input type="tel" id="f-phone" placeholder="+91 98000 00000">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="f-type">Enquiry Type</label>
+          <select id="f-type">
+            <option value="">Select type of engagement</option>
+            <option>Government Project / Advisory</option>
+            <option>Industry Consultancy</option>
+            <option>Research Collaboration</option>
+            <option>Training & Capacity Building</option>
+            <option>Carbon / MRV Project</option>
+            <option>Media Enquiry</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" placeholder="Briefly describe your project, requirement or question…"></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">Send Enquiry →</button>
+        <p style="font-size:11px;margin-top:12px;text-align:center">We typically respond within 2 working days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="nav-logo">MBF</div>
+        <div class="nav-name">Mul Biotech Farms<br>Private Limited</div>
+      </div>
+      <p>Applied agri-biotech and environmental consultancy. Designing integrated biological systems for regenerative landscapes since 2019.</p>
+      <div class="entity-row">
+        <span class="entity-pill">CIN: U01111WB2026PTC292686</span>
+        <span class="entity-pill">GSTIN: 19AAUCM6474B1ZZ</span>
+        <span class="entity-pill">MSME: UDYAM-WB-07-0000328</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Environmental Consultancy</a></li>
+        <li><a href="#services">Biotechnology</a></li>
+        <li><a href="#services">Carbon & MRV</a></li>
+        <li><a href="#services">GIS & Intelligence</a></li>
+        <li><a href="#services">Government Advisory</a></li>
+        <li><a href="#services">Training</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Research</h5>
+      <ul>
+        <li><a href="#research">IRBAS™ Framework</a></li>
+        <li><a href="#research">MRV Platforms</a></li>
+        <li><a href="#research">GIS Dashboards</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#evidence">Evidence Centre</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#government">Government Work</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="https://soumodip18.github.io/Mul-Biotech-Farms-Private-Limited/" target="_blank" rel="noopener">GitHub Repository</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-collab">
+    <div>
+      <h4>Looking to Collaborate?</h4>
+      <p>Whether you are an entrepreneur, consultant, institution, researcher or business development professional, we welcome partnerships that accelerate environmental intelligence, biotechnology and climate innovation.</p>
+    </div>
+    <a href="#partner" class="btn-primary">Partner With Us →</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <p class="text-leaf">© 2026 Mul Biotech Farms Private Limited. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">CC BY-NC-ND 4.0</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Scroll Reveal ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── Nav scroll effect ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 50
+    ? 'rgba(45,90,61,0.25)'
+    : 'rgba(45,90,61,0.18)';
+});
+
+// ─── Mobile nav toggle ───
+const toggle = document.querySelector('.nav-toggle');
+const links = document.querySelector('.nav-links');
+let open = false;
+toggle.addEventListener('click', () => {
+  open = !open;
+  links.style.display = open ? 'flex' : '';
+  links.style.flexDirection = open ? 'column' : '';
+  links.style.position = open ? 'absolute' : '';
+  links.style.top = open ? '68px' : '';
+  links.style.left = open ? '0' : '';
+  links.style.right = open ? '0' : '';
+  links.style.background = open ? 'rgba(247,245,240,0.98)' : '';
+  links.style.padding = open ? '20px 6%' : '';
+  links.style.borderBottom = open ? '1px solid rgba(45,90,61,0.18)' : '';
+  toggle.textContent = open ? '✕' : '☰';
+});
+
+// ─── Form submit ───
+function handleSubmit() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!name || !email) {
+    alert('Please provide your name and email address.');
+    return;
+  }
+  alert('Thank you, ' + name + '. We have received your enquiry and will respond within 2 working days.');
+}
+</script>
+</body>
+</html>
