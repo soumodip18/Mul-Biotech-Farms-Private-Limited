@@ -1,83 +1,264 @@
-# Mul Biotech Farms Private Limited
+# 🌿 Mul Biotech Farms Private Limited
 
-Regenerative Agriculture • GIS Intelligence • Carbon Farming • Aquaculture Analytics
+### Environmental Intelligence • Biotechnology • Climate & Natural Capital • Digital Agriculture
 
-Building data-driven agricultural and environmental infrastructure for climate resilience.
-# Mul-Biotech-Farms-Private-Limited
-webpage 
-# 🌿 Mul Biotech Farms Private Limited | Digital dMRV Ecosystem
-### Precision Agri-Biotech & Carbon Intelligence | A SAR Venture Ecosystem Unit
+**Building intelligent biological and environmental systems through science, geospatial intelligence, biotechnology, and digital innovation.**
 
-[![UNGM Accredited](https://img.shields.io/badge/UNGM-1127495-blue?style=for-the-badge)](https://www.ungm.org/)
-[![ITU WSIS 2026](https://img.shields.io/badge/ITU%20WSIS-Accredited-green?style=for-the-badge)](https://www.itu.int/net4/wsis/forum/2026/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-INR%203.5--4.5%20Cr-gold?style=for-the-badge)](#)
-
-## 🏛️ Executive Summary
-**Mul Biotech Farms Private Limited** is a next-generation climate-tech and agritech innovation lead. Our ecosystem integrates science, policy, and community-scale deployment to build nature-positive, low-carbon agricultural systems.
-
-This repository serves as the **Digital Measurement, Reporting, and Verification (dMRV)** engine for our field operations in West Bengal and beyond, aligning with the UN Sustainable Development Goals (SDGs) and the WSIS Action Lines.
+> **Mul Biotech Farms Private Limited** is an Environmental Intelligence and Biotechnology company developing integrated solutions for agriculture, ecosystems, natural capital, and climate resilience. Our work combines biological science, environmental monitoring, GIS, digital platforms, and institutional advisory to design, implement, monitor, and continuously improve biological and environmental systems.
 
 ---
 
-## 📊 Impact Metrics (2020-2025 Consolidated)
-* **Verified Visibility:** 200,000+ people across digital and institutional platforms.
-* **Community Engagement:** Directly engaged ~180 individuals in rural regenerative programs.
-* **Infrastructure:** 160,000 Liter scale Spirulina production & Biofloc/RAS integration.
-* **Institutional Reach:** Collaborations with Kalimpong District Administration and Fisheries Dept, Govt. of West Bengal (Murshidabad/Singur).
+## Technology Platforms
+
+Our technology platforms transform biological and environmental data into actionable intelligence for evidence-based planning, monitoring, analytics, and decision support.
+
+### 🛰️ Agri GIS Dashboard
+
+**Path**
+
+```text
+/agri-gis-dashboard.html
+```
+
+A geospatial intelligence platform supporting:
+
+- GIS Mapping
+- Remote Sensing
+- Soil Intelligence
+- Environmental Monitoring
+- Land Suitability Analysis
+- Climate Risk Assessment
+- dMRV
+- Decision Support Systems
+
+Key Features
+
+- Live Weather Intelligence
+- Soil Moisture Analytics
+- Soil Temperature Monitoring
+- NDVI & Satellite Analysis
+- Land Surface Temperature
+- Irrigation Advisory
+- Crop Stress Analytics
+- Flood & Drought Assessment
+- Historical Climate Trends
+- Executive KPI Dashboard
 
 ---
 
-## 🛠️ Integrated Digital Dashboards
-Our platform bridges the gap between traditional administrative data and Geographic Information Systems (GIS) to quantify climate impact.
+### 🐟 Aquaculture Dashboard
 
-### 📡 [Aquaculture dMRV Platform](./aquaculture-dashboard.html)
-* **Objective:** Site assessment and decision support for aquatic protein production — suitability, pond engineering, and species selection in one tool.
-* **Tech Stack:** Leaflet-based geospatial mapping with Leaflet.draw and Turf.js, live weather and historical climate via Open-Meteo, Esri satellite imagery.
-* **Key Feature:** Pond boundary digitization with automatic area, volume, and excavation estimates, plus a species recommendation engine ranking 8 candidate species (including IMC, Tilapia, and Pangasius) by live temperature, estimated NDWI, and rainfall.
+**Path**
 
-### 🛰️ [Agri-GIS & Soil Analytics](./agri-gis-dashboard.html)
-* **Objective:** Precision monitoring of soil health, climate risk, and irrigation demand using live meteorological and satellite data.
-* **Satellite Intelligence:** NDVI and Land Surface Temperature mapping via NASA GIBS (MODIS), with Esri World Imagery basemaps and flood/drought risk layers.
-* **Live Soil & Weather Data:** Real-time soil moisture (0–27 cm) and soil temperature (0–54 cm) profiles, plus full weather KPIs (temperature, humidity, rainfall, wind, pressure, UV) via Open-Meteo.
-* **Climate Risk Engine:** Composite risk scoring (Very Low–Critical) from rainfall deficit, temperature anomaly, VPD, and ET₀ — replacing static placeholder values.
-* **Irrigation & Plant Stress:** ET₀-based irrigation advisory (No/Light/Moderate/Heavy) and VPD-based crop stress zoning (Green–Red).
-* **Forecast & Historical Trends:** 7/14/30-day forecasts and 1-year historical rainfall/temperature trends.
-* **Executive KPI Board:** Farm Health Score, Climate/Water/Flood/Drought Risk, and crop suitability — all data-source tagged (Real/Modelled/Estimated) per governance standards.
+```text
+/ aquaculture-dashboard.html
+```
+
+A digital aquaculture intelligence platform supporting:
+
+- Pond Assessment
+- Water Quality Monitoring
+- Species Recommendation
+- Production Analytics
+- Disease Monitoring
+- Feeding Analytics
+- Farm Performance
+- Operational Reporting
+
+Key Features
+
+- Pond Digitization
+- Water Volume Estimation
+- Excavation Estimation
+- Climate Intelligence
+- Species Recommendation Engine
+- GIS-Based Site Assessment
+- Historical Weather Analysis
+- Production Decision Support
+
 ---
 
-## 📂 The Mul Biotech Farms Ecosystem
-This project is part of a multi-unit strategy for climate resilience:
-1.  **Mul Biotech Farms:** Primary field production and R&D.
-2.  **Mul Biotech Digital Farms Solutions:** Dashboard development and GIS analytics.
-3.  **SequestraBionix Foundation:** Non-profit arm managing Carbon Pathways & CSR.
+## Core Capabilities
+
+Mul Biotech Farms integrates biological science, environmental intelligence, and institutional expertise to improve the long-term performance of agricultural, environmental, and climate systems.
+
+### Environmental Intelligence
+
+Integrating GIS, remote sensing, environmental monitoring, field observations, and decision-support systems.
+
+### Biological Systems Engineering
+
+Designing biological production systems using biotechnology, microbial ecology, regenerative agriculture, and integrated biological management.
+
+### Climate & Natural Capital
+
+Developing ecosystem restoration, biodiversity, carbon readiness, and nature-based projects where measurable environmental performance creates long-term value.
+
+### Livelihood & Rural Resilience
+
+Designing integrated farming and biological systems that improve productivity, strengthen rural livelihoods, and increase resource efficiency.
+
+### Institutional Advisory
+
+Supporting governments, enterprises, academic institutions, and development organisations through DPRs, feasibility studies, programme design, policy inputs, curriculum development, and technical advisory.
+
+### Monitoring, Evidence & Compliance
+
+Developing monitoring systems and evidence frameworks for environmental performance, project verification, regulatory compliance, and long-term impact assessment.
+
+### Capacity Building & Knowledge Systems
+
+Developing technical training, vocational curricula, institutional capacity, workshops, and knowledge-transfer programmes.
 
 ---
 
-## 🌍 Global Recognition, Networks & Institutional Engagement
+# Implementation Domains
 
-* **ITU WSIS+20 High-Level Event 2026:** Registered participant contributing to global dialogue on digital innovation, sustainability, and climate-resilient development.
+Our capabilities are deployed across multiple implementation domains rather than individual business verticals.
 
-* **United Nations Global Marketplace (UNGM):** Registered supplier platform participant, enabling engagement with international procurement and partnership opportunities.
+- Hydroponics & Controlled Environment Agriculture
+- Aquaculture & Integrated Farming
+- Agroforestry & Tree-Based Systems
+- Mushroom Biotechnology
+- Environmental Restoration
+- Carbon & Natural Capital Projects
 
-* **World Economic Forum (WEF) Network:** Professional engagement within global innovation, sustainability, and impact-driven ecosystems.
-
-* **GLG (Gerson Lehrman Group):** Member of the world's leading expert network, contributing domain expertise in agriculture, sustainability, biotechnology, and environmental systems.
-
-* **ICTforAg:** Mentor and contributor supporting climate-smart agriculture, digital farming, and agricultural innovation initiatives.
-
-* **F6S Global Startup Network:** Listed within an international ecosystem of startups, investors, accelerators, and innovation programs.
-
-* **Greenpreneur Award 2025:** Recognized for contributions to sustainable agriculture, environmental innovation, and climate-conscious business practices.
-
-* **Verra Registry Participation:** Active engagement with carbon market and environmental asset development frameworks through Verra ecosystem registration.
-
-* **Climate & Environmental Intelligence Initiatives:** Development of GIS-driven agriculture, digital MRV (dMRV), regenerative farming, agroforestry, ecosystem restoration, and sustainability-focused digital solutions.
 ---
 
-## ⚖️ Corporate Information
-**Headquarters:** Hooghly, West Bengal, India  
-**CIN:** U01111WB2026PTC292686  
-**GSTIN:** 19AAUCM6474B1ZZ  
-**Official Contact:** [mulbiotechnology@gmail.com](mailto:mulbiotechnology@gmail.com)  
+# Digital dMRV Ecosystem
 
-*The dashboards provided in this repository are currently in Beta v4. Digital estimates must be reconciled with on-site lab testing for certification purposes.*
+The repository serves as the digital backbone for field intelligence and evidence-based environmental monitoring.
+
+It supports:
+
+- Environmental Intelligence
+- Digital MRV (dMRV)
+- GIS Analytics
+- Climate Monitoring
+- Precision Agriculture
+- Aquaculture Analytics
+- Soil Intelligence
+- Environmental Compliance
+- Decision Support Systems
+
+---
+
+# Technology Stack
+
+### GIS & Remote Sensing
+
+- Leaflet
+- Leaflet Draw
+- Turf.js
+- Esri World Imagery
+- NASA GIBS
+
+### Environmental Intelligence
+
+- Open-Meteo APIs
+- NDVI
+- Land Surface Temperature
+- Rainfall Analytics
+- ET₀ Modelling
+- VPD Analytics
+- Soil Moisture Models
+
+### Data & Analytics
+
+- JavaScript
+- HTML5
+- CSS3
+- GeoJSON
+- REST APIs
+
+---
+
+# Impact Highlights
+
+- Environmental Intelligence Platforms
+- GIS Decision Support Systems
+- Aquaculture Analytics
+- Climate Intelligence
+- Digital MRV Development
+- Biological Systems Engineering
+- Institutional Capacity Building
+- Government & Academic Engagement
+- Climate & Natural Capital Initiatives
+
+---
+
+# Institutional Engagement
+
+Mul Biotech Farms actively participates in national and international knowledge ecosystems supporting environmental innovation, biotechnology, digital agriculture, and sustainability.
+
+Highlights include participation and engagement across:
+
+- ITU WSIS
+- United Nations Global Marketplace (UNGM)
+- World Economic Forum (Professional Network)
+- GLG Expert Network
+- ICTforAg
+- F6S Global Startup Ecosystem
+- Greenpreneur Recognition
+- Climate & Environmental Intelligence Communities
+
+These engagements contribute to knowledge exchange, innovation, professional networking, and international collaboration.
+
+---
+
+# About Mul Biotech Farms
+
+Mul Biotech Farms Private Limited develops integrated environmental intelligence and biotechnology solutions that combine biological science with digital technologies to improve environmental performance, agricultural productivity, ecosystem resilience, and long-term sustainability.
+
+The organisation works at the intersection of:
+
+- Environmental Intelligence
+- Biotechnology
+- Digital Agriculture
+- GIS & Remote Sensing
+- Natural Capital
+- Climate Resilience
+- Environmental Monitoring
+- Institutional Advisory
+
+---
+
+# Corporate Information
+
+**Company**
+
+Mul Biotech Farms Private Limited
+
+**Headquarters**
+
+Hooghly, West Bengal, India
+
+**CIN**
+
+U01111WB2026PTC292686
+
+**GSTIN**
+
+19AAUCM6474B1ZZ
+
+**Email**
+
+mulbiotechnology@gmail.com
+
+---
+
+# Disclaimer
+
+The dashboards contained in this repository are production-oriented decision-support tools currently under continuous development.
+
+Outputs generated by the platforms should be interpreted as analytical estimates derived from spatial, climatic, environmental, and modelled datasets. Where certification, compliance, legal reporting, or scientific validation is required, digital estimates should be supplemented with appropriate laboratory analysis, field verification, and applicable regulatory procedures.
+
+---
+
+# Vision
+
+**Engineering Intelligent Biological and Environmental Systems for a Climate-Resilient Future.**
+
+---
+
+© Mul Biotech Farms Private Limited. All Rights Reserved.
