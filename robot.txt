@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://soumodip18.github.io/Mul-Biotech-Farms-Private-Limited/sitemap.xml
