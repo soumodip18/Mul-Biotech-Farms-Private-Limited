@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Services | Mul Biotech Farms Private Limited</title>
+<meta name="description" content="Scientific and technical services for agriculture, aquaculture, biotechnology, environmental consultancy, GIS mapping, DPR preparation and sustainable farming solutions by Mul Biotech Farms Private Limited.">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"Mul Biotech Farms Private Limited",
+ "url":"https://soumodip18.github.io/Mul-Biotech-Farms-Private-Limited/"
+}
+</script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  color: #2c3e3d;
+  background: #fafaf8;
+}
+
+header {
+  background: linear-gradient(135deg, #1f5d3b 0%, #2d7c52 100%);
+  color: #fff;
+  padding: 80px 6% 60px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+header .tagline {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 60px 6%;
+}
+
+section {
+  background: #fff;
+  margin: 48px 0;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-top: 4px solid #1f5d3b;
+}
+
+section.intro {
+  border-top: none;
+  text-align: center;
+  padding: 40px;
+  background: #f9faf8;
+}
+
+section.intro p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #34504a;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #1f5d3b;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+}
+
+h3 {
+  color: #1f5d3b;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  background: #f9faf8;
+  border: 1px solid #e8eae8;
+  border-radius: 6px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #1f5d3b;
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 12px rgba(31, 93, 59, 0.12);
+  transform: translateY(-2px);
+}
+
+.service-card h3 {
+  margin-bottom: 14px;
+}
+
+.service-card p {
+  color: #4a5a58;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.service-card ul {
+  list-style: none;
+  margin: 16px 0 0 0;
+}
+
+.service-card li {
+  color: #4a5a58;
+  font-size: 0.93rem;
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+
+.service-card li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #1f5d3b;
+  font-weight: 600;
+}
+
+.approach-box {
+  background: #f0f4f2;
+  border: 1px solid #d9e3db;
+  border-radius: 6px;
+  padding: 36px;
+  margin: 20px 0;
+}
+
+.approach-box ul {
+  list-style: none;
+  columns: 2;
+  column-gap: 32px;
+  margin: 20px 0 0 0;
+}
+
+.approach-box li {
+  padding: 8px 0;
+  color: #34504a;
+  break-inside: avoid;
+}
+
+.approach-box li:before {
+  content: "•";
+  color: #1f5d3b;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.process-list {
+  list-style: none;
+}
+
+.process-list li {
+  padding: 16px 0;
+  color: #34504a;
+  font-size: 1rem;
+  border-bottom: 1px solid #e8eae8;
+  position: relative;
+  padding-left: 36px;
+}
+
+.process-list li:last-child {
+  border-bottom: none;
+}
+
+.process-list li:before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  background: #1f5d3b;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.benefits-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.benefits-list li {
+  padding: 12px 0 12px 28px;
+  color: #34504a;
+  position: relative;
+}
+
+.benefits-list li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #1f5d3b;
+  font-size: 1.2rem;
+}
+
+.faq-group {
+  margin: 28px 0;
+}
+
+.faq-question {
+  background: #f9faf8;
+  padding: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1f5d3b;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  border-left: 3px solid #1f5d3b;
+}
+
+.faq-question:hover {
+  background: #f0f4f2;
+}
+
+.faq-answer {
+  padding: 0 20px 24px 20px;
+  color: #34504a;
+  line-height: 1.7;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.client-item {
+  background: #f9faf8;
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 4px solid #1f5d3b;
+  text-align: center;
+  color: #34504a;
+  font-weight: 500;
+}
+
+.cta {
+  background: #1f5d3b;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 6px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cta:hover {
+  background: #153d2a;
+  box-shadow: 0 4px 12px rgba(31, 93, 59, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact-section {
+  text-align: center;
+}
+
+footer {
+  background: #2c3e3d;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+  
+  header .tagline {
+    font-size: 0.95rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  section {
+    padding: 32px;
+  }
+  
+  .approach-box ul {
+    columns: 1;
+  }
+  
+  main {
+    padding: 40px 4%;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mul Biotech Farms Private Limited</h1>
+  <p class="tagline">Services & Solutions</p>
+  <p class="tagline" style="font-size: 1rem; opacity: 0.9; margin-top: 16px;">
+    Scientific, Technical and Implementation Support for Agriculture, Aquaculture, Biotechnology, Environment and Sustainability Projects
+  </p>
+</header>
+
+<main>
+
+<!-- About Our Services -->
+<section class="intro">
+  <h2>About Our Services</h2>
+  <p>Mul Biotech Farms provides practical solutions and technical support for agriculture, aquaculture, biotechnology, environmental management and sustainability projects.</p>
+  <p style="margin-top: 20px;">We work with farmers, institutions, government organisations, CSR initiatives and businesses to design, develop and implement scientific solutions based on field requirements.</p>
+</section>
+
+<!-- Service Portfolio -->
+<section>
+  <h2>Service Portfolio</h2>
+  
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Agriculture & Land Solutions</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Agriculture & Land Solutions</h3>
+      <p>Technical support for sustainable farming, land improvement and plantation-based projects.</p>
+      <ul>
+        <li>Agroforestry planning</li>
+        <li>Plantation development support</li>
+        <li>Soil improvement practices</li>
+        <li>Land assessment</li>
+        <li>Farm planning</li>
+        <li>GIS-based land analysis</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Hydroponics & Controlled Farming</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Hydroponics & Controlled Farming</h3>
+      <p>Design and technical support for modern farming systems.</p>
+      <ul>
+        <li>Hydroponic systems</li>
+        <li>Aquaponics systems</li>
+        <li>Vertical farming</li>
+        <li>Protected cultivation</li>
+        <li>Microgreens production</li>
+        <li>Farm automation support</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Aquaculture Solutions</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Aquaculture Solutions</h3>
+      <p>Technical solutions for fish farming and aquatic production systems.</p>
+      <ul>
+        <li>Biofloc systems</li>
+        <li>Aquaculture planning</li>
+        <li>Water quality management</li>
+        <li>Fish farming consultancy</li>
+        <li>Recirculating aquaculture systems</li>
+        <li>Aquaculture training</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Environmental Consultancy</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Environmental Consultancy</h3>
+      <p>Support for environmental assessment, sustainability planning and project documentation.</p>
+      <ul>
+        <li>Environmental assessment support</li>
+        <li>Waste management planning</li>
+        <li>Water quality assessment</li>
+        <li>Sustainability documentation</li>
+        <li>Environmental project support</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">DPR & Project Consultancy</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>DPR & Project Consultancy</h3>
+      <p>Technical documentation and project planning support.</p>
+      <ul>
+        <li>Detailed Project Reports (DPR)</li>
+        <li>Feasibility studies</li>
+        <li>Technical reports</li>
+        <li>Cost estimation</li>
+        <li>Project planning</li>
+        <li>Government and CSR project documentation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">GIS & Digital Monitoring</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>GIS & Digital Monitoring</h3>
+      <p>Use of mapping and monitoring tools for better project decisions.</p>
+      <ul>
+        <li>GIS mapping</li>
+        <li>Remote sensing analysis</li>
+        <li>Land suitability assessment</li>
+        <li>Farm monitoring</li>
+        <li>Environmental data reporting</li>
+        <li>Dashboard development</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Biotechnology Solutions</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Biotechnology Solutions</h3>
+      <p>Scientific support for biotechnology-based agricultural solutions.</p>
+      <ul>
+        <li>Mushroom cultivation systems</li>
+        <li>Biofertilizer solutions</li>
+        <li>Composting solutions</li>
+        <li>Microbial applications</li>
+        <li>Bioremediation support</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; margin-bottom: 20px;">Training & Research Support</h3>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Training & Research Support</h3>
+      <p>Knowledge development and capacity building support.</p>
+      <ul>
+        <li>Farmer training</li>
+        <li>Institutional workshops</li>
+        <li>Student training programs</li>
+        <li>Field demonstrations</li>
+        <li>Research collaboration</li>
+        <li>Technical knowledge support</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- Our Integrated Approach -->
+<section>
+  <h2>Our Integrated Approach</h2>
+  <p>Mul Biotech Farms follows an integrated approach combining multiple disciplines and methodologies:</p>
+  
+  <div class="approach-box">
+    <ul>
+      <li>Agriculture</li>
+      <li>Biotechnology</li>
+      <li>Aquaculture</li>
+      <li>Environmental science</li>
+      <li>GIS-based planning</li>
+      <li>Field implementation</li>
+    </ul>
+  </div>
+
+  <p>Our internal framework, <strong>IRBAS</strong> (Integrated Regenerative Bio-Agri System), helps organise our approach towards integrated farming and sustainability projects. IRBAS brings together scientific planning, field execution and digital monitoring to deliver practical solutions for our clients.</p>
+</section>
+
+<!-- Who We Work With -->
+<section>
+  <h2>Who We Work With</h2>
+  
+  <div class="clients-grid">
+    <div class="client-item">Farmers and Farmer Groups</div>
+    <div class="client-item">Farmer Producer Organisations (FPOs)</div>
+    <div class="client-item">Government Departments</div>
+    <div class="client-item">CSR Organisations</div>
+    <div class="client-item">NGOs</div>
+    <div class="client-item">Educational Institutions</div>
+    <div class="client-item">Research Organisations</div>
+    <div class="client-item">Agribusinesses</div>
+    <div class="client-item">Entrepreneurs</div>
+  </div>
+</section>
+
+<!-- Our Process -->
+<section>
+  <h2>Our Process</h2>
+  
+  <ol class="process-list">
+    <li data-step="1"><strong>Requirement Discussion</strong> – Understanding your project needs, constraints and objectives</li>
+    <li data-step="2"><strong>Site Assessment</strong> – Field evaluation, resource mapping and baseline data collection</li>
+    <li data-step="3"><strong>Technical Planning</strong> – Scientific analysis and development of technical solutions</li>
+    <li data-step="4"><strong>Proposal & Documentation</strong> – Detailed project reports, DPRs and implementation plans</li>
+    <li data-step="5"><strong>Implementation Support</strong> – Technical guidance during project execution</li>
+    <li data-step="6"><strong>Training and Monitoring</strong> – Capacity building and performance tracking</li>
+  </ol>
+</section>
+
+<!-- Why Choose Us -->
+<section>
+  <h2>Why Choose Mul Biotech Farms</h2>
+  
+  <ul class="benefits-list">
+    <li>Biotechnology and agriculture expertise</li>
+    <li>Practical field-oriented solutions</li>
+    <li>Scientific approach</li>
+    <li>Technical documentation capability</li>
+    <li>Experience with farming and sustainability projects</li>
+    <li>Training and implementation support</li>
+  </ul>
+</section>
+
+<!-- FAQ -->
+<section>
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-group">
+    <div class="faq-question">What services do you provide?</div>
+    <div class="faq-answer">We provide agriculture, aquaculture, biotechnology, environmental consultancy, GIS and sustainability services. Our service portfolio covers land solutions, controlled farming, aquaculture, environmental assessment, project documentation (DPR), GIS mapping, biotechnology solutions and training support.</div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-question">Do you prepare project reports?</div>
+    <div class="faq-answer">Yes. We prepare Detailed Project Reports (DPRs), feasibility studies, technical documents and cost estimations for government projects, CSR initiatives, and private sector investments.</div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-question">Do you provide farm setup support?</div>
+    <div class="faq-answer">Yes. We support setup and planning for hydroponics, aquaponics, mushroom cultivation, aquaculture systems and other farming systems. We provide technical planning, site assessment and implementation guidance.</div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-question">Do you provide training?</div>
+    <div class="faq-answer">Yes. We conduct farmer training programs, institutional workshops, student training programs and field demonstrations. Training covers specific technologies as well as sustainable farming practices.</div>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-question">What is our delivery model?</div>
+    <div class="faq-answer">We follow a structured six-step process: requirement discussion, site assessment, technical planning, proposal & documentation, implementation support, and training & monitoring. This ensures comprehensive support from planning through completion and beyond.</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section">
+  <h2>Let's Work Together</h2>
+  <p style="margin-bottom: 24px;">Discuss your agriculture, aquaculture, biotechnology or sustainability project with our team. Whether you're planning a farm, designing a training program, or developing an environmental project, we're ready to help.</p>
+  <a href="index.html#contact" class="cta">Book a Consultation</a>
+</section>
+
+</main>
+
+<footer>
+  <p>© Mul Biotech Farms Private Limited | Rishra, Hooghly, West Bengal, India</p>
+</footer>
+
+</body>
+</html>
