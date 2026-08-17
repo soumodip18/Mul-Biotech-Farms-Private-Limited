@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mul Biotech Farms — Services & Solutions</title>
+  <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+      background: linear-gradient(135deg, #1a2e1a 0%, #0f261f 100%);
+      color: #e8eae8;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Utility */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    /* Header & Hero */
+    .header {
+      text-align: center;
+      margin-bottom: 56px;
+      padding: 48px 0;
+    }
+
+    .header-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #8bc34a;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .header h1 {
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 900;
+      color: #e8eae8;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subheading {
+      font-size: 16px;
+      color: #b8c8b8;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* Core Principle Section */
+    .principle-section {
+      background: rgba(139, 195, 74, 0.08);
+      border: 1px solid rgba(139, 195, 74, 0.2);
+      border-radius: 14px;
+      padding: 32px;
+      margin-bottom: 56px;
+      backdrop-filter: blur(10px);
+    }
+
+    .principle-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8bc34a;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .principle-text {
+      font-size: 16px;
+      color: #e8eae8;
+      font-weight: 600;
+      line-height: 1.7;
+      max-width: 900px;
+    }
+
+    .principle-text strong {
+      color: #8bc34a;
+    }
+
+    /* Situation Selector */
+    .situation-section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8bc34a;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .situation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .situation-btn {
+      padding: 24px;
+      border: 2px solid rgba(139, 195, 74, 0.2);
+      border-radius: 12px;
+      background: rgba(42, 93, 42, 0.1);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      color: #e8eae8;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-align: left;
+    }
+
+    .situation-btn:hover {
+      border-color: rgba(139, 195, 74, 0.4);
+      background: rgba(42, 93, 42, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 195, 74, 0.15);
+    }
+
+    .situation-btn.active {
+      border-color: #8bc34a;
+      background: rgba(42, 93, 42, 0.25);
+      box-shadow: 0 8px 24px rgba(139, 195, 74, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .situation-emoji {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .situation-btn small {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: #a8b8a8;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* Services Container */
+    .services-container {
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .services-container.visible {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Service Tier Section */
+    .service-tier {
+      margin-bottom: 48px;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(139, 195, 74, 0.2);
+    }
+
+    .tier-icon {
+      font-size: 24px;
+    }
+
+    .tier-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #e8eae8;
+    }
+
+    .tier-subtitle {
+      font-size: 12px;
+      color: #8bc34a;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Service Cards */
+    .service-card {
+      background: linear-gradient(135deg, rgba(42, 93, 42, 0.15) 0%, rgba(26, 62, 26, 0.1) 100%);
+      border: 1px solid rgba(139, 195, 74, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, #8bc34a 0%, #4a8c4a 100%);
+      opacity: 0.6;
+    }
+
+    .service-card:hover {
+      background: linear-gradient(135deg, rgba(42, 93, 42, 0.25) 0%, rgba(26, 62, 26, 0.2) 100%);
+      border-color: rgba(139, 195, 74, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(139, 195, 74, 0.12);
+    }
+
+    .service-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-content h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #e8eae8;
+      margin-bottom: 8px;
+    }
+
+    .service-content p {
+      font-size: 13px;
+      color: #b8c8b8;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .service-meta {
+      font-size: 12px;
+      color: #8a9a8a;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .service-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .service-meta-item::before {
+      content: "•";
+      color: #8bc34a;
+    }
+
+    .implementation-examples {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(139, 195, 74, 0.1);
+      font-size: 12px;
+      color: #a0b8a0;
+    }
+
+    .implementation-examples strong {
+      color: #8bc34a;
+    }
+
+    .service-pricing {
+      text-align: right;
+      flex-shrink: 0;
+      min-width: 140px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-main {
+      font-size: 24px;
+      font-weight: 900;
+      color: #8bc34a;
+      line-height: 1;
+    }
+
+    .price-currency {
+      font-size: 14px;
+      font-weight: 700;
+      vertical-align: super;
+    }
+
+    .price-period {
+      font-size: 12px;
+      font-weight: 500;
+      color: #8a9a8a;
+      margin-top: 2px;
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: #8a9a8a;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* Ready-to-Deploy Section */
+    .ready-deploy-section {
+      display: none;
+      background: linear-gradient(135deg, #1a2e1a 0%, #0f261f 100%);
+      padding: 32px 20px;
+    }
+
+    .ready-deploy-section.visible {
+      display: block;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    .ready-deploy-section .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .ready-deploy-section .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(139, 195, 74, 0.2);
+    }
+    
+    .ready-deploy-section .tier-icon {
+      font-size: 24px;
+    }
+    
+    .ready-deploy-section .tier-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #e8eae8;
+    }
+    
+    .ready-deploy-section .tier-subtitle {
+      font-size: 12px;
+      color: #8bc34a;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .deploy-category {
+      margin-bottom: 36px;
+    }
+
+    .deploy-category-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #8bc34a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .deploy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .deploy-card {
+      background: linear-gradient(135deg, rgba(42, 93, 42, 0.15) 0%, rgba(26, 62, 26, 0.1) 100%);
+      border: 1px solid rgba(139, 195, 74, 0.15);
+      border-radius: 12px;
+      padding: 18px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .deploy-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, #8bc34a 0%, #4a8c4a 100%);
+      opacity: 0.6;
+    }
+
+    .deploy-card:hover {
+      background: linear-gradient(135deg, rgba(42, 93, 42, 0.25) 0%, rgba(26, 62, 26, 0.2) 100%);
+      border-color: rgba(139, 195, 74, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(139, 195, 74, 0.12);
+    }
+
+    .deploy-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e8eae8;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      min-height: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deploy-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: #8bc34a;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deploy-note {
+      font-size: 11px;
+      color: #a0b8a0;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deploy-cta {
+      background: rgba(139, 195, 74, 0.08);
+      border: 1px solid rgba(139, 195, 74, 0.2);
+      border-radius: 14px;
+      padding: 32px;
+      margin-top: 40px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .deploy-cta-content h4 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #e8eae8;
+      margin-bottom: 12px;
+    }
+
+    .deploy-cta-content p {
+      font-size: 13px;
+      color: #b8c8b8;
+      margin-bottom: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .deploy-cta-content p strong {
+      color: #8bc34a;
+    }
+
+    /* IRBAS Framework Section */
+    .irbas-section {
+      background: linear-gradient(135deg, rgba(139, 195, 74, 0.12) 0%, rgba(26, 62, 26, 0.1) 100%);
+      border: 2px solid rgba(139, 195, 74, 0.2);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 56px 0;
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
+
+    .irbas-section.visible {
+      display: block;
+      animation: fadeInUp 0.5s ease-out 0.2s both;
+    }
+
+    .irbas-section::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -40%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 195, 74, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .irbas-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .irbas-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8bc34a;
+      background: rgba(139, 195, 74, 0.15);
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .irbas-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #e8eae8;
+      margin-bottom: 12px;
+    }
+
+    .irbas-desc {
+      font-size: 14px;
+      color: #b8c8b8;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .irbas-stacks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stack-item {
+      background: rgba(42, 93, 42, 0.2);
+      border: 1px solid rgba(139, 195, 74, 0.2);
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #8bc34a;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Growth Journey */
+    .growth-journey {
+      display: none;
+      margin-top: 48px;
+    }
+
+    .growth-journey.visible {
+      display: block;
+      animation: fadeInUp 0.5s ease-out 0.3s both;
+    }
+
+    .journey-label {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8bc34a;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .journey-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #e8eae8;
+      margin-bottom: 8px;
+    }
+
+    .journey-desc {
+      font-size: 13px;
+      color: #b8c8b8;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .growth-visualization {
+      background: linear-gradient(135deg, rgba(42, 93, 42, 0.15) 0%, rgba(26, 62, 26, 0.1) 100%);
+      border: 1px solid rgba(139, 195, 74, 0.2);
+      border-radius: 16px;
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .growth-visualization::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(139, 195, 74, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(74, 140, 74, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .growth-stages {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .stage {
+      background: rgba(26, 62, 26, 0.3);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid rgba(139, 195, 74, 0.15);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .stage:hover {
+      transform: translateY(-4px);
+      background: rgba(26, 62, 26, 0.5);
+      border-color: rgba(139, 195, 74, 0.3);
+    }
+
+    .stage.stage-0 { border-left: 4px solid #8bc34a; }
+    .stage.stage-1 { border-left: 4px solid #7ab84a; }
+    .stage.stage-2 { border-left: 4px solid #a8d084; }
+    .stage.stage-3 { border-left: 4px solid #8bc34a; }
+    .stage.stage-4 { border-left: 4px solid #8bc34a; }
+
+    .stage-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: #8bc34a;
+      margin-bottom: 6px;
+    }
+
+    .stage-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #a8b8a8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 48px 0;
+      margin-top: 56px;
+      border-top: 1px solid rgba(139, 195, 74, 0.2);
+      display: none;
+    }
+
+    .cta-section.visible {
+      display: block;
+      animation: fadeInUp 0.5s ease-out 0.4s both;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #e8eae8;
+      margin-bottom: 12px;
+    }
+
+    .cta-subtitle {
+      font-size: 14px;
+      color: #b8c8b8;
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #8bc34a 0%, #7ab84a 100%);
+      color: #1a2e1a;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 195, 74, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(139, 195, 74, 0.1);
+      font-size: 12px;
+      color: #8a9a8a;
+    }
+
+    .footer a {
+      color: #8bc34a;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #a0d060;
+    }
+
+    .footer-section {
+      margin-bottom: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 20px 16px; }
+      .header { margin-bottom: 32px; padding: 24px 0; }
+      .header h1 { font-size: 28px; }
+      .situation-grid { grid-template-columns: 1fr; }
+      .service-card { grid-template-columns: 1fr; gap: 16px; }
+      .service-pricing { text-align: left; }
+      .irbas-section { padding: 28px 20px; }
+      .irbas-title { font-size: 22px; }
+      .tier-header { flex-direction: column; align-items: flex-start; }
+      .growth-visualization { padding: 24px 16px; }
+      .growth-stages { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+      .deploy-grid { grid-template-columns: 1fr; }
+      .deploy-cta { padding: 24px 16px; }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #8bc34a;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="header-eyebrow">Mul Biotech Farms</span>
+    <h1>Services & Solutions</h1>
+    <p class="header-subheading">Technical consultancy, system design, and turnkey implementation for biological agriculture, aquaculture, and environmental biotechnology.</p>
+  </div>
+
+  <!-- Core Principle -->
+  <div class="principle-section">
+    <span class="principle-label">Our Operating Principle</span>
+    <div class="principle-text">
+      Mul Biotech Farms sells <strong>technical judgment first</strong>. Infrastructure, implementation, and turnkey execution follow only when <strong>technically justified</strong>.
+    </div>
+  </div>
+
+  <!-- Situation Selector -->
+  <div class="situation-section">
+    <label class="section-title" for="situation-selector">What's your situation?</label>
+    <div class="situation-grid">
+      <button class="situation-btn" id="btn-failing" onclick="selectSituation('failing')" aria-pressed="false">
+        <span class="situation-emoji">🔧</span><strong>Something is failing</strong>
+        <small>System breakdown, crop loss, fish mortality, or unexplained biological collapse</small>
+      </button>
+      <button class="situation-btn" id="btn-planning" onclick="selectSituation('planning')" aria-pressed="false">
+        <span class="situation-emoji">🌱</span><strong>Planning an investment</strong>
+        <small>New farm setup, expansion, technology upgrade, or diversification project</small>
+      </button>
+      <button class="situation-btn" id="btn-ready" onclick="selectSituation('ready')" aria-pressed="false">
+        <span class="situation-emoji">✅</span><strong>Show me ready-to-deploy models</strong>
+        <small>Browse available farm systems, labs, and turnkey packages with pricing</small>
+      </button>
+    </div>
+  </div>
+
+  <!-- Services Container -->
+  <div class="services-container" id="services-container">
+
+    <!-- Tier 1: Entry Diagnostics -->
+    <div class="service-tier">
+      <div class="tier-header">
+        <span class="tier-icon">🔍</span>
+        <div>
+          <div class="tier-title">Entry Diagnostics & Reviews</div>
+          <div class="tier-subtitle">Quick assessment & independent review — ₹7,500–₹15,000</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3 id="diag-title">Remote Biological System Diagnostic</h3>
+          <p id="diag-desc">Client intake, evidence review, 60-minute technical consultation, preliminary system analysis, written corrective-action report, and one follow-up discussion.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">3–7 days turnaround</span>
+            <span class="service-meta-item">Remote engagement</span>
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>7,500</div>
+          <div class="price-note">Remote only. Does not include lab testing or field inspection.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Independent Technical / Vendor Review</h3>
+          <p>In-depth review of vendor proposals, DPRs, quotations, designs, and CAPEX/OPEX assumptions. Receive a clear Proceed / Modify / Renegotiate / Do Not Proceed recommendation backed by technical analysis.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">3–10 days turnaround</span>
+            <span class="service-meta-item">Proposal-based analysis</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>What we protect you from:</strong> Overpriced solutions, unviable technical designs, hidden risks
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>15,000</div>
+          <div class="price-note">Saves money on bad investments.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2: Feasibility & Design -->
+    <div class="service-tier">
+      <div class="tier-header">
+        <span class="tier-icon">📋</span>
+        <div>
+          <div class="tier-title">Feasibility Assessment & Technical Design</div>
+          <div class="tier-subtitle">Deep analysis & project roadmap — ₹25,000–₹50,000</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3 id="feas-title">Project Feasibility Assessment</h3>
+          <p id="feas-desc">Technical, biological, site, resource, market, economic, regulatory, and risk assessment. Includes GO / MODIFY / PILOT / NO-GO decision framework. Essential before any investment decision.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">7–15 days turnaround</span>
+            <span class="service-meta-item">Multi-disciplinary analysis</span>
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>25,000</div>
+          <div class="price-note">Recommended before any significant capital deployment.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Detailed Technical Feasibility + Bankable DPR</h3>
+          <p>Comprehensive feasibility assessment combined with a Detailed Project Report. Includes technical architecture, BOQ, CAPEX/OPEX modeling, financial projections, implementation roadmap, and risk mitigation strategies. Ready for bank financing or investor presentations.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">15–30 days turnaround</span>
+            <span class="service-meta-item">Investor-ready documentation</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Examples:</strong> Aquaponics farm design, mushroom lab setup, soil regeneration program, medicinal plant estate
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>50,000</div>
+          <div class="price-note">Enables financing and bankable project execution.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3: Implementation Services -->
+    <div class="service-tier">
+      <div class="tier-header">
+        <span class="tier-icon">🏗️</span>
+        <div>
+          <div class="tier-title">Turnkey Implementation & Deployment</div>
+          <div class="tier-subtitle">System installation, commissioning & support — ₹25,000+/month</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Implementation Advisory & System Deployment</h3>
+          <p>Active project support during construction, system setup, biological inoculation, and early operational phases. Includes site visits, milestone reviews, troubleshooting, and commissioning guidance. We ensure your farm system is installed correctly and biologically sound.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">Ongoing 6–12 month engagement</span>
+            <span class="service-meta-item">Field + remote support</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>We deploy:</strong> Aquaponics systems (₹5L–₹10L+), mushroom production labs (₹2.5L–₹33L), spirulina/algae systems, medicinal plant gardens, soil regeneration programs, water treatment systems
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>25,000<span style="font-size:14px;font-weight:500;">/mo</span></div>
+          <div class="price-note">Standard engagement during project execution.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Advanced / Multi-System Diagnostic</h3>
+          <p>Complex system analysis for high-stakes situations. Includes field inspection, lab testing, microbial enumeration, root-cause analysis across multiple system layers, and detailed remediation strategy. For large operations or critical failures.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">15–30 days turnaround</span>
+            <span class="service-meta-item">Field + lab analysis</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Supports:</strong> Multi-hectare farms, commercial mushroom operations, aquaculture systems, integrated agroforestry
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>40,000</div>
+          <div class="price-note">Can scale to ₹75,000–₹1.5L for complex systems.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 4: Recurring & Long-term -->
+    <div class="service-tier">
+      <div class="tier-header">
+        <span class="tier-icon">📊</span>
+        <div>
+          <div class="tier-title">Long-Term Technical Support</div>
+          <div class="tier-subtitle">Ongoing monitoring, optimization & advisory — ₹15,000–₹50,000+/month</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Technical Retainer</h3>
+          <p>Ongoing remote troubleshooting, periodic system reviews, data analysis, SOP improvement, and strategic technical advice. Monthly technical reviews, KPI dashboard, and priority response to issues. Your permanent technical advisor.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">Ongoing engagement</span>
+            <span class="service-meta-item">Priority response</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Supports:</strong> Farm optimization, yield improvement, cost reduction, long-term biological health
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>15,000<span style="font-size:14px;font-weight:500;">/mo</span></div>
+          <div class="price-note">Entry-level ongoing support. Can scale to ₹30K–₹1L+/month for enterprise operations.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>GIS / MRV / Performance Monitoring</h3>
+          <p>Remote sensing, carbon project tracking, performance analytics, and data-driven insights. Includes custom dashboards, periodic analysis reports, and strategic recommendations. Essential for carbon projects and institutional programs.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">Ongoing engagement</span>
+            <span class="service-meta-item">Data-driven insights</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Powers:</strong> Carbon credit verification, environmental impact reporting, yield forecasting, climate resilience tracking
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>15,000<span style="font-size:14px;font-weight:500;">/mo</span></div>
+          <div class="price-note">Scales to ₹30K–₹1L+/month for institutional projects.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Specialized Lab Services & Consortium Development</h3>
+          <p>Microbiology services including soil bacterial enumeration, fungal analysis, water quality assessment, and custom microbial consortium development. Support for bioproduct formulation and quality assurance.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">On-demand / recurring</span>
+            <span class="service-meta-item">Lab + consultancy</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Services include:</strong> Soil analysis (₹2.5K–₹6K), water microbiology (₹3K–₹7K), consortium development (custom), research consultancy (₹5K/hour)
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>2,500<span style="font-size:12px;font-weight:500;">+</span></div>
+          <div class="price-note">Pay-per-test or retainer basis.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 5: Institutional & Enterprise -->
+    <div class="service-tier">
+      <div class="tier-header">
+        <span class="tier-icon">🏛️</span>
+        <div>
+          <div class="tier-title">Institutional & Enterprise Solutions</div>
+          <div class="tier-subtitle">Government, FPO, CSR, and large-scale programs — ₹1 Lakh+</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Institutional / Government Advisory</h3>
+          <p>Large-scale program design, FPO (Farmer Producer Organisation) capacity building, CSR project advisory, university partnerships, and regulatory/policy consultation. Typically structured as project-based or multi-year engagements with institutional clients.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">Project-based pricing</span>
+            <span class="service-meta-item">Multi-stakeholder coordination</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Examples:</strong> District-level agricultural programs, NGO partnerships, university research support, government subsidy-linked projects
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>1,00,000<span style="font-size:14px;font-weight:500;">+</span></div>
+          <div class="price-note">Custom quote based on scope and complexity.</div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <h3>Carbon Projects & Climate-Tech Solutions</h3>
+          <p>End-to-end support for carbon credit projects, regenerative agriculture programs, and climate-resilient farm design. Includes project design, verification planning, impact assessment, and long-term monitoring.</p>
+          <div class="service-meta">
+            <span class="service-meta-item">Project-based</span>
+            <span class="service-meta-item">Multi-year engagements</span>
+          </div>
+          <div class="implementation-examples">
+            <strong>Covers:</strong> Verified carbon standard (VCS) projects, agroforestry carbon sequestration, regenerative soil programs, nature-based solutions
+          </div>
+        </div>
+        <div class="service-pricing">
+          <div class="price-main"><span class="price-currency">₹</span>Custom</div>
+          <div class="price-note">Quote based on project scale and timeline.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IRBAS Framework Section -->
+    <div class="irbas-section" id="irbas-section">
+      <div class="irbas-content">
+        <span class="irbas-badge">Proprietary Methodology</span>
+        <h2 class="irbas-title">IRBAS™ Framework</h2>
+        <p class="irbas-desc">
+          <strong>IRBAS</strong> (Integrated Regenerative Biosphere Architecture System) is the proprietary framework that powers every service we deliver. Developed over 6+ years of field operations at Unit Nasibpur (2019–2024), IRBAS™ coordinates six specialized knowledge stacks to deliver climate-resilient, biologically sound, and economically viable agricultural and environmental systems.
+        </p>
+        <p style="font-size: 13px; color: #b8c8b8; margin-bottom: 20px;">
+          Every diagnostic is informed by IRBAS methodology. Every feasibility study applies IRBAS principles. Every turnkey implementation deploys IRBAS-designed systems.
+        </p>
+        <div class="irbas-stacks">
+          <div class="stack-item">IRBAS-RESTORE™<br/>Soil Regeneration</div>
+          <div class="stack-item">IRBAS-BIOENERGY™<br/>Biomass & Energy</div>
+          <div class="stack-item">IRBAS-HYDROGRID™<br/>Water Systems</div>
+          <div class="stack-item">IRBAS-CARBON™<br/>Carbon & Climate</div>
+          <div class="stack-item">IRBAS-GEOSPATIAL™<br/>Monitoring & Data</div>
+          <div class="stack-item">IRBAS-RURAL™<br/>Rural Integration</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth Journey -->
+    <div class="growth-journey" id="growth-journey">
+      <div class="journey-label">The Natural Client Journey</div>
+      <div>
+        <div class="journey-title">From First Consultation to Mastery</div>
+        <div class="journey-desc">Most clients begin with a remote diagnostic or feasibility assessment, then naturally evolve to implementation, long-term retainer relationships, and institutional partnerships as we demonstrate value and become their trusted biological systems advisor.</div>
+      </div>
+      <div class="growth-visualization">
+        <div class="growth-stages">
+          <div class="stage stage-0">
+            <div class="stage-price">₹7.5K</div>
+            <div class="stage-name">Remote Diagnostic</div>
+          </div>
+          <div class="stage stage-1">
+            <div class="stage-price">₹25K</div>
+            <div class="stage-name">Feasibility & DPR</div>
+          </div>
+          <div class="stage stage-2">
+            <div class="stage-price">₹25K/mo</div>
+            <div class="stage-name">Implementation</div>
+          </div>
+          <div class="stage stage-3">
+            <div class="stage-price">₹15K/mo</div>
+            <div class="stage-name">Retainer Support</div>
+          </div>
+          <div class="stage stage-4">
+            <div class="stage-price">Scale</div>
+            <div class="stage-name">Long-term Partnership</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section" id="cta-section">
+      <h2 class="cta-title">Ready to Get Started?</h2>
+      <p class="cta-subtitle">Contact us for a confidential consultation. First diagnostic starts at ₹7,500.</p>
+      <a href="mailto:soumodip@mulbiotechfarms.in" class="cta-button">Get in Touch</a>
+    </div>
+
+  </div>
+
+  <!-- Ready-to-Deploy Models Section (OUTSIDE services-container) -->
+  <div class="ready-deploy-section" id="ready-deploy-section">
+    <div class="container">
+      <div class="tier-header">
+        <span class="tier-icon">📦</span>
+        <div>
+          <div class="tier-title">Ready-to-Deploy Farm Systems & Models</div>
+          <div class="tier-subtitle">Browse available turnkey packages by category</div>
+        </div>
+      </div>
+
+      <!-- Aquaculture & Water Systems -->
+      <div class="deploy-category">
+        <h4 class="deploy-category-title">💧 Aquaculture & Water-Based Systems</h4>
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <div class="deploy-name">Aquaponics Backyard<br/>50-Bucket System</div>
+            <div class="deploy-price">₹1.75 Lakh</div>
+            <div class="deploy-note">Integrated fish-vegetable system. Includes setup, biological inoculation, and 30-day commissioning support.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Aquaponics Commercial<br/>Advanced Scale</div>
+            <div class="deploy-price">₹5 Lakh+</div>
+            <div class="deploy-note">Larger operations (100+ bucket equivalent). Custom sizing. Includes advanced biological management.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Spirulina Production<br/>5 KL System</div>
+            <div class="deploy-price">₹2.5 Lakh</div>
+            <div class="deploy-note">Complete spirulina cultivation setup. Includes culture, equipment, and operator training.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mushroom Production Labs -->
+      <div class="deploy-category">
+        <h4 class="deploy-category-title">🍄 Mushroom Production Labs</h4>
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <div class="deploy-name">Oyster Mushroom Lab<br/>750 Bags</div>
+            <div class="deploy-price">₹2.5 Lakh</div>
+            <div class="deploy-note">Turn-key operation. Includes spawn, substrate, facility setup, and initial yield consulting.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Milky Mushroom Lab<br/>Commercial Scale</div>
+            <div class="deploy-price">₹4.5 Lakh</div>
+            <div class="deploy-note">Premium commercial variety. Includes advanced climate control and yield optimization.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Ganoderma Lab<br/>Medicinal Mushroom</div>
+            <div class="deploy-price">₹3.5 Lakh</div>
+            <div class="deploy-note">High-value medicinal variety. Includes extraction-ready setup and quality assurance protocols.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Cordyceps Lab<br/>Specialty Cultivation</div>
+            <div class="deploy-price">₹6 Lakh</div>
+            <div class="deploy-note">Premium specialty crop. Requires advanced expertise; includes 3-month advisory support.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Button Mushroom Farm<br/>Industrial Scale</div>
+            <div class="deploy-price">₹33 Lakh</div>
+            <div class="deploy-note">Large commercial operation. Includes full facility, automation, and 6-month implementation support.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Land-Based Systems -->
+      <div class="deploy-category">
+        <h4 class="deploy-category-title">🌱 Land-Based Agricultural Systems</h4>
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <div class="deploy-name">Microgreens Starter Rack</div>
+            <div class="deploy-price">₹40,000</div>
+            <div class="deploy-note">Entry-level hydroponic greens production. Complete with seeds, nutrients, and grow lights.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Medicinal Plant Garden<br/>1 Acre</div>
+            <div class="deploy-price">₹2.5 Lakh</div>
+            <div class="deploy-note">Ready-planted with high-value medicinal herbs. Includes soil regeneration and 1-year advisory.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Fruit Estate System<br/>1 Acre</div>
+            <div class="deploy-price">₹3.5 Lakh</div>
+            <div class="deploy-note">Multi-fruit diversified system with regenerative soil practices and yield-based consulting.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Timber Wealth System<br/>1 Acre</div>
+            <div class="deploy-price">₹3.5 Lakh</div>
+            <div class="deploy-note">High-value timber crops with mid-rotation intercropping. Long-term income diversification.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Agarwood Wealth System<br/>1 Acre</div>
+            <div class="deploy-price">₹5 Lakh</div>
+            <div class="deploy-note">Premium agarwood plantation with established trees and infection management support.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Sandalwood Wealth System<br/>1 Acre</div>
+            <div class="deploy-price">₹7–10 Lakh</div>
+            <div class="deploy-note">High-value sandalwood plantation with certified saplings and 5-year management.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supporting Products & Activators -->
+      <div class="deploy-category">
+        <h4 class="deploy-category-title">🌍 Supporting Biological Products (Available as Add-ons)</h4>
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <div class="deploy-name">Soil Regeneration Packages</div>
+            <div class="deploy-price">₹2,000–₹10,000</div>
+            <div class="deploy-note">Consortia, activators, and biochar systems to enhance any farm system.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Water System Biology</div>
+            <div class="deploy-price">₹3,000–₹6,000</div>
+            <div class="deploy-note">BioTank activators, pond biology, and biofilter systems for aquaculture.</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-name">Environmental Solutions</div>
+            <div class="deploy-price">₹1,000–₹5,000</div>
+            <div class="deploy-note">STP activators, septic treatment, compost accelerators, and odour control.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA for Custom Quote -->
+      <div class="deploy-cta">
+        <div class="deploy-cta-content">
+          <h4>Don't see what you're looking for?</h4>
+          <p>Every system can be <strong>customized to your site, budget, and biology</strong>. We also offer custom combinations and can build tailored solutions.</p>
+          <a href="mailto:soumodip@mulbiotechfarms.in?subject=Custom%20Turnkey%20Project%20Inquiry" class="cta-button">Request a Custom Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-section">
+      <strong>Mul Biotech Farms Pvt. Ltd.</strong> | CIN: U01111WB2026PTC292686
+    </div>
+    <div class="footer-section">
+      Email: <a href="mailto:soumodip@mulbiotechfarms.in">soumodip@mulbiotechfarms.in</a>
+    </div>
+    <div class="footer-section">
+      <small style="color: #7a8a8a;">Pricing basis: Current Master Audit — August 2026. INR (₹). Turnkey system costs vary based on scale, biology, and site conditions; custom quotes provided after feasibility assessment.</small>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function selectSituation(situation) {
+  const failingBtn = document.getElementById('btn-failing');
+  const planningBtn = document.getElementById('btn-planning');
+  const readyBtn = document.getElementById('btn-ready');
+
+  failingBtn.classList.remove('active');
+  planningBtn.classList.remove('active');
+  readyBtn.classList.remove('active');
+  failingBtn.setAttribute('aria-pressed', 'false');
+  planningBtn.setAttribute('aria-pressed', 'false');
+  readyBtn.setAttribute('aria-pressed', 'false');
+
+  const servicesContainer = document.getElementById('services-container');
+  const readyDeploySection = document.getElementById('ready-deploy-section');
+  const irbas = document.getElementById('irbas-section');
+  const growthJourney = document.getElementById('growth-journey');
+  const cta = document.getElementById('cta-section');
+
+  // Hide all sections first
+  servicesContainer.classList.remove('visible');
+  readyDeploySection.classList.remove('visible');
+  irbas.classList.remove('visible');
+  growthJourney.classList.remove('visible');
+  cta.classList.remove('visible');
+
+  if (situation === 'failing') {
+    failingBtn.classList.add('active');
+    failingBtn.setAttribute('aria-pressed', 'true');
+    
+    document.getElementById('diag-title').textContent = 'Remote Biological System Diagnostic';
+    document.getElementById('diag-desc').textContent = '"Tell us what is going wrong. We\'ll investigate the system and identify the root cause." Client intake, evidence review, 60-minute technical consultation, preliminary analysis, corrective-action report, and one follow-up discussion.';
+    
+    document.getElementById('feas-title').textContent = 'Advanced System Analysis & Remediation Strategy';
+    document.getElementById('feas-desc').textContent = 'If the issue is complex or requires intervention beyond diagnosis, we conduct advanced multi-system analysis with lab testing, field inspection, and detailed remediation roadmap. Includes investment evaluation for recovery solutions.';
+
+    servicesContainer.classList.add('visible');
+    irbas.classList.add('visible');
+    growthJourney.classList.add('visible');
+    cta.classList.add('visible');
+
+  } else if (situation === 'planning') {
+    planningBtn.classList.add('active');
+    planningBtn.setAttribute('aria-pressed', 'true');
+    
+    document.getElementById('diag-title').textContent = 'Project Feasibility Assessment';
+    document.getElementById('diag-desc').textContent = '"Before you invest, ask us if it will work." Full technical, biological, site, resource, market, economic, regulatory, and risk assessment. Receive GO / MODIFY / PILOT / NO-GO framework. Foundation for all planning.';
+    
+    document.getElementById('feas-title').textContent = 'Detailed Technical Feasibility + Bankable DPR';
+    document.getElementById('feas-desc').textContent = 'Comprehensive feasibility combined with a Detailed Project Report, technical architecture, BOQ, CAPEX/OPEX modeling, financial projections, and implementation roadmap. Ready for bank financing or investor presentations.';
+
+    servicesContainer.classList.add('visible');
+    irbas.classList.add('visible');
+    growthJourney.classList.add('visible');
+    cta.classList.add('visible');
+
+  } else if (situation === 'ready') {
+    readyBtn.classList.add('active');
+    readyBtn.setAttribute('aria-pressed', 'true');
+
+    readyDeploySection.classList.add('visible');
+  }
+
+  setTimeout(() => {
+    const target = situation === 'ready' ? readyDeploySection : servicesContainer;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+document.getElementById('btn-failing').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    selectSituation('failing');
+  }
+});
+
+document.getElementById('btn-planning').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    selectSituation('planning');
+  }
+});
+
+document.getElementById('btn-ready').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    selectSituation('ready');
+  }
+});
+</script>
+
+</body>
+</html>
